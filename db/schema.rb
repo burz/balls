@@ -11,12 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316004345) do
+ActiveRecord::Schema.define(version: 20150316004633) do
 
   create_table "leagues", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "players_per_team"
+    t.integer  "cups_per_team"
+    t.text     "additional_rules"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
 end
