@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  players_per_team: 
+  cups_per_team: 
+  additional_rules: MyText
+
+two:
+  name: MyString
+  players_per_team: 
+  cups_per_team: 
+  additional_rules: MyText
