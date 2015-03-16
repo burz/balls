@@ -1,0 +1,17 @@
+<div id="league_index">
+  <center>
+    <h3>Leagues</h3>
+    <table class="table table-bordered table-hover">
+      <% for league in @leagues %>
+        <tr>
+          <td><%= league.name %></td>
+          <td><%= league.get_spread current_user %></td>
+          <td><%= league.get_ratio current_user %></td>
+        </tr>
+      <% end %>
+    </table>
+    <h3>
+      <span class="label label-default">Add League</span>
+    </h3>
+  </center>
+</div>
