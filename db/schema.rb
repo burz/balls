@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150316205614) do
 
   create_table "leagues", force: :cascade do |t|
     t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150316205614) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "league_membership_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
