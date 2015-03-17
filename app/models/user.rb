@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :leagues
+  has_many :league_memberships
+  has_many :leagues, through: :league_memberships
 
   def get_spread
     return '20/15'
@@ -12,5 +13,9 @@ class User < ActiveRecord::Base
 
   def get_ratio
     return '+5'
+  end
+
+  def admin? league
+    league_memberships.where(league_id: league).first.admin
   end
 end

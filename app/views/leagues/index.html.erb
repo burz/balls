@@ -1,6 +1,7 @@
+<%= render template: 'common/nav_bar' %>
 <div id="league_index">
   <center>
-    <h3>Leagues</h3>
+    <h2>Leagues</h2>
     <table class="table table-bordered table-hover">
       <% for league in @leagues %>
         <tr class="league_row" league_path="<%= league_path(league) %>">

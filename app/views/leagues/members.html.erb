@@ -1,0 +1,12 @@
+<div id="league_members">
+  <center>
+    <h2>Members</h2>
+    <table class="table table-bordered table-hover">
+      <% for user in @users %>
+        <tr class="member_row" member_path="<%= user_path user %>">
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    </table>
+  </center>
+</div>

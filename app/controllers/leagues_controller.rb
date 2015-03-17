@@ -6,16 +6,22 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @league = current_user.leagues.find(params[:id])
-    @seasons = @league.seasons
+    @league = current_user.leagues.find params[:id]
   end
 
   def new
   end
 
   def create
-    League.create league_params
+    league = League.create league_params
+    LeagueMembership.create({ user_id: current_user.id, league_id: league.id, admin: true})
     render nothing: true
+  end
+
+  def admin
+    @league = current_user.leagues.find params[:league_id]
+    @seasons = @league.seasons
+    @users = @league.users
   end
 
   def league_params
