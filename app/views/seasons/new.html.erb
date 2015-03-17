@@ -1,0 +1,61 @@
+<div id="new_season">
+  <center>
+    <h2>Add Season</h2>
+    <div id="season_name_alert" class="alert alert-danger new_season_alert" role="alert">
+      The season must have a name.
+    </div>
+    <div id="season_players_alert" class="alert alert-danger new_season_alert" role="alert">
+      The number of players per team must be greater than zero.
+    </div>
+    <div id="season_cups_alert" class="alert alert-danger new_season_alert" role="alert">
+      The number of cups per team must be greater than zero.
+    </div>
+    <div class="form-group">
+      <label for="season_name">Name</label>
+      <input type="text" id="season_name" name="season_name" class="form-control">
+      <label for="players_per_team">Players Per Team</label>
+      <input type="number" id="players_per_team" name="players_per_team" class="form-control">
+      <label for="cups_per_team">Cups Per Team</label>
+      <input type="number" id="cups_per_team" name="cups_per_team" class="form-control">
+      <br>
+      <div id="extra_rules_panel" class="panel panel-primary">
+        <div id="extra_rules_heading" class="panel-heading">+ Additional Rules</div>
+        <div id="extra_rules_body" class="panel-body">
+          <textarea id="extra_rules_content" class="form-control"></textarea>
+        </div>
+      </div>
+    </div>
+    <h3>
+      <span id="create_season_button" class="label label-default">Create</span>
+    </h3>
+  </center>
+  <script>
+    $('.new_season_alert').hide();
+    $('#extra_rules_body').hide();
+    $('#extra_rules_heading').click(function () {
+      $('#extra_rules_body').toggle();
+    });
+    $('#create_season_button').click(function () {
+      $('.new_season_alert').hide();
+      if($('#season_name').val() === "") {
+        $('#season_name_alert').show();
+      } else if($('#players_per_team').val() === "" || $('#players_per_team').val() <= 0) {
+        $('#season_players_alert').show();
+      } else if($('#cups_per_team').val() === "" || $('#cups_per_team').val() <= 0) {
+        $('#season_cups_alert').show();
+      }
+      else {
+        var data = { 'season':
+          { 'name': $('#season_name').val(),
+            'players_per_team': $('#players_per_team').val(),
+            'cups_per_team': $('#cups_per_team').val(),
+            'additional_rules': $('#extra_rules_content').val()
+          }
+        };
+        $.post('<%= league_seasons_path(@league) %>', data, function () {
+          window.location.replace('<%= league_seasons_path(@league) %>');
+        });
+      }
+    });
+  </script>
+</div>

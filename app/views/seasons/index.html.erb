@@ -1,17 +1,25 @@
 <div id="seasons_index">
   <center>
     <h2>Seasons</h2>
-      <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover">
       <% for season in @seasons %>
-        <td>
-          <tr><%= season.name %></tr>
-          <tr><%= season.get_spread current_user %></tr>
-          <tr><%= season.get_ratio current_user %></tr>
-        </td>
+        <tr class="season_row" season_path="<%= league_season_path @league, season %>">
+          <td><%= season.name %></td>
+          <td><%= season.get_spread current_user %></td>
+          <td><%= season.get_ratio current_user %></td>
+        </tr>
       <% end %>
-
+    </table>
     <h3>
-      <span class="label label-default">Add Season</div>
+      <%= link_to new_league_season_path(@league) do %>
+        <span class="label label-default">Add Season</div>
+      <% end %>
     </h3>
   </center>
+  <script>
+    $('.season_row').click(function (event_object) {
+      var target_path = event_object.target.parentElement.getAttribute('season_path');
+      window.location.replace(target_path);
+    });
+  </script>
 </div>
