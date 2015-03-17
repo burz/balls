@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'welcome#index'
 
-  resources :leagues
-  resources :seasons
+  resources :leagues do
+    resources :seasons
+  end
+
+  devise_for :users
   resources :users
 end

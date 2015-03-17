@@ -3,7 +3,7 @@
     <h3>Leagues</h3>
     <table class="table table-bordered table-hover">
       <% for league in @leagues %>
-        <tr>
+        <tr class="league_row" league_path="<%= league_path(league) %>">
           <td><%= league.name %></td>
           <td><%= league.get_spread current_user %></td>
           <td><%= league.get_ratio current_user %></td>
@@ -11,7 +11,15 @@
       <% end %>
     </table>
     <h3>
-      <span class="label label-default">Add League</span>
+      <%= link_to new_league_path do %>
+        <span class="label label-default">Add League</span>
+      <% end %>
     </h3>
   </center>
+  <script>
+    $('.league_row').click(function (event_object) {
+      var target_path = event_object.target.parentElement.getAttribute('league_path');
+      window.location.replace(target_path);
+    });
+  </script>
 </div>

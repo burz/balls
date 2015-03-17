@@ -1,0 +1,30 @@
+<div id="new_league">
+  <center>
+    <div id="league_name_alert" class="alert alert-danger" role="alert"> 
+      The league must have a name. 
+    </div>
+    <h3>Add League</h3>
+    League Name: <input type="text" id="league_name">
+    <br>
+    <h3>
+      <span id="create_league_button" class="label label-default">Create</span>
+    </h3>
+  </center>
+  <script> 
+    $('#league_name_alert').hide();
+    $('#create_league_button').click(function () { 
+      if($('#league_name').val() === "") {
+        $('#league_name_alert').show();
+      } else {
+        var data = { 'league':
+          { 'name': $('#league_name').val(),
+            'user_id': <%= current_user.id %>
+          }
+        };
+        $.post('<%= leagues_path %>', data, function () { 
+          window.location.replace('<%= leagues_path %>'); 
+        });  
+      }
+    }); 
+  </script>
+</div>
