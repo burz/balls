@@ -1,1 +1,46 @@
-poop yo
+<%= render template: 'common/nav_bar' %>
+<div id="season_info">
+  <center>
+    <h2><%= @season.name %></h2>
+    <div class="panel panel-primary">
+      <div id="rules_button" class="panel-heading">+ Rules</div>
+      <div id="rules_panel" class="panel-body">
+        <h3>
+          Number of players per team: <%= @season.players_per_team %>
+          <br>
+          Number of cups per team: <%= @season.cups_per_team %>
+          <br>
+          Additional rules: <%= @season.additional_rules %>
+        </h3>
+      </div>
+    </div>
+    <table class="table table-bordered table-hover">
+      <tr>
+        <td>Standing</td>
+        <td>Name</td>
+        <td>Spread</td>
+        <td>Ratio</td>
+      </tr>
+      <% i = 1 %>
+      <% for user in @season.rankings %>
+        <tr class="user_row" user_path="<%= user_path user %>">
+          <td><%= i %></td>
+          <% i = i + 1 %>
+          <td><%= user.email %></td>
+          <td><%= @season.get_spread user %></td>
+          <td><%= @season.get_ratio user %></td>
+        </tr>
+      <% end %>
+    </table>
+  </center>
+  <script>
+    $('#rules_panel').hide();
+    $('#rules_button').click(function () {
+      $('#rules_panel').toggle();
+    });
+    $('.user_row').click(function (event_object) {
+      var target_path = event_object.target.parentElement.getAttribute('user_path');
+      window.location.replace(target_path);
+    });
+  </script>
+</div>

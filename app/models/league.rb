@@ -5,10 +5,14 @@ class League < ActiveRecord::Base
   has_many :seasons
 
   def get_spread user
-    return '22/15'
+    '22/15'
   end
 
   def get_ratio user
-    return '+7'
+    '+7'
+  end
+
+  def rankings
+    users
   end
 end

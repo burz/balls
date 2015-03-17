@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
   has_many :leagues, through: :league_memberships
 
   def get_spread
-    return '20/15'
+    '20/15'
   end
 
   def get_ratio
-    return '+5'
+    '+5'
   end
 
   def admin? league

@@ -6,6 +6,11 @@ class SeasonsController < ApplicationController
     @seasons = @league.seasons
   end
 
+  def show
+    @league = current_user.leagues.find params[:league_id]
+    @season = @league.seasons.find params[:id]
+  end
+
   def new
     @league = current_user.leagues.find params[:league_id]
   end
