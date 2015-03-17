@@ -1,8 +1,14 @@
-<%= render template: 'common/nav_bar' %>
+<% add_button = render template: 'seasons/add_button' %>
+<%= render template: 'common/nav_bar', locals: { additional_buttons: add_button } %>
 <div id="seasons_index">
   <center>
     <h2>Seasons</h2>
     <table class="table table-bordered table-hover">
+      <tr>
+        <td>Name</td>
+        <td>Spread</td>
+        <td>Ratio</td>
+      </tr>
       <% for season in @seasons %>
         <tr class="season_row" season_path="<%= league_season_path @league, season %>">
           <td><%= season.name %></td>
@@ -11,11 +17,6 @@
         </tr>
       <% end %>
     </table>
-    <h3>
-      <%= link_to new_league_season_path(@league) do %>
-        <span class="label label-default">Add Season</div>
-      <% end %>
-    </h3>
   </center>
   <script>
     $('.season_row').click(function (event_object) {

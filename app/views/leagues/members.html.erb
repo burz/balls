@@ -1,10 +1,18 @@
 <div id="league_members">
   <center>
+    <button id="add_member" type="button" class="btn btn-danger">
+      Add Member
+    </button>
     <h2>Members</h2>
     <table class="table table-bordered table-hover">
+      <tr>
+        <td>Name</td>
+        <td>Admin</td>
+      </tr>
       <% for user in @users %>
         <tr class="member_row" member_path="<%= user_path user %>">
           <td><%= user.email %></td>
+          <td><%= user.admin? @league %></td>
         </tr>
       <% end %>
     </table>

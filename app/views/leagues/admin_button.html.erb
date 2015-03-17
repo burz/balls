@@ -1,0 +1,10 @@
+<% if current_user.admin? @league %>
+  <button id="admin_page" type="button" class="btn btn-danger">
+    Admin Page
+  </button>
+  <script>
+    $('#admin_page').click(function () {
+      window.location.replace('<%= league_admin_path @league %>');
+    });
+  </script>
+<% end %>

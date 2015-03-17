@@ -1,8 +1,8 @@
-<%= render template: 'common/nav_bar' %>
+<%= render template: 'common/nav_bar', locals: { additional_buttons: '' } %>
 <div id="season_info">
   <center>
     <h2><%= @season.name %></h2>
-    <div class="panel panel-primary">
+    <div class="panel panel-success">
       <div id="rules_button" class="panel-heading">+ Rules</div>
       <div id="rules_panel" class="panel-body">
         <h3>

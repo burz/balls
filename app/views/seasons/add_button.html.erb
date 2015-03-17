@@ -1,0 +1,8 @@
+<button id="add_button" type="button" class="btn btn-success">
+  Add Season
+</button>
+<script>
+  $('#add_button').click(function () {
+    window.location.replace('<%= new_league_season_path @league %>');
+  });
+</script>

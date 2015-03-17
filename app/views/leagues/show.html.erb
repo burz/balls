@@ -1,4 +1,5 @@
-<%= render template: 'leagues/nav_bar' %>
+<% admin_button = render template: 'leagues/admin_button' %>
+<%= render template: 'common/nav_bar', locals: { additional_buttons: admin_button } %>
 <br>
 <div id="show_league" class="container">
   <div class="row">
@@ -44,6 +45,12 @@
               </div>
               <div class="panel-body">
                 <table class="table table-bordered table-hover">
+                  <tr>
+                    <td>Standing</td>
+                    <td>Name</td>
+                    <td>Spread</td>
+                    <td>Ratio</td>
+                  </tr>
                   <% i = 1 %>
                   <% for user in season.rankings %>
                     <tr class="user_row" user_path="<%= user_path user %>">

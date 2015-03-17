@@ -1,12 +1,19 @@
 <div id="site_header">
+  <br>
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h1>
-          <%= link_to 'Balls', root_path %>
-        </h1>
+        <div class="col-md-3">
+          <h1>
+            <%= link_to 'Balls', root_path %>
+          </h1>
+        </div>
+        <div class="col-md-3">
+          <%= image_tag 'balls-default-icon.jpg', alt: 'Balls', class: 'img-thumbnail', style: 'display: inline;' %>
+        </div>
       </div>
       <div class="col-md-6 text-right">
+        <br>
         <% if user_signed_in? %>
           Welcome back
           <%= link_to current_user.email, user_path(current_user) %>
