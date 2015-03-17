@@ -7,6 +7,8 @@ class LeaguesController < ApplicationController
 
   def show
     @league = current_user.leagues.find params[:id]
+    @users = @league.users
+    @seasons = @league.seasons
   end
 
   def new

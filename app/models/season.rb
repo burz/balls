@@ -8,4 +8,8 @@ class Season < ActiveRecord::Base
   def get_ratio user
     return '-2'
   end
+
+  def rankings
+    league.users
+  end
 end

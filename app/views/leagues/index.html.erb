@@ -4,7 +4,7 @@
     <h2>Leagues</h2>
     <table class="table table-bordered table-hover">
       <% for league in @leagues %>
-        <tr class="league_row" league_path="<%= league_path(league) %>">
+        <tr class="league_row" league_path="<%= league_path league %>">
           <td><%= league.name %></td>
           <td><%= league.get_spread current_user %></td>
           <td><%= league.get_ratio current_user %></td>
