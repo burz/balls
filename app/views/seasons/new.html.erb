@@ -1,3 +1,5 @@
+<% new_button = render template: 'seasons/new_button' %>
+<%= render template: 'common/nav_bar', locals: { additional_buttons: new_button } %>
 <div id="new_season">
   <center>
     <h2>Add Season</h2>
@@ -25,37 +27,12 @@
         </div>
       </div>
     </div>
-    <h3>
-      <span id="create_season_button" class="label label-default">Create</span>
-    </h3>
   </center>
   <script>
     $('.new_season_alert').hide();
     $('#extra_rules_body').hide();
     $('#extra_rules_heading').click(function () {
       $('#extra_rules_body').toggle();
-    });
-    $('#create_season_button').click(function () {
-      $('.new_season_alert').hide();
-      if($('#season_name').val() === "") {
-        $('#season_name_alert').show();
-      } else if($('#players_per_team').val() === "" || $('#players_per_team').val() <= 0) {
-        $('#season_players_alert').show();
-      } else if($('#cups_per_team').val() === "" || $('#cups_per_team').val() <= 0) {
-        $('#season_cups_alert').show();
-      }
-      else {
-        var data = { 'season':
-          { 'name': $('#season_name').val(),
-            'players_per_team': $('#players_per_team').val(),
-            'cups_per_team': $('#cups_per_team').val(),
-            'additional_rules': $('#extra_rules_content').val()
-          }
-        };
-        $.post('<%= league_seasons_path(@league) %>', data, function () {
-          window.location.replace('<%= league_seasons_path(@league) %>');
-        });
-      }
     });
   </script>
 </div>
