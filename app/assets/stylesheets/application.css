@@ -14,3 +14,11 @@
  *= require_self
  *= require bootstrap.min
  */
+
+body {
+  background-color: rgba(9, 232, 250, 0.09) !important;
+}
+
+table {
+  background-color: #FFFFFF !important;
+}
