@@ -2,73 +2,77 @@
 <%= render template: 'common/nav_bar', locals: { additional_buttons: admin_button } %>
 <br>
 <div id="show_league" class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3>League Standings</h3>
-        </div>
-        <div class="panel-body">
-          <table class="table table-bordered table-hover">
-            <tr>
-              <td>Standing</td>
-              <td>Name</td>
-              <td>Spread</td>
-              <td>Ratio</td>
-            </tr>
-            <% i = 1 %>
-            <% for user in @users %>
-              <tr class="user_row" user_path="<%= user_path user %>">
-                <td><%= i %></td>
-                <% i = i + 1 %>
-                <td><%= user.email %></td>
-                <td><%= @league.get_spread user %></td>
-                <td><%= @league.get_ratio user %></td>
+  <center>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3>League Standings</h3>
+          </div>
+          <div class="panel-body">
+            <table class="table table-bordered table-hover">
+              <tr>
+                <td>Standing</td>
+                <td>Name</td>
+                <td>Spread</td>
+                <td>Ratio</td>
               </tr>
-            <% end %>
-          </table>
+              <% i = 1 %>
+              <% for user in @users %>
+                <tr class="user_row" user_path="<%= user_path user %>">
+                  <td><%= i %></td>
+                  <% i = i + 1 %>
+                  <td><%= user.email %></td>
+                  <td><%= @league.get_spread user %></td>
+                  <td><%= @league.get_ratio user %></td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3>Season Standings</h3>
-        </div>
-        <div class="panel-body">
-          <% for season in @seasons %>
-            <div class="panel panel-success">
-              <div class="panel-heading">
-                <%= link_to league_season_path @league, season do %>
-                  <h2><%= season.name %></h2>
-                <% end %>
-              </div>
-              <div class="panel-body">
-                <table class="table table-bordered table-hover">
-                  <tr>
-                    <td>Standing</td>
-                    <td>Name</td>
-                    <td>Spread</td>
-                    <td>Ratio</td>
-                  </tr>
-                  <% i = 1 %>
-                  <% for user in season.rankings %>
-                    <tr class="user_row" user_path="<%= user_path user %>">
-                      <td><%= i %></td>
-                      <% i = i + 1 %>
-                      <td><%= user.email %></td>
-                      <td><%= season.get_spread user %></td>
-                      <td><%= season.get_ratio user %></td>
-                    </tr>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3>Season Standings</h3>
+          </div>
+          <div class="panel-body">
+            <% for season in @seasons %>
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                  <%= link_to league_season_path @league, season do %>
+                    <h2><%= season.name %></h2>
                   <% end %>
-                </table>
+                </div>
+                <div class="panel-body">
+                  End date: <%= season.end_date %>
+                  <br>
+                  <table class="table table-bordered table-hover">
+                    <tr>
+                      <td>Standing</td>
+                      <td>Name</td>
+                      <td>Spread</td>
+                      <td>Ratio</td>
+                    </tr>
+                    <% i = 1 %>
+                    <% for user in season.rankings %>
+                      <tr class="user_row" user_path="<%= user_path user %>">
+                        <td><%= i %></td>
+                        <% i = i + 1 %>
+                        <td><%= user.email %></td>
+                        <td><%= season.get_spread user %></td>
+                        <td><%= season.get_ratio user %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </center>
   <script>
     $(".user_row").click(function (event_object) {
       var target_path = event_object.target.parentElement.getAttribute('user_path');

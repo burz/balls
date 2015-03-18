@@ -21,8 +21,8 @@ class SeasonsController < ApplicationController
   end
 
   def season_params
-    new_params = params.require(:season).permit :name, :players_per_team, :cups_per_team,
-                                                :additional_rules
+    new_params = params.require(:season).permit :name, :end_date, :players_per_team,
+                                                :cups_per_team, :additional_rules
     new_params[:league_id] = params[:league_id]
     new_params
   end

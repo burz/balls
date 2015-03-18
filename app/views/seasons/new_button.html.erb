@@ -6,14 +6,16 @@
     $('.new_season_alert').hide();
     if($('#season_name').val() === "") {
       $('#season_name_alert').show();
+    } else if($('#end_date').val() === "") {
+      $('#season_date_alert').show();
     } else if($('#players_per_team').val() === "" || $('#players_per_team').val() <= 0) {
       $('#season_players_alert').show();
     } else if($('#cups_per_team').val() === "" || $('#cups_per_team').val() <= 0) {
       $('#season_cups_alert').show();
-    }
-    else {
+    } else {
       var data = { 'season':
         { 'name': $('#season_name').val(),
+          'end_date': $('#end_date').val(),
           'players_per_team': $('#players_per_team').val(),
           'cups_per_team': $('#cups_per_team').val(),
           'additional_rules': $('#extra_rules_content').val()
