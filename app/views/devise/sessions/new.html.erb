@@ -13,6 +13,8 @@
           <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
         </div>
         <% if devise_mapping.rememberable? -%>
+          <br>
+          <br>
           <div class="field">
             <div class="checkbox">
               <label>
@@ -20,6 +22,7 @@
               </label>
             </div>
           </div>
+          <br>
         <% end -%>
         <div class="actions">
           <%= f.submit "Log in", class: 'btn btn-success' %>
