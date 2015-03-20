@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :leagues do
     get 'admin'
     get 'players'
-    resources :seasons
+    resources :seasons do
+      resources :games
+    end
   end
 
   devise_for :users

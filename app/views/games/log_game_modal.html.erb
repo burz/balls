@@ -7,15 +7,15 @@
             &times;
           </span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">
+        <h2 class="modal-title">
           Log Game
-        </h4>
+        </h2>
       </div>
       <div class="modal-body">
-        <div id="league_name_alert" class="alert alert-danger" role="alert">
+        <div id="game_league_name_alert" class="alert alert-danger" role="alert">
           You must select a league
         </div>
-        <div id="season_name_alert" class="alert alert-danger" role="alert">
+        <div id="game_season_name_alert" class="alert alert-danger" role="alert">
           You must select a season
         </div>
         <div id="cup_differential_alert" class="alert alert-danger" role="alert">
@@ -31,15 +31,72 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button id="save_game_button" type="button" class="btn btn-primary">Save</button>
       </div>
     </div>
   </div>
 </div>
 <script>
-  $('#league_name_alert').hide();
-  $('#season_name_alert').hide();
-  $('#cup_differential_alert').hide();
-  $('#no_player_alert').hide();
-  $('#duplicate_player_alert').hide();
+  $('.alert').hide();
+  function is_encountered(player, encountered_players) {
+    for(var i = 0; i < encountered_players.length; ++i) {
+      if(encountered_players[i] === player) {
+        return true;
+      }
+    }
+    return false;
+  }
+  $('#save_game_button').click(function () {
+    $('.alert').hide();
+    if($('#game_league_name').val() === '') {
+      $('#game_league_name_alert').show();
+    } else if($('#game_season_name').val() === '') {
+      $('#game_season_name_alert').show();
+    } else if($('#cup_differential').val() === '' ||
+              $('#cup_differential').val() < 0) {
+      $('#cup_differential_alert').show()
+    } else {
+      var selected_season = $('#game_season_name').find(':selected');
+      var players_per_team = parseInt(selected_season.attr('players_per_team'));
+      var winners = [];
+      var losers = [];
+      var encountered_players = [];
+      for(var i = 0; i < players_per_team; ++i) {
+        var winners_player = $('#winners #player' + i).val();
+        if(winners_player === '') {
+          $('#no_player_alert').show();
+          return;
+        } else if(is_encountered(winners_player, encountered_players)) {
+          $('#duplicate_player_alert').show();
+//          return;
+        }
+        winners[winners.length] = winners_player;
+        encountered_players[encountered_players.length] = winners_player;
+        var losers_player = $('#losers #player' + i).val();
+        if(losers_player === '') {
+          $('#no_player_alert').show();
+          return;
+        } else if(is_encountered(losers_player, encountered_players)) {
+          $('#duplicate_player_alert').show();
+//          return;
+        }
+        losers[losers.length] = losers_player;
+        encountered_players[encountered_players.length] = losers_player;
+      }
+      var data = {
+        game: {
+          cup_differential: $('#cup_differential').val(),
+          winners: winners,
+          losers: losers
+        }
+      };
+      $.post(
+        '<%= leagues_path %>/' + $('#game_league_name').val() +
+          '/seasons/' + $('#game_season_name').val() + '/games',
+        data,
+        function () {
+        }
+      );
+    }
+  });
 </script>
