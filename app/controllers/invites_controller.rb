@@ -13,7 +13,8 @@ class InvitesController < ApplicationController
   def create
     email = params[:invite][:email]
     league = @leagues.find params[:league_id]
-    InviteMailer.invite_email(current_user, email, league).deliver_now
+    invite = Invite.create league: league
+    InviteMailer.invite_email(current_user, email, league, invite.token).deliver_now
     render nothing: true
   end
 end
