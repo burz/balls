@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :league_memberships
   has_many :leagues, through: :league_memberships
+  has_many :games, through: :players
 
   def get_spread
     '20/15'

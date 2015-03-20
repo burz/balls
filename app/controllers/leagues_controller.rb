@@ -1,12 +1,16 @@
 class LeaguesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_leagues
 
-  def index
+  def set_leagues
     @leagues = current_user.leagues
   end
 
+  def index
+  end
+
   def show
-    @league = current_user.leagues.find params[:id]
+    @league = @leagues.find params[:id]
     @users = @league.users
     @seasons = @league.seasons
   end

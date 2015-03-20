@@ -1,0 +1,34 @@
+<div class="new_game">
+  <div class="form-group">
+    <label for="league_name">League</label>
+    <select id="league_name" class="form-control">
+        <option value="">Select a league</option>
+      <% for league in @leagues %>
+        <option value="<%= league.id %>"><%= league.name %></option>
+      <% end %>
+    </select>
+    <label for="season_name">Season</label>
+    <select id="season_name" class="form-control" disabled>
+    </select>
+    <label for="cup_differential">Cup Differential</label>
+    <input type="number" id="cup_differential" class="form-control">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div id="team0" class="col-md-3"></div>
+      <div id="team0" class="col-md-3"></div>
+    </div>
+  </div>
+</div>
+<script>
+$('#league_name').change(function () {
+  if($('#league_name').val() != "") {
+    $.get(
+      "<%= leagues_path %>/" + $('#league_name').val() + "/seasons.json",
+      function () {
+        alert("yeppers");
+      }
+    );
+  }
+});
+</script>
