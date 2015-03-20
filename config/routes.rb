@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :leagues do
+  resources :leagues, only: [:show, :index, :new, :create] do
     get 'admin'
     get 'players'
-    resources :invites
+    resources :invites, only: [:new, :create]
     get 'join/:token', to: 'invites#join', as: 'join'
-    resources :seasons do
-      resources :games
+    resources :seasons, only: [:show, :index, :new, :create] do
+      resources :games, only: [:show, :create]
     end
   end
 
   devise_for :users
-  resources :users
+  resources :users, only: [:show]
 end
