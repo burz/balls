@@ -71,7 +71,7 @@
           return;
         } else if(is_encountered(winners_player, encountered_players)) {
           $('#duplicate_player_alert').show();
-//          return;
+          return;
         }
         winners[winners.length] = winners_player;
         encountered_players[encountered_players.length] = winners_player;
@@ -81,7 +81,7 @@
           return;
         } else if(is_encountered(losers_player, encountered_players)) {
           $('#duplicate_player_alert').show();
-//          return;
+          return;
         }
         losers[losers.length] = losers_player;
         encountered_players[encountered_players.length] = losers_player;

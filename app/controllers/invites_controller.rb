@@ -20,13 +20,20 @@ class InvitesController < ApplicationController
 
   def join
     invite = Invite.where(token: params[:token]).first
+    league = invite.league
     if invite.nil?
-      flash[:notice] = 'The token has expired.'
+      flash[:notice] = 'The token has expired'
       redirect_to controller: :welcome, action: :index
     else
-      LeagueMembership.create user: current_user, league: invite.league, admin: false
-      Invite.destroy invite
-      redirect_to controller: :leagues, action: :show, id: invite.league
+      if league.users.where(id: current_user).first != nil
+        flash[:notice] = 'You are already a member of "' + league.name + '"'
+        Invite.destroy invite
+        redirect_to controller: :leagues, action: :show, id: league
+      else
+        LeagueMembership.create user: current_user, league: league, admin: false
+        Invite.destroy invite
+        redirect_to controller: :leagues, action: :show, id: league
+      end
     end
   end
 end
