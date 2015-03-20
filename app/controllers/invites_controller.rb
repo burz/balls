@@ -17,4 +17,16 @@ class InvitesController < ApplicationController
     InviteMailer.invite_email(current_user, email, league, invite.token).deliver_now
     render nothing: true
   end
+
+  def join
+    invite = Invite.where(token: params[:token]).first
+    if invite.nil?
+      flash[:notice] = 'The token has expired.'
+      redirect_to controller: :welcome, action: :index
+    else
+      LeagueMembership.create user: current_user, league: invite.league, admin: false
+      Invite.destroy invite
+      redirect_to controller: :leagues, action: :show, id: invite.league
+    end
+  end
 end

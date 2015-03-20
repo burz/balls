@@ -12,22 +12,22 @@
         </h2>
       </div>
       <div class="modal-body">
-        <div id="game_league_name_alert" class="alert alert-danger" role="alert">
+        <div id="game_league_name_alert" class="log_game_alert alert alert-danger" role="alert">
           You must select a league
         </div>
-        <div id="no_seasons_alert" class="alert alert-warning" role="alert">
+        <div id="no_seasons_alert" class="log_game_alert alert alert-warning" role="alert">
           There are no currently running seasons
         </div>
-        <div id="game_season_name_alert" class="alert alert-danger" role="alert">
+        <div id="game_season_name_alert" class="log_game_alert alert alert-danger" role="alert">
           You must select a season
         </div>
-        <div id="cup_differential_alert" class="alert alert-danger" role="alert">
+        <div id="cup_differential_alert" class="log_game_alert alert alert-danger" role="alert">
           The cup differential must be greater or equal to zero
         </div>
-        <div id="no_player_alert" class="alert alert-danger" role="alert">
+        <div id="no_player_alert" class="log_game_alert alert alert-danger" role="alert">
           A player must be chosen for each slot
         </div>
-        <div id="duplicate_player_alert" class="alert alert-danger" role="alert">
+        <div id="duplicate_player_alert" class="log_game_alert alert alert-danger" role="alert">
           A single player cannot fill multiple slots
         </div>
         <%= render template: 'games/new' %>
@@ -40,7 +40,7 @@
   </div>
 </div>
 <script>
-  $('.alert').hide();
+  $('.log_game_alert').hide();
   function is_encountered(player, encountered_players) {
     for(var i = 0; i < encountered_players.length; ++i) {
       if(encountered_players[i] === player) {
@@ -50,7 +50,7 @@
     return false;
   }
   $('#save_game_button').click(function () {
-    $('.alert').hide();
+    $('.log_game_alert').hide();
     if($('#game_league_name').val() === '') {
       $('#game_league_name_alert').show();
     } else if($('#game_season_name').val() === '') {

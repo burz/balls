@@ -2,8 +2,8 @@ class League < ActiveRecord::Base
   belongs_to :user
   has_many :league_memberships
   has_many :users, through: :league_memberships
-  has_many :seasons
   has_many :invites
+  has_many :seasons
 
   def user_games user
     user.players.joins(:game).joins(game: :season).where('seasons.league_id': id)

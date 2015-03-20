@@ -3,7 +3,7 @@
 </button>
 <script>
   $('#send_invite_button').click(function () {
-    $('.alert').hide();
+    $('.invite_alert').hide();
     if($('#email_address').val() != '') {
       var data = { invite: { email: $('#email_address').val() } };
       $.post('<%= league_invites_path @league %>', data, function () {

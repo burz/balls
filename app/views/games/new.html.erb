@@ -24,7 +24,7 @@
   var seasons = [];
   var players = [];
   $('#game_league_name').change(function () {
-    $('.alert').hide();
+    $('.log_game_alert').hide();
     if($('#game_league_name').val() != "") {
       $.get(
         '<%= leagues_path %>/' + $('#game_league_name').val() + '/seasons.json',
