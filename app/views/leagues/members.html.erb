@@ -7,16 +7,20 @@
     </div>
     <h2>Members</h2>
     <table class="table table-bordered table-hover">
-      <tr>
-        <td>Name</td>
-        <td>Admin</td>
-      </tr>
-      <% for user in @users %>
-        <tr class="member_row" member_path="<%= user_path user %>">
-          <td><%= user.email %></td>
-          <td><%= user.admin? @league %></td>
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Admin</td>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% for user in @users %>
+          <tr class="member_row" member_path="<%= user_path user %>">
+            <td><%= user.email %></td>
+            <td><%= user.admin? @league %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </center>
 </div>

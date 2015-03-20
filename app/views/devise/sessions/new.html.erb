@@ -26,7 +26,11 @@
         </div>
       <% end %>
       <br>
-      <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+      <% if request[:controller] == 'welcome' %>
+        <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+      <% else %>
+        <%= render 'devise/shared/links' %>
+      <% end %>
     </div>
   </center>
 </div>

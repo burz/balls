@@ -1,20 +1,24 @@
 <div id="games_listing">
   <h3>Games</h3>
   <table class="table table-bordered table-hover">
-    <tr>
-      <td>Date</td>
-      <td>Participants</td>
-    </tr>
-    <% for game in @games %>
+    <thead>
       <tr>
-        <td><%= game.created_at %></td>
-        <td>
-          <% for player in game.players[0..(game.players.size - 2)] %>
-            <%= player.user.email %>,
-          <% end %>
-          <%= game.players[-1].user.email %>
-        </td>
+        <td>Date</td>
+        <td>Participants</td>
       </tr>
-    <% end %>
+    </thead>
+    <tbody>
+      <% for game in @games %>
+        <tr>
+          <td><%= game.created_at %></td>
+          <td>
+            <% for player in game.players[0..(game.players.size - 2)] %>
+              <%= player.user.email %>,
+            <% end %>
+            <%= game.players[-1].user.email %>
+          </td>
+        </tr>
+      <% end %>
+    <tbody>
   </table>
 </div>

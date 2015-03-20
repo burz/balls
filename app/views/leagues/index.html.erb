@@ -4,18 +4,24 @@
   <center>
     <h2>Leagues</h2>
     <table class="table table-bordered table-hover">
-      <tr>
-        <td>Name</td>
-        <td>Spread</td>
-        <td>Ratio</td>
-      </tr>
-      <% for league in @leagues %>
-        <tr class="league_row" league_path="<%= league_path league %>">
-          <td><%= league.name %></td>
-          <td><%= league.get_spread current_user %></td>
-          <td><%= format_ratio(league.get_ratio current_user) %></td>
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Games</td>
+          <td>+/-</td>
+          <td>Ratio</td>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% for league in @leagues %>
+          <tr class="league_row" league_path="<%= league_path league %>">
+            <td><%= league.name %></td>
+            <td><%= league.user_games(current_user).size %></td>
+            <td><%= league.get_spread current_user %></td>
+            <td><%= format_ratio(league.get_ratio current_user) %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </center>
   <script>

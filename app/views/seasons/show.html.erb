@@ -16,22 +16,28 @@
     </div>
     <h3>Standings</h3>
     <table class="table table-bordered table-hover">
-      <tr>
-        <td>Standing</td>
-        <td>Name</td>
-        <td>Spread</td>
-        <td>Ratio</td>
-      </tr>
-      <% i = 1 %>
-      <% for user in @season.rankings %>
-        <tr class="user_row" user_path="<%= user_path user %>">
-          <td><%= i %></td>
-          <% i = i + 1 %>
-          <td><%= user.email %></td>
-          <td><%= @season.get_spread user %></td>
-          <td><%= format_ratio(@season.get_ratio user) %></td>
+      <thead>
+        <tr>
+          <td>#</td>
+          <td>Name</td>
+          <td>Games</td>
+          <td>+/-</td>
+          <td>Ratio</td>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% i = 1 %>
+        <% for user in @season.rankings %>
+          <tr class="user_row" user_path="<%= user_path user %>">
+            <td><%= i %></td>
+            <% i = i + 1 %>
+            <td><%= user.email %></td>
+            <td><%= @season.user_games(user).size %></td>
+            <td><%= @season.get_spread user %></td>
+            <td><%= format_ratio(@season.get_ratio user) %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
     <%= render template: 'games/index' %>
   </center>

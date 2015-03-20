@@ -3,6 +3,7 @@
 <br>
 <div id="show_league" class="container">
   <center>
+    <h3><%= @league.name %></h3>
     <div class="row">
       <div class="col-md-6">
         <div class="panel panel-default">
@@ -11,22 +12,28 @@
           </div>
           <div class="panel-body">
             <table class="table table-bordered table-hover">
-              <tr>
-                <td>Standing</td>
-                <td>Name</td>
-                <td>Spread</td>
-                <td>Ratio</td>
-              </tr>
-              <% i = 1 %>
-              <% for user in @users %>
-                <tr class="user_row" user_path="<%= user_path user %>">
-                  <td><%= i %></td>
-                  <% i = i + 1 %>
-                  <td><%= user.email %></td>
-                  <td><%= @league.get_spread user %></td>
-                  <td><%= format_ratio(@league.get_ratio user) %></td>
+              <thead>
+                <tr>
+                  <td>#</td>
+                  <td>Name</td>
+                  <td>Games</td>
+                  <td>+/-</td>
+                  <td>Ratio</td>
                 </tr>
-              <% end %>
+              </thead>
+              <tbody>
+                <% i = 1 %>
+                <% for user in @users %>
+                  <tr class="user_row" user_path="<%= user_path user %>">
+                    <td><%= i %></td>
+                    <% i = i + 1 %>
+                    <td><%= user.email %></td>
+                    <td><%= @league.user_games(user).size %></td>
+                    <td><%= @league.get_spread user %></td>
+                    <td><%= format_ratio(@league.get_ratio user) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
             </table>
           </div>
         </div>
@@ -48,22 +55,28 @@
                   End date: <%= season.end_date %>
                   <br>
                   <table class="table table-bordered table-hover">
-                    <tr>
-                      <td>Standing</td>
-                      <td>Name</td>
-                      <td>Spread</td>
-                      <td>Ratio</td>
-                    </tr>
-                    <% i = 1 %>
-                    <% for user in season.rankings %>
-                      <tr class="user_row" user_path="<%= user_path user %>">
-                        <td><%= i %></td>
-                        <% i = i + 1 %>
-                        <td><%= user.email %></td>
-                        <td><%= season.get_spread user %></td>
-                        <td><%= format_ratio(season.get_ratio user) %></td>
+                    <thead>
+                      <tr>
+                        <td>#</td>
+                        <td>Name</td>
+                        <td>Games</td>
+                        <td>+/-</td>
+                        <td>Ratio</td>
                       </tr>
-                    <% end %>
+                    </thead>
+                    <tbody>
+                      <% i = 1 %>
+                      <% for user in season.rankings %>
+                        <tr class="user_row" user_path="<%= user_path user %>">
+                          <td><%= i %></td>
+                          <% i = i + 1 %>
+                          <td><%= user.email %></td>
+                          <td><%= season.user_games(user).size %></td>
+                          <td><%= season.get_spread user %></td>
+                          <td><%= format_ratio(season.get_ratio user) %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
                   </table>
                 </div>
               </div>
