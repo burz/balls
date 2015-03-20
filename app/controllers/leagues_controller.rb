@@ -30,6 +30,11 @@ class LeaguesController < ApplicationController
     @users = @league.users
   end
 
+  def players
+    @league = current_user.leagues.find params[:league_id]
+    @users = @league.users
+  end
+
   def league_params
     params.require(:league).permit :name, :user_id
   end

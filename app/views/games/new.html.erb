@@ -16,19 +16,65 @@
   <div class="container">
     <div class="row">
       <div id="team0" class="col-md-3"></div>
-      <div id="team0" class="col-md-3"></div>
+      <div id="team1" class="col-md-3"></div>
     </div>
   </div>
 </div>
 <script>
-$('#league_name').change(function () {
-  if($('#league_name').val() != "") {
-    $.get(
-      "<%= leagues_path %>/" + $('#league_name').val() + "/seasons.json",
-      function () {
-        alert("yeppers");
-      }
-    );
+  var seasons = [];
+  var players = [];
+  $('#league_name').change(function () {
+    if($('#league_name').val() != "") {
+      $.get(
+        '<%= leagues_path %>/' + $('#league_name').val() + '/seasons.json',
+        function (data) {
+          seasons = data;
+          $('#season_name').empty();
+          $('#season_name').append('<option value="">Select a season</option>');
+          seasons.forEach(function (season) {
+            var option = $('<option>').val(season.id)
+            option.append(season.name);
+            option.attr('players_per_team', season.players_per_team);
+            $('#season_name').append(option);
+          });
+          $('#season_name').prop('disabled', false);
+        }
+      );
+      $.get(
+        '<%= leagues_path %>/' + $('#league_name').val() + '/players.json',
+        function (data) {
+          players = data;
+        }
+      );
+    } else {
+      $('#season_name').prop('disabled', true);
+    }
+  });
+  function create_player(t, i) {
+    var player = $('<div class="team' + t + ' panel panel-success">');
+    player.append('<div class="panel-heading">Player ' + (i + 1) + '</div>');
+    var body = $('<div class="panel-body">')
+    body.append('<label for="player' + i + '">');
+    body.append('<select id="player' + i + '" class="player form-control">');
+    player.append(body);
+    return player;
   }
-});
+  $('#season_name').change(function () {
+    if($('#season_name').val() != "") {
+      var selected_season = $('#season_name').find(':selected');
+      var players_per_team = parseInt(selected_season.attr('players_per_team'));
+      for(var i = 0; i < players_per_team; ++i) {
+        $('#team0').append(create_player(0, i));
+        $('#team1').append(create_player(1, i));
+      }
+      players.forEach(function (player) {
+        var option = $('<option>').val(player.id).append(player.email);
+        $('.player').append(option);
+      });
+    }
+    else {
+      $('#team0').empty();
+      $('#team1').empty();
+    }
+  });
 </script>
