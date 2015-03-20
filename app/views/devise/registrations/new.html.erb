@@ -1,4 +1,4 @@
-<div id="new_user_login">
+<div id="new_user_sign_up">
   <center>
     <h2>Sign up</h2>
     <div class="input-group">
@@ -6,7 +6,7 @@
         <%= devise_error_messages! %>
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+          <%= f.email_field :email, autofocus: true, id: 'sign_up_email', class: 'form-control' %>
         </div>
         <div class="field">
           <%= f.label :password %>
