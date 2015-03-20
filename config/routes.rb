@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   resources :leagues do
     get 'admin'
     get 'players'
-    get 'invite'
-    post 'send', to: 'leagues#send_invite', as: 'send_invite'
-    get 'join/:token', to: 'leagues#join', as: 'join'
+    resources :invites
+    get 'join/:token', to: 'invites#join', as: 'join'
     resources :seasons do
       resources :games
     end

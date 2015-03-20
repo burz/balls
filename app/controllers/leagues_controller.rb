@@ -35,17 +35,6 @@ class LeaguesController < ApplicationController
     @users = @league.users
   end
 
-  def invite
-    @league = @leagues.find params[:league_id]
-  end
-
-  def send_invite
-    email = params[:invite][:email]
-    league = @leagues.find params[:league_id]
-    InviteMailer.invite_email(current_user, email, league).deliver_now
-    render nothing: true
-  end
-
   def league_params
     params.require(:league).permit :name, :user_id
   end
