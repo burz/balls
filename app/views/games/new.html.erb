@@ -51,16 +51,24 @@
     }
   });
   function create_player(t, i) {
-    var player = $('<div class="team' + t + ' panel panel-success">');
+    if(t === 0) {
+      var player = $('<div class="team' + t + ' panel panel-success">');
+    } else {
+      var player = $('<div class="team' + t + ' panel panel-danger">');
+    }
     player.append('<div class="panel-heading">Player ' + (i + 1) + '</div>');
     var body = $('<div class="panel-body">')
     body.append('<label for="player' + i + '">');
-    body.append('<select id="player' + i + '" class="player form-control">');
+    var select = $('<select id="player' + i + '" class="player form-control">');
+    select.append('<option value="">Select a player</option>');
+    body.append(select);
     player.append(body);
     return player;
   }
   $('#season_name').change(function () {
     if($('#season_name').val() != "") {
+      $('#team0').append('<h3>Team 1</h3>');
+      $('#team1').append('<h3>Team 2</h3>');
       var selected_season = $('#season_name').find(':selected');
       var players_per_team = parseInt(selected_season.attr('players_per_team'));
       for(var i = 0; i < players_per_team; ++i) {
