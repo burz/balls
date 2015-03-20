@@ -18,8 +18,6 @@
           Welcome back
           <%= link_to current_user.email, user_path(current_user) %>
           | <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to 'Please log on to continue...', new_user_session_path %>
         <% end %>
       </div>
     </div>

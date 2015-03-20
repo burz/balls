@@ -1,0 +1,46 @@
+<div id="home_page" class="container">
+  <div class="row">
+    <div id="info_pane" class="col-md-6">
+      <center>
+        <font size="200">
+          <br>
+          <b>DROP<br>SOME<br>BALLS</b>
+        </font>
+      </center>
+    </div>
+    <div id="user_entrance" class="col-md-6">
+      <ul class="nav nav-tabs">
+        <li id="sign_up_button" role="presentation" class="active">
+          <a href="#">
+            Sign Up
+          </a>
+        </li>
+        <li id="log_in_button" role="presentation" >
+          <a href="#">
+            Log In
+          </a>
+        </li>
+      </ul>
+      <div id="sign_up_pane">
+        <%= render template: 'devise/registrations/new' %>
+      </div>
+      <div id="log_in_pane" hidden=true>
+        <%= render template: 'devise/sessions/new' %>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('#sign_up_button').click(function () {
+    $('#log_in_button').removeClass('active');
+    $('#sign_up_button').addClass('active');
+    $('#log_in_pane').hide();
+    $('#sign_up_pane').show();
+  });
+  $('#log_in_button').click(function () {
+    $('#sign_up_button').removeClass('active');
+    $('#log_in_button').addClass('active');
+    $('#sign_up_pane').hide();
+    $('#log_in_pane').show();
+  });
+</script>
