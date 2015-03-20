@@ -29,7 +29,7 @@
           <% i = i + 1 %>
           <td><%= user.email %></td>
           <td><%= @season.get_spread user %></td>
-          <td><%= @season.get_ratio user %></td>
+          <td><%= format_ratio(@season.get_ratio user) %></td>
         </tr>
       <% end %>
     </table>

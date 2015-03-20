@@ -24,7 +24,7 @@
                   <% i = i + 1 %>
                   <td><%= user.email %></td>
                   <td><%= @league.get_spread user %></td>
-                  <td><%= @league.get_ratio user %></td>
+                  <td><%= format_ratio(@league.get_ratio user) %></td>
                 </tr>
               <% end %>
             </table>
@@ -61,7 +61,7 @@
                         <% i = i + 1 %>
                         <td><%= user.email %></td>
                         <td><%= season.get_spread user %></td>
-                        <td><%= season.get_ratio user %></td>
+                        <td><%= format_ratio(season.get_ratio user) %></td>
                       </tr>
                     <% end %>
                   </table>

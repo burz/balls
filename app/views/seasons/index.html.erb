@@ -15,7 +15,7 @@
           <td><%= season.name %></td>
           <td><%= season.end_date %></td>
           <td><%= season.get_spread current_user %></td>
-          <td><%= season.get_ratio current_user %></td>
+          <td><%= format_ratio(season.get_ratio current_user) %></td>
         </tr>
       <% end %>
     </table>
