@@ -4,12 +4,24 @@ class League < ActiveRecord::Base
   has_many :users, through: :league_memberships
   has_many :seasons
 
+  def user_games user
+    user.players.joins(:game).joins(game: :season).where('seasons.league_id': id)
+  end
+
+  def get_wins user
+    user_games(user).where(team: 0).size
+  end
+
+  def get_losses user
+    user_games(user).where(team: 1).size
+  end
+
   def get_spread user
-    '22/15'
+    get_wins(user).to_s + '/' + get_losses(user).to_s
   end
 
   def get_ratio user
-    '+7'
+    get_wins(user) - get_losses(user)
   end
 
   def rankings

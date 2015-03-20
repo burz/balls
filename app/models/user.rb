@@ -6,14 +6,23 @@ class User < ActiveRecord::Base
 
   has_many :league_memberships
   has_many :leagues, through: :league_memberships
+  has_many :players
   has_many :games, through: :players
 
+  def get_wins
+    players.where(team: 0).size
+  end
+
+  def get_losses
+    players.where(team: 1).size
+  end
+
   def get_spread
-    '20/15'
+    get_wins.to_s + '/' + get_losses.to_s
   end
 
   def get_ratio
-    '+5'
+    get_wins - get_losses
   end
 
   def admin? league
