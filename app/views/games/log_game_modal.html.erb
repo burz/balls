@@ -90,11 +90,14 @@
           losers: losers
         }
       };
+      var season_path = '<%= leagues_path %>/' + $('#game_league_name').val() +
+                        '/seasons/' + $('#game_season_name').val();
       $.post(
-        '<%= leagues_path %>/' + $('#game_league_name').val() +
-          '/seasons/' + $('#game_season_name').val() + '/games',
+        season_path + '/games',
         data,
         function () {
+          $('#log_game_modal').modal('hide');
+          window.location.replace(season_path);
         }
       );
     }

@@ -14,6 +14,7 @@ class SeasonsController < ApplicationController
   def show
     @league = current_user.leagues.find params[:league_id]
     @season = @league.seasons.find params[:id]
+    @games = @season.games.order(created_at: :desc)
   end
 
   def new
