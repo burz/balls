@@ -1,0 +1,17 @@
+<% invite_button = render template: 'leagues/invite_button' %>
+<%= render template: 'common/nav_bar', locals: { additional_buttons: invite_button } %>
+<div id="invite_page">
+  <center>
+    <h2>Invite to <%= @league.name %></h2>
+    <div id="email_alert" class="alert alert-danger" role="alert">
+      An email address must be entered
+    </div>
+    <div class="form-group">
+      <label for="email_address">Email</label>
+      <input type="email" id="email_address" class="form-control">
+    </div>
+  </center>
+</div>
+<script>
+  $('#email_alert').hide();
+</script>

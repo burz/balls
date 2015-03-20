@@ -1,0 +1,16 @@
+<button id="send_invite_button" type="button" class="btn btn-success">
+  Send Invite
+</button>
+<script>
+  $('#send_invite_button').click(function () {
+    $('.alert').hide();
+    if($('#email_address').val() != '') {
+      var data = { invite: { email: $('#email_address').val() } };
+      $.post('<%= league_send_invite_path @league %>', data, function () {
+        window.location.replace('<%= league_admin_path @league %>');
+      });
+    } else {
+      $('#email_alert').show();
+    }
+  });
+</script>

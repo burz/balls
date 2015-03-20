@@ -25,14 +25,25 @@ class LeaguesController < ApplicationController
   end
 
   def admin
-    @league = current_user.leagues.find params[:league_id]
+    @league = @leagues.find params[:league_id]
     @seasons = @league.seasons
     @users = @league.users
   end
 
   def players
-    @league = current_user.leagues.find params[:league_id]
+    @league = @leagues.find params[:league_id]
     @users = @league.users
+  end
+
+  def invite
+    @league = @leagues.find params[:league_id]
+  end
+
+  def send_invite
+    email = params[:invite][:email]
+    league = @leagues.find params[:league_id]
+    InviteMailer.invite_email(current_user, email, league).deliver_now
+    render nothing: true
   end
 
   def league_params
