@@ -24,6 +24,7 @@
   var seasons = [];
   var players = [];
   $('#game_league_name').change(function () {
+    $('.alert').hide();
     if($('#game_league_name').val() != "") {
       $.get(
         '<%= leagues_path %>/' + $('#game_league_name').val() + '/seasons.json',
@@ -31,13 +32,18 @@
           seasons = data;
           $('#game_season_name').empty();
           $('#game_season_name').append('<option value="">Select a season</option>');
-          seasons.forEach(function (season) {
-            var option = $('<option>').val(season.id)
-            option.append(season.name);
-            option.attr('players_per_team', season.players_per_team);
-            $('#game_season_name').append(option);
-          });
-          $('#game_season_name').prop('disabled', false);
+          if(seasons.length > 0) {
+            seasons.forEach(function (season) {
+              var option = $('<option>').val(season.id)
+              option.append(season.name);
+              option.attr('players_per_team', season.players_per_team);
+              $('#game_season_name').append(option);
+            });
+            $('#game_season_name').prop('disabled', false);
+          } else {
+            $('#no_seasons_alert').show();
+            return;
+          }
         }
       );
       $.get(
