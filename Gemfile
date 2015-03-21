@@ -48,4 +48,5 @@ end
 
 gem 'devise'
 gem 'elo'
+gem 'chartkick'
 

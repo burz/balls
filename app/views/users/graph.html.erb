@@ -1,0 +1,4 @@
+<div id="user_rating_graph">
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+  <%= line_chart LeagueRating.all.map { |x| [x.created_at, x.rating] } %>
+</div>
