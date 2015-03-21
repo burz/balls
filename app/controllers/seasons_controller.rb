@@ -23,7 +23,7 @@ class SeasonsController < ApplicationController
 
   def create
     season = Season.create season_params
-    League.find(season_params[:league]).users.each do |user|
+    League.find(season_params[:league_id]).users.each do |user|
       SeasonRating.create user: user, season: season, rating: 1000
     end
     render nothing: true

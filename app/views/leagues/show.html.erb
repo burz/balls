@@ -46,6 +46,9 @@
             <h3>Season Standings</h3>
           </div>
           <div class="panel-body">
+            <% if @seasons.size == 0 and current_user.admin? @league %>
+              <%= render template: 'seasons/add_button' %>
+            <% end %>
             <% for season in @seasons %>
               <div class="panel panel-success">
                 <div class="panel-heading">

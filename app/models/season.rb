@@ -5,8 +5,10 @@ class Season < ActiveRecord::Base
 
   def user_rating user
     result = user.leagues.joins(seasons: :season_ratings)
+                 .where('seasons.id': id)
                  .select('season_ratings.rating as rating')
-                 .where('seasons.id': id).first.rating
+                 .where('season_ratings.user_id': user.id)
+                 .order('season_ratings.created_at DESC').first.rating
   end
 
   def user_games user

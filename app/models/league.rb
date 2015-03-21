@@ -7,7 +7,7 @@ class League < ActiveRecord::Base
 
   def user_rating user
     user.leagues.joins(league_memberships: :league_rating)
-        .select('league_ratings.rating as rating').first.rating
+        .select('league_ratings.rating as rating').last.rating
   end
 
   def user_games user
