@@ -1,6 +1,13 @@
 class Season < ActiveRecord::Base
   belongs_to :league
   has_many :games
+  has_many :season_ratings
+
+  def user_rating user
+    result = user.leagues.joins(seasons: :season_ratings)
+                 .select('season_ratings.rating as rating')
+                 .where('seasons.id': id).first.rating
+  end
 
   def user_games user
     user.players.joins(:game).where('games.season_id': id)

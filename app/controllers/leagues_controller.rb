@@ -20,7 +20,8 @@ class LeaguesController < ApplicationController
 
   def create
     league = League.create league_params
-    LeagueMembership.create({ user_id: current_user.id, league_id: league.id, admin: true})
+    membership = LeagueMembership.create user: current_user, league: league, admin: true
+    LeagueRating.create league_membership: membership, rating: 1000
     render nothing: true
   end
 

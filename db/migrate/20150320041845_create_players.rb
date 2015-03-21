@@ -4,6 +4,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.belongs_to :game
       t.belongs_to :user
       t.integer :team
+      t.integer :change_in_rating
 
       t.timestamps null: false
     end

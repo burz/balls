@@ -30,8 +30,12 @@ class InvitesController < ApplicationController
         Invite.destroy invite
         redirect_to controller: :leagues, action: :show, id: league
       else
-        LeagueMembership.create user: current_user, league: league, admin: false
+        membership = LeagueMembership.create user: current_user, league: league, admin: false
+        LeagueRating.create league_membership: membership, rating: 1000
         Invite.destroy invite
+        league.seasons.each do |season|
+          SeasonRating.create user: current_user, season: season, rating: 1000
+        end
         redirect_to controller: :leagues, action: :show, id: league
       end
     end

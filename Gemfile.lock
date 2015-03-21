@@ -65,6 +65,7 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    elo (0.1.0)
     erubis (2.7.0)
     execjs (2.4.0)
     globalid (0.3.3)
@@ -162,6 +163,7 @@ DEPENDENCIES
   binding_of_caller
   byebug
   devise
+  elo
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.0)

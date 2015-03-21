@@ -8,6 +8,7 @@
         <tr>
           <td>Name</td>
           <td>End Date</td>
+          <td>Rating</td>
           <td>Games</td>
           <td>+/-</td>
           <td>Ratio</td>
@@ -18,6 +19,7 @@
           <tr class="season_row" season_path="<%= league_season_path @league, season %>">
             <td><%= season.name %></td>
             <td><%= season.end_date %></td>
+            <td><%= season.user_rating current_user %></td>
             <td><%= season.user_games(current_user).size %></td>
             <td><%= season.get_spread current_user %></td>
             <td><%= format_ratio(season.get_ratio current_user) %></td>

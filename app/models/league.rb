@@ -5,6 +5,11 @@ class League < ActiveRecord::Base
   has_many :invites
   has_many :seasons
 
+  def user_rating user
+    user.leagues.joins(league_memberships: :league_rating)
+        .select('league_ratings.rating as rating').first.rating
+  end
+
   def user_games user
     user.players.joins(:game).joins(game: :season).where('seasons.league_id': id)
   end

@@ -20,6 +20,7 @@
         <tr>
           <td>#</td>
           <td>Name</td>
+          <td>Rating</td>
           <td>Games</td>
           <td>+/-</td>
           <td>Ratio</td>
@@ -32,6 +33,7 @@
             <td><%= i %></td>
             <% i = i + 1 %>
             <td><%= user.email %></td>
+            <td><%= @season.user_rating user %></td>
             <td><%= @season.user_games(user).size %></td>
             <td><%= @season.get_spread user %></td>
             <td><%= format_ratio(@season.get_ratio user) %></td>

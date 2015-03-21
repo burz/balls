@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :league_memberships
   has_many :leagues, through: :league_memberships
+  has_many :season_rankings
   has_many :players
   has_many :games, through: :players
 
