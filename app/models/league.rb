@@ -4,10 +4,13 @@ class League < ActiveRecord::Base
   has_many :users, through: :league_memberships
   has_many :invites
   has_many :seasons
+  has_many :league_ratings
 
   def user_rating user
-    user.leagues.joins(league_memberships: :league_rating)
-        .select('league_ratings.rating as rating').last.rating
+    user.leagues.joins(:league_ratings)
+        .select('league_ratings.rating as rating')
+        .where('league_ratings.user_id': user.id)
+        .order('league_ratings.created_at DESC').first.rating
   end
 
   def user_games user

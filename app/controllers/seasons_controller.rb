@@ -1,4 +1,6 @@
 class SeasonsController < ApplicationController
+  require 'Constants'
+
   before_action :authenticate_user!
   before_action :set_leagues
 
@@ -24,7 +26,7 @@ class SeasonsController < ApplicationController
   def create
     season = Season.create season_params
     League.find(season_params[:league_id]).users.each do |user|
-      SeasonRating.create user: user, season: season, rating: 1000
+      SeasonRating.create user: user, season: season, rating: Constants::SEASON_START
     end
     render nothing: true
   end

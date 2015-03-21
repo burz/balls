@@ -9,7 +9,10 @@
     </thead>
     <tbody>
       <% for game in @games %>
-        <tr>
+        <% season = game.season %>
+        <% league = season.league %>
+        <% path = league_season_game_path league, season, game %>
+        <tr class="game_row" game_path="<%= path %>">
           <td><%= game.created_at %></td>
           <td>
             <% for player in game.players[0..(game.players.size - 2)] %>
@@ -21,4 +24,10 @@
       <% end %>
     <tbody>
   </table>
+  <script>
+    $('.game_row').click(function (event_object) {
+      var target_path = event_object.target.parentElement.getAttribute('game_path');
+      window.location.replace(target_path);
+    });
+  </script>
 </div>

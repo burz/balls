@@ -1,3 +1,4 @@
 class LeagueRating < ActiveRecord::Base
-  belongs_to :league_membership
+  belongs_to :user
+  belongs_to :league
 end

@@ -1,4 +1,6 @@
 class LeaguesController < ApplicationController
+  require 'Constants'
+
   before_action :authenticate_user!
   before_action :set_leagues
 
@@ -20,8 +22,8 @@ class LeaguesController < ApplicationController
 
   def create
     league = League.create league_params
-    membership = LeagueMembership.create user: current_user, league: league, admin: true
-    LeagueRating.create league_membership: membership, rating: 1000
+    LeagueMembership.create user: current_user, league: league, admin: true
+    LeagueRating.create user: current_user, league: league, rating: Constants::LEAGUE_START
     render nothing: true
   end
 

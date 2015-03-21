@@ -1,0 +1,35 @@
+<%= render template: 'common/nav_bar', locals: { additional_buttons: '' } %>
+<div id="game_show" class="container">
+  <center>
+    <div class="row">
+      <h2>Game <%= @game.id %></h2>
+      <h3>Played At <%= @game.created_at %></h3>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3>Winners</h3>
+          </div>
+          <div class="panel-body">
+            <% for winner in @game.winners %>
+              <%= render template: 'games/changes',
+                         locals: { panel_color: 'success', player: winner } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3>Losers</h3>
+          </div>
+          <div class="panel-body">
+            <% for loser in @game.losers %>
+              <%= render template: 'games/changes',
+                         locals: { panel_color: 'info', player: loser } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </center>
+</div>

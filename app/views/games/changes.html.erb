@@ -1,0 +1,29 @@
+<div class="panel panel-<%= panel_color %>">
+  <div class="panel-heading">
+    <h4><%= player.user.email %></h4>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h5>League Change</h5>
+          </div>
+          <div class="panel-body">
+            <%= format_ratio player.change_in_league_rating %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h5>Season Change</h5>
+          </div>
+          <div class="panel-body">
+            <%= format_ratio player.change_in_season_rating %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -36,10 +36,11 @@ ActiveRecord::Schema.define(version: 20150321050825) do
   end
 
   create_table "league_ratings", force: :cascade do |t|
-    t.integer  "league_membership_id"
+    t.integer  "user_id"
+    t.integer  "league_id"
     t.integer  "rating"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "leagues", force: :cascade do |t|
@@ -53,9 +54,10 @@ ActiveRecord::Schema.define(version: 20150321050825) do
     t.integer  "game_id"
     t.integer  "user_id"
     t.integer  "team"
-    t.integer  "change_in_rating"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "change_in_season_rating"
+    t.integer  "change_in_league_rating"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "season_ratings", force: :cascade do |t|
