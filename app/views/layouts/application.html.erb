@@ -2,8 +2,13 @@
 <html>
     <head>
         <title>Balls</title>
+        <meta name="description" content="Keep track of your social beer pong rankings using Balls's ELO based rating system. Simultaneously keep track of multiple game rules as different seasons"/>
+        <meta name="keywords" content="balls,beer pong,beer,pong,tracker,pong tracker,beer pong tracker,ratings,rankings,beer pong ratings,beer pong rankings,elo"/>
+        <meta name="robots" content="index,follow"/>
+        <meta name="DC.title" content="Balls: the social beer pong tracker"/>
         <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': true %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
+        <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
         <%= csrf_meta_tags %>
     </head>
     <body>
