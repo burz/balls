@@ -3,6 +3,16 @@ class Season < ActiveRecord::Base
   has_many :games
   has_many :season_ratings
 
+  def ratings
+    inner = 'SELECT MAX(season_ratings.created_at) FROM season_ratings '
+    inner = inner + 'WHERE season_ratings.user_id = users.id'
+    league.users.joins(:season_ratings)
+         .where('season_ratings.created_at = (' + inner + ')')
+         .group('users.id')
+         .order('season_ratings.rating DESC')
+         .select('users.email as email, season_ratings.*')
+  end
+
   def user_rating user
     result = user.leagues.joins(seasons: :season_ratings)
                  .where('seasons.id': id)
@@ -29,9 +39,5 @@ class Season < ActiveRecord::Base
 
   def get_ratio user
     get_wins(user) - get_losses(user)
-  end
-
-  def rankings
-    league.users
   end
 end

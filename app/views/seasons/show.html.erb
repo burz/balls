@@ -28,14 +28,13 @@
       </thead>
       <tbody>
         <% i = 1 %>
-        <% for user in @season.rankings %>
-          <tr class="user_row" user_path="<%= user_path user %>">
+        <% for rating in @season.ratings %>
+          <tr class="user_row" user_path="<%= user_path rating.user_id %>">
             <td><%= i %></td>
             <% i = i + 1 %>
-            <td><%= user.email %></td>
-            <% rating = @season.user_rating user %>
+            <td><%= rating.email %></td>
             <td><%= rating.rating %></td>
-            <td><%= rating.games %></td>
+            <td><%= rating.games_played %></td>
             <td><%= rating.wins %>/<%= rating.losses %></td>
             <td><%= format_ratio(rating.wins - rating.losses) %></td>
           </tr>

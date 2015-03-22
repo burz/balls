@@ -19,7 +19,7 @@
             <td><%= league.name %></td>
             <% rating = league.user_rating current_user %>
             <td><%= rating.rating %></td>
-            <td><%= rating.games %></td>
+            <td><%= rating.games_played %></td>
             <td><%= rating.wins %>/<%= rating.losses %></td>
             <td><%= format_ratio(rating.wins - rating.losses) %></td>
           </tr>

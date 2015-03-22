@@ -35,12 +35,12 @@ class InvitesController < ApplicationController
         LeagueMembership.create user: current_user, league: league, admin: false
         LeagueRating.create user: current_user, league: league,
                             rating: Constants::LEAGUE_START,
-                            games: 0, wins: 0, losses: 0
+                            games_played: 0, wins: 0, losses: 0
         Invite.destroy invite
         league.seasons.each do |season|
           SeasonRating.create user: current_user, season: season,
                               rating: Constants::SEASON_START,
-                              games: 0, wins: 0, losses: 0
+                              games_played: 0, wins: 0, losses: 0
         end
         redirect_to controller: :leagues, action: :show, id: league
       end

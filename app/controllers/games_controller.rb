@@ -46,12 +46,12 @@ class GamesController < ApplicationController
         winning_league_players[i].wins_from losing_league_players[j]
       end
       SeasonRating.create user: winners[i], season: season, rating: winner.rating,
-                          games: winner_starting_season_ratings[i].games + 1,
+                          games_played: winner_starting_season_ratings[i].games_played + 1,
                           wins: winner_starting_season_ratings[i].wins + 1,
                           losses: winner_starting_season_ratings[i].losses
       LeagueRating.create user: winners[i], league: league,
                           rating: winning_league_players[i].rating,
-                          games: winner_starting_league_ratings[i].games + 1,
+                          games_played: winner_starting_league_ratings[i].games_played + 1,
                           wins: winner_starting_league_ratings[i].wins + 1,
                           losses: winner_starting_league_ratings[i].losses
       change_in_season_rating = winner.rating - winner_starting_season_ratings[i].rating
@@ -63,12 +63,12 @@ class GamesController < ApplicationController
     end
     losing_season_players.each_with_index do |loser, i|
       SeasonRating.create user: losers[i], season: season, rating: loser.rating,
-                          games: loser_starting_season_ratings[i].games + 1,
+                          games_played: loser_starting_season_ratings[i].games_played + 1,
                           wins: loser_starting_season_ratings[i].wins,
                           losses: loser_starting_season_ratings[i].losses + 1
       LeagueRating.create user: losers[i], league: league,
                           rating: losing_league_players[i].rating,
-                          games: loser_starting_league_ratings[i].games + 1,
+                          games_played: loser_starting_league_ratings[i].games_played + 1,
                           wins: loser_starting_league_ratings[i].wins,
                           losses: loser_starting_league_ratings[i].losses + 1
       change_in_season_rating = loser.rating - loser_starting_season_ratings[i].rating

@@ -13,7 +13,6 @@ class LeaguesController < ApplicationController
 
   def show
     @league = @leagues.find params[:id]
-    @users = @league.users
     @seasons = @league.seasons
   end
 
@@ -25,7 +24,7 @@ class LeaguesController < ApplicationController
     LeagueMembership.create user: current_user, league: league, admin: true
     LeagueRating.create user: current_user, league: league,
                         rating: Constants::LEAGUE_START,
-                        games: 0, wins: 0, losses: 0
+                        games_played: 0, wins: 0, losses: 0
     render nothing: true
   end
 

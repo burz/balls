@@ -6,6 +6,16 @@ class League < ActiveRecord::Base
   has_many :seasons
   has_many :league_ratings
 
+  def ratings
+    inner = 'SELECT MAX(league_ratings.created_at) FROM league_ratings '
+    inner = inner + 'WHERE league_ratings.user_id = users.id'
+    users.joins(:league_ratings)
+         .where('league_ratings.created_at = (' + inner + ')')
+         .group('users.id')
+         .order('league_ratings.rating DESC')
+         .select('users.email as email, league_ratings.*')
+  end
+
   def owner? other_user
     other_user == user
   end

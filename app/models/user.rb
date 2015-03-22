@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
   has_many :league_memberships
   has_many :leagues, through: :league_memberships
   has_many :seasons, through: :leagues
-  has_many :league_rankings
-  has_many :season_rankings
+  has_many :league_ratings
+  has_many :season_ratings
   has_many :players
   has_many :games, through: :players
 
