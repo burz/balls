@@ -33,6 +33,19 @@ class LeaguesController < ApplicationController
     @users = @league.users
   end
 
+  def create_admin
+    league = League.find params[:league_id]
+    if current_user.admin? league
+      league_membership = LeagueMembership.where(user_id: params[:user_id],
+                                                 league: league).first
+      league_membership.admin = !league_membership.admin
+      league_membership.save
+      render nothing: true
+    else
+      render nothing: true, status: :unauthorized
+    end
+  end
+
   def players
     @league = @leagues.find params[:league_id]
     @users = @league.users

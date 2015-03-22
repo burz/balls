@@ -17,7 +17,18 @@
         <% for user in @users %>
           <tr class="member_row" member_path="<%= user_path user %>">
             <td><%= user.email %></td>
-            <td><%= user.admin? @league %></td>
+            <% if @league.owner? user %>
+              <td><b>Commisioner</b></td>
+            <% else %>
+              <td>
+                <% if user.admin? @league %>
+                  <input class="admin_checkbox" type="checkbox"
+                         checked="true" user_id="<%= user.id %>">
+                <% else %>
+                  <input class="admin_checkbox" type="checkbox" user_id="<%= user.id %>">
+                <% end %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
@@ -27,5 +38,11 @@
 <script>
   $('#add_member').click(function () {
     window.location.replace("<%= new_league_invite_path @league %>");
+  });
+  $('.admin_checkbox').click(function (event_object) {
+    var user_id = event_object.target.getAttribute('user_id');
+    var path = '<%= league_path @league %>/admin/' + user_id + '/toggle';
+    $.get(path);
+    var q = 8;
   });
 </script>

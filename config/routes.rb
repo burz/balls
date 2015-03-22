@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :leagues, only: [:show, :index, :new, :create] do
     get 'admin'
+    get 'admin/:user_id/toggle', to: 'leagues#create_admin', as: 'admin_toggle'
     get 'players'
     resources :invites, only: [:new, :create]
     get 'join/:token', to: 'invites#join', as: 'join'

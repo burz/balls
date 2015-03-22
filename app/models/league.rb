@@ -6,6 +6,10 @@ class League < ActiveRecord::Base
   has_many :seasons
   has_many :league_ratings
 
+  def owner? other_user
+    other_user == user
+  end
+
   def user_rating user
     user.leagues.joins(:league_ratings)
         .select('league_ratings.rating as rating')
