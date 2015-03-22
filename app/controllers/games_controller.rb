@@ -78,7 +78,7 @@ class GamesController < ApplicationController
                     change_in_season_rating: change_in_season_rating,
                     change_in_league_rating: change_in_league_rating
     end
-    render nothing: true
+    render json: { game_id: game.id }
   end
 
   def game_params

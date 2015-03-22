@@ -96,11 +96,11 @@
       var season_path = '<%= leagues_path %>/' + $('#game_league_name').val() +
                         '/seasons/' + $('#game_season_name').val();
       $.post(
-        season_path + '/games',
+        season_path + '/games/',
         data,
-        function () {
+        function (data) {
           $('#log_game_modal').modal('hide');
-          window.location.replace(season_path);
+          window.location.replace(season_path + '/games/' + data.game_id);
         }
       );
     }
