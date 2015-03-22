@@ -35,8 +35,9 @@ class LeaguesController < ApplicationController
 
   def create_admin
     league = League.find params[:league_id]
-    if current_user.admin? league
-      league_membership = LeagueMembership.where(user_id: params[:user_id],
+    new_admin = User.find params[:user_id]
+    if current_user.admin? league and not league.owner? new_admin
+      league_membership = LeagueMembership.where(user: new_admin,
                                                  league: league).first
       league_membership.admin = !league_membership.admin
       league_membership.save
