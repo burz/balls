@@ -19,10 +19,11 @@
           <tr class="season_row" season_path="<%= league_season_path @league, season %>">
             <td><%= season.name %></td>
             <td><%= season.end_date %></td>
-            <td><%= season.user_rating current_user %></td>
-            <td><%= season.user_games(current_user).size %></td>
-            <td><%= season.get_spread current_user %></td>
-            <td><%= format_ratio(season.get_ratio current_user) %></td>
+            <% rating = season.user_rating current_user %>
+            <td><%= rating.rating %></td>
+            <td><%= rating.games %></td>
+            <td><%= rating.wins %>/<%= rating.losses %></td>
+            <td><%= format_ratio(rating.wins - rating.losses) %></td>
           </tr>
         <% end %>
       <tbody>

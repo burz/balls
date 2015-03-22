@@ -17,10 +17,11 @@
         <% for league in @leagues %>
           <tr class="league_row" league_path="<%= league_path league %>">
             <td><%= league.name %></td>
-            <td><%= league.user_rating current_user %></td>
-            <td><%= league.user_games(current_user).size %></td>
-            <td><%= league.get_spread current_user %></td>
-            <td><%= format_ratio(league.get_ratio current_user) %></td>
+            <% rating = league.user_rating current_user %>
+            <td><%= rating.rating %></td>
+            <td><%= rating.games %></td>
+            <td><%= rating.wins %>/<%= rating.losses %></td>
+            <td><%= format_ratio(rating.wins - rating.losses) %></td>
           </tr>
         <% end %>
       </tbody>

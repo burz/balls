@@ -39,6 +39,9 @@ ActiveRecord::Schema.define(version: 20150321050825) do
     t.integer  "user_id"
     t.integer  "league_id"
     t.integer  "rating"
+    t.integer  "games"
+    t.integer  "wins"
+    t.integer  "losses"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,6 +67,9 @@ ActiveRecord::Schema.define(version: 20150321050825) do
     t.integer  "user_id"
     t.integer  "season_id"
     t.integer  "rating"
+    t.integer  "games"
+    t.integer  "wins"
+    t.integer  "losses"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

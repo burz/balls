@@ -33,10 +33,11 @@
             <td><%= i %></td>
             <% i = i + 1 %>
             <td><%= user.email %></td>
-            <td><%= @season.user_rating user %></td>
-            <td><%= @season.user_games(user).size %></td>
-            <td><%= @season.get_spread user %></td>
-            <td><%= format_ratio(@season.get_ratio user) %></td>
+            <% rating = @season.user_rating user %>
+            <td><%= rating.rating %></td>
+            <td><%= rating.games %></td>
+            <td><%= rating.wins %>/<%= rating.losses %></td>
+            <td><%= format_ratio(rating.wins - rating.losses) %></td>
           </tr>
         <% end %>
       </tbody>
