@@ -23,4 +23,10 @@ class UsersController < ApplicationController
     end
     @ratings = season_ratings.concat league_ratings
   end
+
+  def avatar
+    uploader = AvatarUploader.new
+    uploader.store! params[:avatar_file]
+    render json: { image_url: uploader.url }
+  end
 end
