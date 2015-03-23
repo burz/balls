@@ -22,8 +22,11 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="user_avatar">Image</label>
-                <input type="file" id="user_avatar" class="form-control">
+                <%= form_for @avatar, url: user_avatar_create_path(@user),
+                     html: { id: 'user_avatar_form' } do |f| %>
+                  <%= f.label :image, 'Image' %>
+                  <%= f.file_field :image, id: 'new_user_avatar', class: 'form-control' %>
+                <% end %>
               </div>
             </div>
             <div class="col-md-6">
@@ -55,28 +58,20 @@
         reader.readAsDataURL(input.files[0]);
       }
     }
-    $('#user_avatar').change(function () {
+    $('#new_user_avatar').change(function () {
       $('#avatar_file_alert').hide();
       avatar_input(this);
     });
     function send_avatar (input) {
       if(input.files && input.files[0]) {
-        alert('here');
-        var reader = new FileReader();
-        reader.onload = function (event_object) {
-          var data = { avatar_file: event_object.target.result };
-          $.post('<%= user_avatar_path @user %>', data, function () {
-            $('#user_avatar_upload_modal').modal('hide');
-          });
-        };
-        reader.readAsBinaryString(input.files[0]);
+        $('#user_avatar_form').submit();
       } else {
         $('#avatar_file_alert').show();
       }
     }
     $('#save_avatar_button').click(function () {
       $('#avatar_file_alert').hide();
-      send_avatar($('#user_avatar')[0]);
+      send_avatar($('#new_user_avatar')[0]);
     });
   </script>
 <% end %>

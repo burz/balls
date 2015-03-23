@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
+    @avatar = Avatar.new
     @games = @user.games.order(created_at: :desc)
     season_ratings = @user.seasons.map do |season|
       data = SeasonRating.where(user: @user, season: season).map do |rating|
@@ -22,11 +23,5 @@ class UsersController < ApplicationController
       { name: league.name, data: data }
     end
     @ratings = season_ratings.concat league_ratings
-  end
-
-  def avatar
-    uploader = AvatarUploader.new
-    uploader.store! params[:avatar_file]
-    render json: { image_url: uploader.url }
   end
 end
