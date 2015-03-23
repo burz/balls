@@ -47,7 +47,6 @@ group :development, :test do
 end
 
 gem 'devise'
-gem 'elo'
 gem 'chartkick'
 gem 'carrierwave'
 
