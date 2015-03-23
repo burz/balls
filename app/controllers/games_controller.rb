@@ -63,7 +63,7 @@ class GamesController < ApplicationController
                           games_played: loser_league_ratings[i].games_played + 1,
                           wins: loser_league_ratings[i].wins,
                           losses: loser_league_ratings[i].losses + 1
-      season_rating = season_result[:winner_ratings][i]
+      season_rating = season_result[:loser_ratings][i]
       SeasonRating.create user: loser, season: season, rating: season_rating,
                           games_played: loser_season_ratings[i].games_played + 1,
                           wins: loser_season_ratings[i].wins,

@@ -29,6 +29,8 @@
   var players = [];
   $('#game_league_name').change(function () {
     $('.log_game_alert').hide();
+    $('#winners').empty();
+    $('#losers').empty();
     if($('#game_league_name').val() != "") {
       $.get(
         '<%= leagues_path %>/' + $('#game_league_name').val() + '/seasons.json',
@@ -76,6 +78,8 @@
     return player;
   }
   $('#game_season_name').change(function () {
+    $('#winners').empty();
+    $('#losers').empty();
     if($('#game_season_name').val() != "") {
       $('#winners').append('<h3>Winners</h3>');
       $('#losers').append('<h3>Losers</h3>');
@@ -89,10 +93,6 @@
         var option = $('<option>').val(player.id).append(player.email);
         $('.player').append(option);
       });
-    }
-    else {
-      $('#winners').empty();
-      $('#losers').empty();
     }
   });
 </script>

@@ -5,7 +5,8 @@ class Season < ActiveRecord::Base
 
   def ratings
     inner = 'SELECT MAX(season_ratings.created_at) FROM season_ratings '
-    inner = inner + 'WHERE season_ratings.user_id = users.id'
+    inner = inner + 'WHERE season_ratings.user_id = users.id '
+    inner = inner + 'AND season_ratings.season_id = ' + id.to_s
     league.users.joins(:season_ratings)
          .where('season_ratings.created_at = (' + inner + ')')
          .group('users.id')
@@ -18,6 +19,7 @@ class Season < ActiveRecord::Base
                  .where('seasons.id': id)
                  .select('season_ratings.*')
                  .where('season_ratings.user_id': user.id)
+                 .where('season_ratings.season_id': id)
                  .order('season_ratings.created_at DESC').first
   end
 

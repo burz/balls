@@ -1,4 +1,4 @@
 module Constants
-  LEAGUE_START = 1000
-  SEASON_START = 1000
+  LEAGUE_START = 3000
+  SEASON_START = 1500
 end
