@@ -22,7 +22,10 @@
           You must select a season
         </div>
         <div id="cup_differential_alert" class="log_game_alert alert alert-danger" role="alert">
-          The cup differential must be greater or equal to zero
+          The cups left must be greater or equal to zero
+        </div>
+        <div id="differential_too_big_alert" class="log_game_alert alert alert-danger" role="alert">
+          The cups left cannot be greater than the number of cups per team
         </div>
         <div id="no_player_alert" class="log_game_alert alert alert-danger" role="alert">
           A player must be chosen for each slot
@@ -57,7 +60,10 @@
       $('#game_season_name_alert').show();
     } else if($('#cup_differential').val() === '' ||
               $('#cup_differential').val() < 0) {
-      $('#cup_differential_alert').show()
+      $('#cup_differential_alert').show();
+    } else if(parseInt($('#cup_differential').val()) >
+              parseInt($('#game_season_name').find(':selected').attr('cups_per_team'))) {
+      $('#differential_too_big_alert').show();
     } else {
       var selected_season = $('#game_season_name').find(':selected');
       var players_per_team = parseInt(selected_season.attr('players_per_team'));

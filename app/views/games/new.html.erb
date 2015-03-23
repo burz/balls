@@ -10,7 +10,7 @@
     <label for="game_season_name">Season</label>
     <select id="game_season_name" class="form-control" disabled>
     </select>
-    <label for="cup_differential">Cup Differential</label>
+    <label for="cup_differential">Cup Left</label>
     <input type="number" id="cup_differential" class="form-control">
   </div>
   <div class="container">
@@ -40,10 +40,16 @@
           $('#game_season_name').append('<option value="">Select a season</option>');
           if(seasons.length > 0) {
             seasons.forEach(function (season) {
-              var option = $('<option>').val(season.id)
+              var ops = '<option id="season' + season.id +
+                        '" cups_per_team="' + season.cups_per_team +
+                        '" players_per_team="' + season.players_per_team + '">';
+              var option = $('<option id="season' + season.id + '">').val(season.id)
               option.append(season.name);
-              option.attr('players_per_team', season.players_per_team);
               $('#game_season_name').append(option);
+              $('#season' + season.id).attr({
+                cups_per_team: season.cups_per_team,
+                players_per_team: season.players_per_team
+              });
             });
             $('#game_season_name').prop('disabled', false);
           } else {
@@ -66,7 +72,7 @@
     if(t === 0) {
       var player = $('<div class="team' + t + ' panel panel-success">');
     } else {
-      var player = $('<div class="team' + t + ' panel panel-info">');
+      var player = $('<div class="team' + t + ' panel panel-danger">');
     }
     player.append('<div class="panel-heading">Player ' + (i + 1) + '</div>');
     var body = $('<div class="panel-body">')
