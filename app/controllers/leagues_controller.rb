@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-  require 'Constants'
+  include Constants
 
   before_action :authenticate_user!
   before_action :set_leagues
@@ -23,7 +23,7 @@ class LeaguesController < ApplicationController
     league = League.create league_params
     LeagueMembership.create user: current_user, league: league, admin: true
     LeagueRating.create user: current_user, league: league,
-                        rating: Constants::LEAGUE_START,
+                        rating: LEAGUE_START,
                         games_played: 0, wins: 0, losses: 0
     render nothing: true
   end

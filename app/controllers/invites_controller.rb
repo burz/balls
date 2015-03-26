@@ -1,5 +1,5 @@
 class InvitesController < ApplicationController
-  require 'Constants'
+  include Constants
 
   before_action :authenticate_user!
   before_action :set_leagues
@@ -34,12 +34,12 @@ class InvitesController < ApplicationController
       else
         LeagueMembership.create user: current_user, league: league, admin: false
         LeagueRating.create user: current_user, league: league,
-                            rating: Constants::LEAGUE_START,
+                            rating: LEAGUE_START,
                             games_played: 0, wins: 0, losses: 0
         Invite.destroy invite
         league.seasons.each do |season|
           SeasonRating.create user: current_user, season: season,
-                              rating: Constants::SEASON_START,
+                              rating: SEASON_START,
                               games_played: 0, wins: 0, losses: 0
         end
         redirect_to controller: :leagues, action: :show, id: league
