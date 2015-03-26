@@ -1,5 +1,5 @@
 class InvitesController < ApplicationController
-  require_relative '../mixins/Constants'
+  require_relative './mixins/Constants'
 
   before_action :authenticate_user!
   before_action :set_leagues
