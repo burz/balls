@@ -1,5 +1,5 @@
 class SeasonsController < ApplicationController
-  require 'Constants'
+  require 'constants'
 
   before_action :authenticate_user!
   before_action :set_leagues
