@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-  require 'constants'
+  require_relative './lib/constants'
 
   before_action :authenticate_user!
   before_action :set_leagues
