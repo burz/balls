@@ -1,25 +1,23 @@
 <div id="site_header">
   <br>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="col-md-3">
-          <h1>
-            <%= link_to 'Balls', root_path %>
-          </h1>
-        </div>
-        <div class="col-md-3">
-          <%= image_tag 'balls-default-icon.jpg', alt: 'Balls', class: 'img-thumbnail', style: 'display: inline;' %>
-        </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="col-md-4">
+        <h1>
+          <%= link_to 'BallsApp', root_path %>
+        </h1>
       </div>
-      <div class="col-md-6 text-right">
-        <br>
-        <% if user_signed_in? %>
-          Welcome back
-          <%= link_to current_user.email, user_path(current_user) %>
-          | <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-        <% end %>
+      <div class="col-md-2">
+        <%= image_tag 'balls-default-icon.jpg', alt: 'Balls', class: 'img-thumbnail', style: 'display: inline;' %>
       </div>
+    </div>
+    <div class="col-md-6 text-right">
+      <br>
+      <% if user_signed_in? %>
+        Welcome back
+        <%= link_to current_user.email, user_path(current_user) %>
+        | <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+      <% end %>
     </div>
   </div>
 </div>
