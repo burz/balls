@@ -2,52 +2,50 @@
 <br>
 <div id="user_page">
   <center>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <br>
-          <br>
-          <br>
-          <%= render template: 'avatars/image' %>
-        </div>
-        <div class="col-md-6">
-          <h1><%= @user.email %></h1>
-          <br>
-          <div class="panel panel-success">
-            <div class="panel-heading">
-              <div class="btn-group btn-group-lg">
-              <button id="last_rating_button" type="button" class="btn btn-default" aria-label="Last league" disabled>
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"\>
-              </button>
-              <button type="button" class="btn btn-default" aria-label="League">
-                League Rating
-              </button>
-              <button id="next_rating_button" type="button" class="btn btn-default" aria-label="Next league">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"\>
-              </button>
-              </div>
-            </div>
-            <div id="leagues_panel" class="panel-body">
-              <% @leagues.each_with_index do |league, i| %>
-                <div id="rating<%= i %>" class="league_rating panel panel-default">
-                  <div class="panel-heading">
-                    <h3><%= league.name %></h3>
-                  </div>
-                  <div class="panel-body">
-                    <h3><%= league.user_rating(@user).rating %></h3>
-                  </div>
-                </div>
-              <% end %>
+    <div class="row">
+      <div class="col-md-6">
+        <br>
+        <br>
+        <br>
+        <%= render template: 'avatars/image' %>
+      </div>
+      <div class="col-md-6">
+        <h1><%= @user.email %></h1>
+        <br>
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <div class="btn-group btn-group-lg">
+            <button id="last_rating_button" type="button" class="btn btn-default" aria-label="Last league" disabled>
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"\>
+            </button>
+            <button type="button" class="btn btn-default" aria-label="League">
+              League Rating
+            </button>
+            <button id="next_rating_button" type="button" class="btn btn-default" aria-label="Next league">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"\>
+            </button>
             </div>
           </div>
-          <div class="panel panel-default">
-            <div class="panel-body bg-warning">
-              <div class="col-md-6">
-                <%= @user.get_spread %>
+          <div id="leagues_panel" class="panel-body">
+            <% @leagues.each_with_index do |league, i| %>
+              <div id="rating<%= i %>" class="league_rating panel panel-default">
+                <div class="panel-heading">
+                  <h3><%= league.name %></h3>
+                </div>
+                <div class="panel-body">
+                  <h3><%= league.user_rating(@user).rating %></h3>
+                </div>
               </div>
-              <div class="col-md-6">
-                <%= format_ratio @user.get_ratio %>
-              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body bg-warning">
+            <div class="col-md-6">
+              <%= @user.get_spread %>
+            </div>
+            <div class="col-md-6">
+              <%= format_ratio @user.get_ratio %>
             </div>
           </div>
         </div>
