@@ -17,6 +17,4 @@ Rails.application.routes.draw do
     resources :avatar, only: [:show]
     post 'avatar', to: 'avatars#create', as: 'avatar_create'
   end
-
-  get '/fonts/:name.:ext', to: redirect('/assets/%{name}.%{ext}')
 end
