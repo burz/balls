@@ -94,9 +94,10 @@
     </div>
   </center>
   <script>
-    $(".user_row").click(function (event_object) {
+    $('.user_row').click(function (event_object) {
       var target_path = event_object.target.parentElement.getAttribute('user_path');
       window.location.replace(target_path);
     });
+    $('.user_row').css('cursor', 'pointer');
   </script>
 </div>
