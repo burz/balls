@@ -12,9 +12,8 @@ class League < ActiveRecord::Base
     inner = inner + 'AND league_ratings.league_id = ' + id.to_s
     users.joins(:league_ratings)
          .where('league_ratings.created_at = (' + inner + ')')
-         .group('users.id')
          .order('league_ratings.rating DESC')
-         .select('users.email as email, league_ratings.*')
+         .select('users.email AS email, league_ratings.*')
   end
 
   def owner? other_user

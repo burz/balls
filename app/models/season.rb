@@ -9,9 +9,8 @@ class Season < ActiveRecord::Base
     inner = inner + 'AND season_ratings.season_id = ' + id.to_s
     league.users.joins(:season_ratings)
          .where('season_ratings.created_at = (' + inner + ')')
-         .group('users.id')
          .order('season_ratings.rating DESC')
-         .select('users.email as email, season_ratings.*')
+         .select('users.email AS email, season_ratings.*')
   end
 
   def user_rating user
