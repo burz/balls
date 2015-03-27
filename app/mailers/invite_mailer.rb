@@ -5,7 +5,8 @@ class InviteMailer < ApplicationMailer
     @email = email
     @league = league
     @token = token
-    @subject = user.email + " has invited you to \"" + league.name + '"'
+    @subject = user.name + ' (' + user.email +
+               ') has invited you to "' + league.name + '"'
     mail to: email, subject: @subject
   end
 end
