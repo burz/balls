@@ -10,7 +10,7 @@ class Season < ActiveRecord::Base
     league.users.joins(:season_ratings)
          .where('season_ratings.created_at = (' + inner + ')')
          .order('season_ratings.rating DESC')
-         .select('users.email AS email, season_ratings.*')
+         .select('users.name AS name, season_ratings.*')
   end
 
   def user_rating user

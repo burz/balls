@@ -1,12 +1,17 @@
 <div id="new_user_sign_up">
   <center>
     <h2>Sign up</h2>
+    <div id="sign_up_name_alert" class="alert alert-danger" role="alert">
+      You need to enter a name
+    </div>
     <div class="input-group">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
         <div class="field">
+          <%= f.label :name %><br />
+          <%= f.text_field :name, autofocus: true, id: 'sign_up_name', class: 'form-control' %>
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, id: 'sign_up_email', class: 'form-control' %>
+          <%= f.email_field :email, id: 'sign_up_email', class: 'form-control' %>
         </div>
         <div class="field">
           <%= f.label :password %>
@@ -22,9 +27,20 @@
         <br>
         <br>
         <div class="actions">
-          <%= f.submit "Sign up", class: 'btn btn-success' %>
+          <%= f.submit "Sign up", id: 'sign_up_botton', class: 'btn btn-success' %>
         </div>
       <% end %>
     </div>
   </center>
+  <script>
+    $('#sign_up_name_alert').hide();
+    $('#new_user').submit(function () {
+      if($('#sign_up_name').val() != '') {
+        return true;
+      } else {
+        $('#sign_up_name_alert').show();
+        return false;
+      }
+    });
+  </script>
 </div>

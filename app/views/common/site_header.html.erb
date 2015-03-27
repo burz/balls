@@ -15,7 +15,7 @@
       <br>
       <% if user_signed_in? %>
         Welcome back
-        <%= link_to current_user.email, user_path(current_user) %>
+        <%= link_to current_user.name, user_path(current_user) %>
         | <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% end %>
     </div>

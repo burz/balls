@@ -94,7 +94,7 @@
         $('#losers').append(create_player(1, i));
       }
       players.forEach(function (player) {
-        var option = $('<option>').val(player.id).append(player.email);
+        var option = $('<option>').val(player.id).append(player.name);
         $('.player').append(option);
       });
     }

@@ -16,9 +16,9 @@
           <td><%= game.created_at %></td>
           <td>
             <% for player in game.players[0..(game.players.size - 2)] %>
-              <%= player.user.email %>,
+              <%= player.user.name %>,
             <% end %>
-            <%= game.players[-1].user.email %>
+            <%= game.players[-1].user.name %>
           </td>
         </tr>
       <% end %>
