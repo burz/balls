@@ -16,7 +16,7 @@
       <tbody>
         <% for user in @users %>
           <tr class="member_row" member_path="<%= user_path user %>">
-            <td><%= user.email %></td>
+            <td><%= user.name %> (<%= user.email %>)</td>
             <% if @league.owner? user %>
               <td><b>Commisioner</b></td>
             <% else %>
