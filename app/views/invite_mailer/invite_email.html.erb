@@ -1,5 +1,7 @@
 <h3>Congratulations! <%= @subject %></h3>
 
 <p>
-  Click <a href="<%= league_join_url @league, @token %>">here</a> to join.
+  Click
+  <%= link_to 'here', league_join_url(@league, @token, email: @email) %>">
+  to join.
 </p>

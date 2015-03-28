@@ -1,0 +1,38 @@
+<div id="user_login">
+  <center>
+    <h2>Log in</h2>
+
+    <div class="input-group">
+      <% if not params[:email].nil? %>
+        <% resource.email = params[:email] %>
+      <% end %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, id: 'log_in_email', class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+        </div>
+        <% if devise_mapping.rememberable? -%>
+          <br>
+          <br>
+          <div class="field">
+            <div class="checkbox">
+              <label>
+                <%= f.check_box :remember_me %> Remember me
+              </label>
+            </div>
+          </div>
+          <br>
+        <% end -%>
+        <div class="actions">
+          <%= f.submit "Log in", class: 'btn btn-success' %>
+        </div>
+      <% end %>
+      <br>
+      <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+    </div>
+  </center>
+</div>
