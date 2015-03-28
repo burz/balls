@@ -19,7 +19,7 @@
               <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"\>
             </button>
             <button type="button" class="btn btn-default" aria-label="League">
-              League Rating
+              League Ranking
             </button>
             <button id="next_rating_button" type="button" class="btn btn-default" aria-label="Next league">
               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"\>
@@ -30,10 +30,10 @@
             <% @leagues.each_with_index do |league, i| %>
               <div id="rating<%= i %>" class="league_rating panel panel-default">
                 <div class="panel-heading">
-                  <h3><%= league.name %></h3>
+                  <h3><%= link_to league.name, league_path(league) %></h3>
                 </div>
                 <div class="panel-body">
-                  <h3><%= league.user_rating(@user).rating %></h3>
+                  <h3><%= league.user_ranking @user %></h3>
                 </div>
               </div>
             <% end %>

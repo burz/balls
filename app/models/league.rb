@@ -28,6 +28,15 @@ class League < ActiveRecord::Base
         .order('league_ratings.created_at DESC').first
   end
 
+  def user_ranking user
+    ratings.each_with_index do |rating, i|
+      if rating.user_id == user.id
+        return i + 1
+      end
+    end
+    -1
+  end
+
   def user_games user
     user.players.joins(:game).joins(game: :season).where('seasons.league_id': id)
   end
