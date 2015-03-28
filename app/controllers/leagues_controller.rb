@@ -13,7 +13,7 @@ class LeaguesController < ApplicationController
 
   def show
     @league = @leagues.find params[:id]
-    @seasons = @league.seasons
+    @seasons = @league.seasons.order created_at: :desc
   end
 
   def new
