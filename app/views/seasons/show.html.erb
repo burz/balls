@@ -6,6 +6,8 @@
       <div id="rules_button" class="panel-heading">+ Rules</div>
       <div id="rules_panel" class="panel-body">
         <h3>
+          End date: <%= format_date @season.end_date %>
+          <br>
           Number of players per team: <%= @season.players_per_team %>
           <br>
           Number of cups per team: <%= @season.cups_per_team %>

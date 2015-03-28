@@ -18,7 +18,7 @@
         <% for season in @seasons %>
           <tr class="season_row" season_path="<%= league_season_path @league, season %>">
             <td><%= season.name %></td>
-            <td><%= season.end_date %></td>
+            <td><%= format_date season.end_date %></td>
             <% rating = season.user_rating current_user %>
             <td><%= rating.rating %></td>
             <td><%= rating.games_played %></td>

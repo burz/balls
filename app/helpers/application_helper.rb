@@ -6,4 +6,8 @@ module ApplicationHelper
       ('<font color="red">' + ratio.to_s + '</font>').html_safe
     end
   end
+
+  def format_date date
+    date.strftime '%B %e, %Y'
+  end
 end
