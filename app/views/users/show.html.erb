@@ -51,45 +51,6 @@
         </div>
       </div>
     </div>
-    <script>
-      $('.league_rating').hide();
-      $('#rating0').show();
-      var selected_rating = 0;
-      function handle_buttons (children) {
-        if(children === -1) {
-          $('#last_rating_button').prop('disabled', true);
-          $('#next_rating_button').prop('disabled', true);
-        } else {
-          if(selected_rating === 0) {
-            $('#last_rating_button').prop('disabled', true);
-          } else {
-            $('#last_rating_button').prop('disabled', false);
-          }
-          if(selected_rating === children) {
-            $('#next_rating_button').prop('disabled', true);
-          } else {
-            $('#next_rating_button').prop('disabled', false);
-          }
-        }
-      }
-      handle_buttons($('#leagues_panel').children().length - 1);
-      $('#next_rating_button').click(function () {
-        var children = $('#leagues_panel').children().length - 1;
-        if(selected_rating < children) {
-          $('.league_rating').hide();
-          $('#rating' + (++selected_rating)).show();
-        }
-        handle_buttons(children);
-      });
-      $('#last_rating_button').click(function () {
-        var children = $('#leagues_panel').children().length - 1;
-        if(selected_rating > 0) {
-          $('.league_rating').hide();
-          $('#rating' + (--selected_rating)).show();
-        }
-        handle_buttons(children);
-      });
-    </script>
     <br>
     <%= render template: 'users/graph' %>
     <%= render template: 'games/index' %>

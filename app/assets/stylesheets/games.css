@@ -1,8 +1,7 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
-
 #log_game_modal .modal-body {
   background-color: rgba(9, 232, 250, 0.09) !important;
+}
+
+.game_row {
+  cursor: pointer;
 }

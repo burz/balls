@@ -11,8 +11,8 @@
           'user_id': <%= current_user.id %>
         }
       };
-      $.post('<%= leagues_path %>', data, function () { 
-        Turbolinks.visit('<%= leagues_path %>');
+      $.post('<%= leagues_path %>', data, function (response) {
+        Turbolinks.visit(response.path);
       });  
     }
   });

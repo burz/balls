@@ -25,7 +25,7 @@ class LeaguesController < ApplicationController
     LeagueRating.create user: current_user, league: league,
                         rating: LEAGUE_START,
                         games_played: 0, wins: 0, losses: 0
-    render nothing: true
+    render json: { path: league_path(league) }
   end
 
   def admin

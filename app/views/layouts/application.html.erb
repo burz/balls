@@ -19,13 +19,6 @@
           <div class="global_alert alert alert-warning"><%= notice %></div>
           <div class="global_alert alert alert-danger"><%= alert %></div>
         </center>
-        <script>
-          $(".global_alert").each(function (i, alert_element) {
-            if(alert_element.innerText === '') {
-              alert_element.hidden = true;
-            }
-          });
-        </script>
         <%= yield %>
       </div>
       <%= render template: 'common/google_analytics' %>

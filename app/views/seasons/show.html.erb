@@ -45,15 +45,4 @@
     </table>
     <%= render template: 'games/index' %>
   </center>
-  <script>
-    $('#rules_panel').hide();
-    $('#rules_button').click(function () {
-      $('#rules_panel').toggle();
-    });
-    $('.user_row').click(function (event_object) {
-      var target_path = event_object.target.parentElement.getAttribute('user_path');
-      Turbolinks.visit(target_path);
-    });
-    $('.user_row').css('cursor', 'pointer');
-  </script>
 </div>

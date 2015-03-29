@@ -27,11 +27,4 @@
       </tbody>
     </table>
   </center>
-  <script>
-    $('.league_row').click(function (event_object) {
-      var target_path = event_object.target.parentElement.getAttribute('league_path');
-      Turbolinks.visit(target_path);
-    });
-    $('.league_row').css('cursor', 'pointer');
-  </script>
 </div>

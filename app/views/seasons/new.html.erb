@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
       <label for="season_name">Name</label>
-      <input type="text" id="season_name" class="form-control">
+      <input type="text" id="season_name" class="form-control" autofocus>
       <label for="end_date">End Date</label>
       <input type="date" id="end_date" class="form-control">
       <label for="players_per_team">Players Per Team</label>
@@ -33,12 +33,4 @@
       </div>
     </div>
   </center>
-  <script>
-    $('.new_season_alert').hide();
-    $('#extra_rules_body').hide();
-    $('#extra_rules_heading').click(function () {
-      $('#extra_rules_body').toggle();
-    });
-    $('#season_name').focus();
-  </script>
 </div>
