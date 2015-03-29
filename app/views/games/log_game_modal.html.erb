@@ -106,7 +106,7 @@
         data,
         function (data) {
           $('#log_game_modal').modal('hide');
-          window.location.replace(season_path + '/games/' + data.game_id);
+          Turbolinks.visit(season_path + '/games/' + data.game_id);
         }
       );
     }

@@ -3,6 +3,6 @@
 </button>
 <script>
   $('#add_button').click(function () {
-    window.location.replace('<%= new_league_season_path @league %>');
+    Turbolinks.visit('<%= new_league_season_path @league %>');
   });
 </script>

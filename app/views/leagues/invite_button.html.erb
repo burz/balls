@@ -7,7 +7,7 @@
     if($('#email_address').val() != '') {
       var data = { invite: { email: $('#email_address').val() } };
       $.post('<%= league_invites_path @league %>', data, function () {
-        window.location.replace('<%= league_admin_path @league %>');
+        Turbolinks.visit('<%= league_admin_path @league %>');
       });
     } else {
       $('#email_alert').show();

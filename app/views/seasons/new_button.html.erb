@@ -22,7 +22,7 @@
         }
       };
       $.post('<%= league_seasons_path(@league) %>', data, function () {
-        window.location.replace('<%= league_admin_path(@league) %>');
+        Turbolinks.visit('<%= league_admin_path(@league) %>');
       });
     }
   });

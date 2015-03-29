@@ -32,7 +32,7 @@
   <script>
     $('.season_row').click(function (event_object) {
       var target_path = event_object.target.parentElement.getAttribute('season_path');
-      window.location.replace(target_path);
+      Turbolinks.visit(target_path);
     });
     $('.season_row').css('cursor', 'pointer');
   </script>

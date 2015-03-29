@@ -23,7 +23,7 @@ class InvitesController < ApplicationController
   def forward_user?
     if not user_signed_in?
       session['user_return_to'] = request.fullpath
-      redirect_to new_user_session_path(email: params[:email])
+      redirect_to new_user_session_path(email: params[:email]), turbolinks: true
       true
     else
       false

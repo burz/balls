@@ -37,12 +37,11 @@
 </div>
 <script>
   $('#add_member').click(function () {
-    window.location.replace("<%= new_league_invite_path @league %>");
+    Turbolinks.visit("<%= new_league_invite_path @league %>");
   });
   $('.admin_checkbox').click(function (event_object) {
     var user_id = event_object.target.getAttribute('user_id');
     var path = '<%= league_path @league %>/admin/' + user_id + '/toggle';
     $.get(path);
-    var q = 8;
   });
 </script>

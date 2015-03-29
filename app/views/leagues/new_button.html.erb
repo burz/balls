@@ -12,7 +12,7 @@
         }
       };
       $.post('<%= leagues_path %>', data, function () { 
-        window.location.replace('<%= leagues_path %>'); 
+        Turbolinks.visit('<%= leagues_path %>');
       });  
     }
   });

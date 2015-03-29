@@ -27,7 +27,7 @@
   <script>
     $('.game_row').click(function (event_object) {
       var target_path = event_object.target.parentElement.getAttribute('game_path');
-      window.location.replace(target_path);
+      Turbolinks.visit(target_path);
     });
     $('.game_row').css('cursor', 'pointer');
   </script>
