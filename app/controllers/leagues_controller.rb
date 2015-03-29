@@ -50,7 +50,7 @@ class LeaguesController < ApplicationController
 
   def players
     @league = @leagues.find params[:league_id]
-    @users = @league.users
+    @users = @league.users.order name: :asc
   end
 
   def league_params
