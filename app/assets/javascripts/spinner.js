@@ -28,15 +28,5 @@ function stop_spinner () {
     spinner = null;
   }
 }
-function spinner_ready () {
-  var spinner_canvas = $('#spinner_canvas');
-  $(window).scroll(function () {
-    spinner_canvas.stop().animate({
-      'marginTop': ($(window).scrollTop() + 200) + "px"
-    }, 'slow');
-  });
-}
-$(document).ready(spinner_ready);
-$(document).on('page:load', spinner_ready);
 $(document).on('page:fetch', start_spinner);
 $(document).on('page:receive', stop_spinner);

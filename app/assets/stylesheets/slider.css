@@ -41,13 +41,13 @@ body {
   background-color: rgba(216, 252, 255, 1) !important;
 }
 
-.menu a, #log_game_button {
+.menu a {
   color: #fff;
   cursor: pointer;
 }
 
-.menu a:hover, #log_game_button:hover {
-  text-decoration: underline;
+.menu a:hover {
+  text-decoration: none;
 }
 
 .menu-header {
@@ -68,6 +68,7 @@ body {
 }
 
 .menu-section {
+  border-bottom: 1px solid #2a2d2f;
   margin: 25px 0;
 }
 
@@ -82,9 +83,9 @@ body {
 }
 
 .menu-section-list {
-  padding:0;
+  padding: 0;
   margin: 10px 0;
-  list-style:none;
+  list-style: none;
 }
 
 .menu-section-list a {
@@ -92,7 +93,14 @@ body {
   padding: 10px 20px;
 }
 
-.menu-section-list a:hover {
+.menu_link {
+  border-bottom: 1px solid #2a2d2f;
+}
+
+.menu_link .menu_label {
+  padding-left: 5px;
+}
+
+.menu-section-list a:hover, .menu_link a:hover, #menu-section-title a:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  text-decoration: none;
 }

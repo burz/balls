@@ -7,17 +7,27 @@
     </header>
   <% end %>
   <% if @seasons.size > 0 %>
-    <%= link_to new_game_path do %>
-      <header id="log_game_button" class="menu_link">
-        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-        &nbsp;&nbsp;Log game
+    <div id="log_game_button" class="menu_link">
+      <%= link_to new_game_path do %>
+        <header>
+          <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+          <span class="menu_label">Log game</span>
+        </header>
+      <% end %>
+    </div>
+  <% end %>
+  <div id="sign_out_button" class="menu_link">
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <header>
+        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+        <span class="menu_label">Sign out</span>
       </header>
     <% end %>
-  <% end %>
+  </div>
   <section class="menu-section">
-    <h3 class="menu-section-title">
+    <%= link_to leagues_path, class: 'menu-section-title' do %>
       Leagues
-    </h3>
+    <% end %>
     <ul class="menu-section-list">
       <% for league in @leagues %>
         <li>
@@ -38,12 +48,6 @@
       <% end %>
     </ul>
   </section>
-  <%= link_to destroy_user_session_path, method: :delete do %>
-    <header class="menu_link">
-      <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-      &nbsp;&nbsp;Sign out
-    </header>
-  <% end %>
 <% else %>
   <section class="menu-section">
     <h3 class="menu-section-title">
