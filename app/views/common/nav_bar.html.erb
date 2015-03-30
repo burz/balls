@@ -1,5 +1,10 @@
-<div id="nav_bar">
-  <center>
-    <%= additional_buttons %>
-  </center>
-</div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-left">
+      <li>
+        <a id="menu_button" href="#">☰</a>
+      </li>
+    </ul>
+    <%= link_to 'BallsApp', root_path, class: 'navbar-brand' %>
+  </div>
+</nav>
