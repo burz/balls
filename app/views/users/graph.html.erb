@@ -1,3 +1,22 @@
 <div id="user_rating_graph">
-  <%= line_chart @ratings %>
+  <ul class="nav nav-tabs">
+    <li id="league_ratings_button" role="presentation">
+      <a>League Ratings</a>
+    </li>
+    <li id="season_ratings_button" role="presentation" class="active">
+      <a>Season Ratings</a>
+    </li>
+  </ul>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div id="graphs_container" class="row">
+        <div id="season_ratings_graph">
+          <%= line_chart @season_ratings %>
+        </div>
+        <div id="league_ratings_graph">
+          <%= line_chart @league_ratings %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

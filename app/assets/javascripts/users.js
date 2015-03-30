@@ -46,6 +46,21 @@ function users_ready () {
       return false;
     }
   });
+  $('#season_ratings_button').click(function () {
+    $('#league_ratings_button').removeClass('active');
+    $('#league_ratings_graph').hide();
+    $('#season_ratings_graph').show();
+    $('#season_ratings_button').addClass('active');
+  });
+  $('#league_ratings_button').click(function () {
+    $('#season_ratings_button').removeClass('active');
+    $('#season_ratings_graph').hide();
+    $('#league_ratings_graph').show();
+    $('#league_ratings_button').addClass('active');
+  });
+  setTimeout(function () {
+    $('#league_ratings_graph').hide();
+  }, 450);
 }
 $(document).ready(users_ready);
 $(document).on('page:load', users_ready);
