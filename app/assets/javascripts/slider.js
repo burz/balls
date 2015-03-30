@@ -1,4 +1,4 @@
-$(function () {
+function slider_ready () {
   var slideout = new Slideout({
     'panel': $('#panel')[0],
     'menu': $('#menu')[0],
@@ -14,4 +14,6 @@ $(function () {
       slideout.close();
     }
   });
-});
+}
+$(document).ready(slider_ready);
+$(document).on('page:load', slider_ready);
