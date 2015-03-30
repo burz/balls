@@ -4,8 +4,10 @@
     <thead>
       <tr>
         <td>Date</td>
-        <td>League Change</td>
-        <td>Season Change</td>
+        <% if show_ratings %>
+          <td>League Change</td>
+          <td>Season Change</td>
+        <% end %>
         <td>Participants</td>
       </tr>
     </thead>
@@ -15,20 +17,32 @@
         <% league = season.league %>
         <% path = league_season_game_path league, season, game %>
         <% players = game.players %>
-        <% player = players.where(user_id: current_user.id).first %>
         <tr class="game_row" game_path="<%= path %>">
           <td><%= game.created_at %></td>
-          <td><%= format_ratio player.change_in_league_rating %></td>
-          <td><%= format_ratio player.change_in_season_rating %></td>
-          <td>
-            <% for player in players[0..(players.size - 2)] %>
-              <%= user_acronym player.user.name %>,
-            <% end %>
-            <% if players.size > 1 %>
-              and
-            <% end %>
-            <%= user_acronym players[-1].user.name %>
-          </td>
+          <% if show_ratings %>
+            <% player = players.where(user_id: params[:id]).first %>
+            <td><%= format_ratio player.change_in_league_rating %></td>
+            <td><%= format_ratio player.change_in_season_rating %></td>
+            <td>
+              <% for player in players[0..(players.size - 2)] %>
+                <%= user_acronym player.user.name %>,
+              <% end %>
+              <% if players.size > 1 %>
+                and
+              <% end %>
+              <%= user_acronym players[-1].user.name %>
+            </td>
+          <% else %>
+            <td>
+              <% for player in players[0..(players.size - 2)] %>
+                <%= player.user.name %>,
+              <% end %>
+              <% if players.size > 1 %>
+                and
+              <% end %>
+              <%= players[-1].user.name %>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     <tbody>
