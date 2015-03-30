@@ -7,6 +7,11 @@ function slider_ready () {
   });
   $('#menu_button').click(function () {
     slideout.toggle();
+    if(!slideout.isOpen()) {
+      setTimeout(function () {
+        $('#panel').attr('style', '');
+      }, 250);
+    }
   });
   $('.menu').click(function (event_object) {
     var node_name = event_object.target.nodeName;

@@ -9,16 +9,12 @@ body, html, #top_container {
   width: 100%;
 }
 
-table {
+table, .panel-body {
   background-color: #FFFFFF !important;
 }
 
 .user_row {
   cursor: pointer;
-}
-
-.panel-body {
-  background-color: #FFFFFF !important;
 }
 
 #panel {
