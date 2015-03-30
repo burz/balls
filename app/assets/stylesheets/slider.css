@@ -118,6 +118,10 @@ body {
   left: 225px;
 }
 
+.admin_menu_button {
+  left: 200px;
+}
+
 .menu-section-list a:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }

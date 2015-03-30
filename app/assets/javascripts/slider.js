@@ -24,7 +24,7 @@ function slider_ready () {
         top: original_offset.top - scroll_location,
         left: original_offset.left
       });
-      setTimeout(setup_admin_buttons, slideout._duration - 100);
+      setTimeout(setup_admin_buttons, slideout._duration / 4);
     }
     slideout.toggle();
   });
