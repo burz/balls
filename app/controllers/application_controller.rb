@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
 
   def load_leagues_and_seasons
     if user_signed_in?
-      @leagues = current_user.leagues
-      @seasons = current_user.seasons
+      @leagues = current_user.leagues.order created_at: :desc
+      @seasons = current_user.seasons.order created_at: :desc
     else
       @leagues = []
     end
