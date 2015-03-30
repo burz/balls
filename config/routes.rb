@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'games/new', to: 'games#new', as: 'new_game'
+
   devise_for :users
   resources :users, only: [:show] do
     resources :avatar, only: [:show]

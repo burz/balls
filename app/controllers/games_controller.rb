@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   include Elo
 
   before_action :authenticate_user!
-  before_action :load_leagues_and_seasons, only: [:show]
+  before_action :load_leagues_and_seasons, only: [:show, :new]
 
   def show
     @leagues = current_user.leagues

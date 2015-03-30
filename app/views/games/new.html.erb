@@ -1,24 +1,45 @@
 <div id="new_game">
-  <div class="form-group">
-    <label for="game_league_name">League</label>
-    <select id="game_league_name" class="form-control">
-        <option value="">Select a league</option>
-      <% for league in @leagues %>
-        <option value="<%= league.id %>"><%= league.name %></option>
-      <% end %>
-    </select>
-    <label for="game_season_name">Season</label>
-    <select id="game_season_name" class="form-control" disabled>
-    </select>
-    <label for="cup_differential">Cup Left</label>
-    <input type="number" id="cup_differential" class="form-control">
-  </div>
-  <div class="row">
-    <div class="col-md-10">
-      <div class="row">
-        <div id="winners" class="col-sm-offset-1 col-md-4"></div>
-        <div id="losers" class="col-md-4"></div>
-      </div>
+  <center>
+    <h2>Log Game</h2>
+    <div id="game_league_name_alert" class="log_game_alert alert alert-danger" role="alert">
+      You must select a league
     </div>
-  </div>
+    <div id="no_seasons_alert" class="log_game_alert alert alert-warning" role="alert">
+      There are no currently running seasons
+    </div>
+    <div id="game_season_name_alert" class="log_game_alert alert alert-danger" role="alert">
+      You must select a season
+    </div>
+    <div id="cup_differential_alert" class="log_game_alert alert alert-danger" role="alert">
+      The cups left must be greater or equal to zero
+    </div>
+    <div id="differential_too_big_alert" class="log_game_alert alert alert-danger" role="alert">
+      The cups left cannot be greater than the number of cups per team
+    </div>
+    <div id="no_player_alert" class="log_game_alert alert alert-danger" role="alert">
+      A player must be chosen for each slot
+    </div>
+    <div id="duplicate_player_alert" class="log_game_alert alert alert-danger" role="alert">
+      A single player cannot fill multiple slots
+    </div>
+    <div class="form-group">
+      <label for="game_league_name">League</label>
+      <select id="game_league_name" class="form-control">
+          <option value="">Select a league</option>
+        <% for league in @leagues %>
+          <option value="<%= league.id %>"><%= league.name %></option>
+        <% end %>
+      </select>
+      <label for="game_season_name">Season</label>
+      <select id="game_season_name" class="form-control" disabled>
+      </select>
+      <label for="cup_differential">Cup Left</label>
+      <input type="number" id="cup_differential" class="form-control">
+    </div>
+    <div class="row">
+      <div id="winners" class="col-md-6"></div>
+      <div id="losers" class="col-md-6"></div>
+    </div>
+    <button id="save_game_button" type="button" class="btn btn-primary">Save</button>
+  </center>
 </div>

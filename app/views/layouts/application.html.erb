@@ -32,9 +32,6 @@
           <%= yield %>
         </div>
       </main>
-      <% if user_signed_in? %>
-        <%= render template: 'games/log_game_modal' %>
-      <% end %>
       <%= render template: 'common/spinner' %>
       <%= render template: 'common/google_analytics' %>
     </body>

@@ -59,7 +59,6 @@ function save_game () {
       season_path + '/games/',
       data,
       function (data) {
-        $('#log_game_modal').modal('hide');
         Turbolinks.visit(season_path + '/games/' + data.game_id);
       }
     );

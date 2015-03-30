@@ -7,10 +7,12 @@
     </header>
   <% end %>
   <% if @seasons.size > 0 %>
-    <header id="log_game_button" class="menu_link" data-toggle="modal" data-target="#log_game_modal">
-      <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-      &nbsp;&nbsp;Log game
-    </header>
+    <%= link_to new_game_path do %>
+      <header id="log_game_button" class="menu_link">
+        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+        &nbsp;&nbsp;Log game
+      </header>
+    <% end %>
   <% end %>
   <section class="menu-section">
     <h3 class="menu-section-title">

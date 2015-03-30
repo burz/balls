@@ -1,7 +1,3 @@
-#log_game_modal .modal-body {
-  background-color: rgba(9, 232, 250, 0.09) !important;
-}
-
 .game_row {
   cursor: pointer;
 }
