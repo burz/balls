@@ -16,7 +16,7 @@ function start_spinner () {
       hwaccel: false, // Whether to use hardware acceleration
       className: 'spinner', // The CSS class to assign to the spinner
       zIndex: 2e9, // The z-index (defaults to 2000000000)
-      top: '50%', // Top position relative to parent
+      top: ($(window).scrollTop() + 200) + 'px', // Top position relative to parent
       left: '50%' // Left position relative to parent
     };
     spinner = new Spinner(options).spin($('#spinner_canvas')[0]);
@@ -28,5 +28,15 @@ function stop_spinner () {
     spinner = null;
   }
 }
+function spinner_ready () {
+  var spinner_canvas = $('#spinner_canvas');
+  $(window).scroll(function () {
+    spinner_canvas.stop().animate({
+      'marginTop': ($(window).scrollTop() + 200) + "px"
+    }, 'slow');
+  });
+}
+$(document).ready(spinner_ready);
+$(document).on('page:load', spinner_ready);
 $(document).on('page:fetch', start_spinner);
 $(document).on('page:receive', stop_spinner);
