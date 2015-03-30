@@ -29,7 +29,6 @@ function slider_ready () {
       $('#panel').attr('style', '');
       $('#site_contents').offset(original_offset);
       $(window).scrollTop(scroll_location);
-    } else {
     }
   });
 }
