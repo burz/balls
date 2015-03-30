@@ -1,3 +1,12 @@
+function setup_admin_buttons () {
+  var icon_left = $('.menu-section .glyphicon-plus').offset().left;
+  $('.admin_menu_button').each(function () {
+    $(this).offset({
+      top: $(this).offset().top,
+      left: icon_left - 20
+    });
+  });
+}
 function slider_ready () {
   var slideout = new Slideout({
     panel: $('#panel')[0],
@@ -15,6 +24,7 @@ function slider_ready () {
         top: original_offset.top - scroll_location,
         left: original_offset.left
       });
+      setTimeout(setup_admin_buttons, 100);
     }
     slideout.toggle();
   });

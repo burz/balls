@@ -82,6 +82,18 @@ body {
   margin:0;
 }
 
+.league_menu_item {
+  color: #85888d;
+  margin:0;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.league_menu_item a {
+  padding: 10px 20px;
+  width: 100%;
+}
+
 .menu-section-list {
   padding: 0;
   margin: 10px 0;
@@ -102,7 +114,8 @@ body {
 }
 
 #new_league_button {
-  padding-left: 132px;
+  position: absolute;
+  left: 225px;
 }
 
 .menu-section-list a:hover {

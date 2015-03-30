@@ -33,13 +33,16 @@
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       <% end %>
     </div>
-    <ul class="menu-section-list">
-      <% for league in @leagues %>
-        <li>
-          <%= link_to league.name, league_path(league) %>
-        </li>
-      <% end %>
-    </ul>
+    <% for league in @leagues %>
+      <div class="league_menu_item">
+        <%= link_to league.name, league_path(league) %>
+        <% if current_user.admin? league %>
+          <%= link_to league_admin_path(league), class: 'admin_menu_button' do %>
+            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   </section>
   <section class="menu-section">
     <h3 class="menu-section-title">

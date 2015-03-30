@@ -1,7 +1,6 @@
 <div id="show_league">
   <center>
     <h1><%= @league.name %></h1>
-    <%= render template: 'leagues/admin_button' %>
     <div class="row">
       <div class="col-md-6">
         <div class="panel panel-default">
@@ -23,7 +22,11 @@
               <tbody>
                 <% i = 1 %>
                 <% for rating in @league.ratings %>
-                  <tr class="user_row" user_path="<%= user_path rating.user_id %>">
+                  <% if current_user.id == rating.user_id %>
+                    <tr class="user_row current_user_row" user_path="<%= user_path rating.user_id %>">
+                  <% else %>
+                    <tr class="user_row" user_path="<%= user_path rating.user_id %>">
+                  <% end %>
                     <td><%= i %></td>
                     <% i = i + 1 %>
                     <td><%= rating.name %></td>
@@ -71,7 +74,11 @@
                     <tbody>
                       <% i = 1 %>
                       <% for rating in season.ratings %>
-                        <tr class="user_row" user_path="<%= user_path rating.user_id %>">
+                        <% if current_user.id == rating.user_id %>
+                          <tr class="user_row current_user_row" user_path="<%= user_path rating.user_id %>">
+                        <% else %>
+                          <tr class="user_row" user_path="<%= user_path rating.user_id %>">
+                        <% end %>
                           <td><%= i %></td>
                           <% i = i + 1 %>
                           <td><%= rating.name %></td>
