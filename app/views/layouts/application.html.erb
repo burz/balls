@@ -25,11 +25,13 @@
         <div class="container">
           <%= render template: 'common/nav_bar' %>
           <br>
-          <center>
-            <div class="global_alert alert alert-warning"><%= notice %></div>
-            <div class="global_alert alert alert-danger"><%= alert %></div>
-          </center>
-          <%= yield %>
+          <div id ="site_contents">
+            <center>
+              <div class="global_alert alert alert-warning"><%= notice %></div>
+              <div class="global_alert alert alert-danger"><%= alert %></div>
+            </center>
+            <%= yield %>
+          </div>
         </div>
       </main>
       <%= render template: 'common/spinner' %>
