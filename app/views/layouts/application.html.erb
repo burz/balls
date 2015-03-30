@@ -33,6 +33,8 @@
         </div>
       </main>
       <%= render template: 'common/spinner' %>
-      <%= render template: 'common/google_analytics' %>
+      <% if Rails.env.production? %>
+        <%= render template: 'common/google_analytics' %>
+      <% end %>
     </body>
 </html>
