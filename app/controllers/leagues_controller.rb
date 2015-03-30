@@ -9,6 +9,7 @@ class LeaguesController < ApplicationController
 
   def show
     @league = @leagues.find params[:id]
+    @seasons = @league.seasons.order created_at: :desc
   end
 
   def new
@@ -25,7 +26,8 @@ class LeaguesController < ApplicationController
 
   def admin
     @league = @leagues.find params[:league_id]
-    @users = @league.users
+    @seasons = @league.seasons.order created_at: :desc
+    @users = @league.users.order name: :asc
   end
 
   def create_admin

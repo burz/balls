@@ -101,6 +101,10 @@ body {
   padding-left: 5px;
 }
 
-.menu-section-list a:hover, .menu_link a:hover, #menu-section-title a:hover {
+#new_league_button {
+  padding-left: 132px;
+}
+
+.menu-section-list a:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }

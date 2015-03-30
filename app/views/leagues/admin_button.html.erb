@@ -1,7 +1,9 @@
 <% if current_user.admin? @league %>
-  <button id="admin_page" type="button" class="btn btn-danger">
+  <button id="admin_page" type="button" class="btn btn-danger btn-lg">
     Admin Page
   </button>
+  <br>
+  <br>
   <script>
     $('#admin_page').click(function () {
       Turbolinks.visit('<%= league_admin_path @league %>');

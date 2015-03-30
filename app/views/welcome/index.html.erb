@@ -1,5 +1,11 @@
 <% if user_signed_in? %>
-  <%= render template: 'leagues/index' %>
+  <% if @leagues.size > 0 %>
+    <% @league = current_user.last_updated_league %>
+    <% @seasons = @league.seasons.order created_at: :desc %>
+    <%= render template: 'leagues/show' %>
+  <% else %>
+    <%= render template: 'leagues/index' %>
+  <% end %>
 <% else %>
   <%= render template: 'welcome/homepage' %>
 <% end %>

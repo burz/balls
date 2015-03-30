@@ -6,7 +6,7 @@
       </span>
     </header>
   <% end %>
-  <% if @seasons.size > 0 %>
+  <% if @all_seasons.size > 0 %>
     <div id="log_game_button" class="menu_link">
       <%= link_to new_game_path do %>
         <header>
@@ -25,9 +25,14 @@
     <% end %>
   </div>
   <section class="menu-section">
-    <%= link_to leagues_path, class: 'menu-section-title' do %>
-      Leagues
-    <% end %>
+    <div class="menu-section-title">
+      <%= link_to leagues_path do %>
+        Leagues
+      <% end %>
+      <%= link_to new_league_path, id: 'new_league_button' do %>
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      <% end %>
+    </div>
     <ul class="menu-section-list">
       <% for league in @leagues %>
         <li>
@@ -41,7 +46,7 @@
       Seasons
     </h3>
     <ul class="menu-section-list">
-      <% for season in @seasons %>
+      <% for season in @all_seasons %>
         <li>
           <%= link_to season.name, league_season_path(season.league, season) %>
         </li>

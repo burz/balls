@@ -1,32 +1,4 @@
-<% add_button = render template: 'seasons/add_button' %>
-<%= render template: 'common/nav_bar', locals: { additional_buttons: add_button } %>
-<div id="seasons_index">
-  <center>
-    <h2>Seasons</h2>
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <td>Name</td>
-          <td>End Date</td>
-          <td>Rating</td>
-          <td>Games</td>
-          <td>+/-</td>
-          <td>Ratio</td>
-        </tr>
-      </thead>
-      <tbody>
-        <% for season in @seasons %>
-          <tr class="season_row" season_path="<%= league_season_path @league, season %>">
-            <td><%= season.name %></td>
-            <td><%= format_date season.end_date %></td>
-            <% rating = season.user_rating current_user %>
-            <td><%= rating.rating %></td>
-            <td><%= rating.games_played %></td>
-            <td><%= rating.wins %>/<%= rating.losses %></td>
-            <td><%= format_ratio(rating.wins - rating.losses) %></td>
-          </tr>
-        <% end %>
-      <tbody>
-    </table>
-  </center>
-</div>
+<center>
+  <h1>Seasons</h1>
+</center>
+<%= render 'seasons/index' %>

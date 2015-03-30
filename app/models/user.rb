@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   has_many :players
   has_many :games, through: :players
 
+  def last_updated_league
+    leagues.joins(:league_ratings).order('league_ratings.created_at DESC').first
+  end
+
   def get_wins
     players.where(team: 0).size
   end

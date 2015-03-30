@@ -6,6 +6,7 @@ class SeasonsController < ApplicationController
 
   def index
     @league = current_user.leagues.find params[:league_id]
+    @seasons = @league.seasons.order created_at: :desc
   end
 
   def show

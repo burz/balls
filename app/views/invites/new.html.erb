@@ -1,5 +1,3 @@
-<% invite_button = render template: 'leagues/invite_button' %>
-<%= render template: 'common/nav_bar', locals: { additional_buttons: invite_button } %>
 <div id="invite_page">
   <center>
     <h2>Invite to <%= @league.name %></h2>
@@ -10,5 +8,6 @@
       <label for="email_address">Email</label>
       <input type="email" id="email_address" class="form-control" autofocus>
     </div>
+    <%= render template: 'leagues/invite_button' %>
   </center>
 </div>

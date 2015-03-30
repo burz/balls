@@ -1,8 +1,6 @@
-<% new_button = render template: 'leagues/new_button' %>
-<%= render template: 'common/nav_bar', locals: { additional_buttons: new_button } %>
 <div id="new_league">
   <center>
-    <h2>Add League</h2>
+    <h1>Add League</h1>
     <div id="league_name_alert" class="alert alert-danger" role="alert"> 
       The league must have a name. 
     </div>
@@ -10,5 +8,6 @@
       <label for="league_name">Name</label>
       <input type="text" id="league_name" class="form-control" autofocus>
     </div>
+    <%= render template: 'leagues/new_button' %>
   </center>
 </div>
