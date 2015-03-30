@@ -19,13 +19,11 @@
     </head>
     <body>
       <nav id="menu" class="menu">
-        <% if user_signed_in? %>
-          <%= render template: 'common/menu' %>
-        <% end %>
+        <%= render template: 'common/menu' %>
       </nav>
       <main id="panel" class="panel">
-        <%= render template: 'common/site_header' %>
         <div class="container">
+          <%= render template: 'common/site_header' %>
           <br>
           <center>
             <div class="global_alert alert alert-warning"><%= notice %></div>
