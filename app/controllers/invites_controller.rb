@@ -2,11 +2,7 @@ class InvitesController < ApplicationController
   include Constants
 
   before_action :authenticate_user!, except: [:join]
-  before_action :set_leagues, except: [:join]
-
-  def set_leagues
-    @leagues = current_user.leagues
-  end 
+  before_action :load_leagues_and_seasons, except: [:join]
 
   def new
     @league = @leagues.find params[:league_id]

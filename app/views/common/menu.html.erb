@@ -1,0 +1,43 @@
+<%= link_to user_path(current_user) do %>
+  <header class="menu-header">
+    <span class="menu-header-title">
+      <%= current_user.name %>
+    </span>
+  </header>
+<% end %>
+<% if @seasons.size > 0 %>
+  <header id="log_game_button" class="menu_link" data-toggle="modal" data-target="#log_game_modal">
+    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+    &nbsp;&nbsp;Log game
+  </header>
+<% end %>
+<section class="menu-section">
+  <h3 class="menu-section-title">
+    Leagues
+  </h3>
+  <ul class="menu-section-list">
+    <% for league in @leagues %>
+      <li>
+        <%= link_to league.name, league_path(league) %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+<section class="menu-section">
+  <h3 class="menu-section-title">
+    Seasons
+  </h3>
+  <ul class="menu-section-list">
+    <% for season in @seasons %>
+      <li>
+        <%= link_to season.name, league_season_path(season.league, season) %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+<%= link_to destroy_user_session_path, method: :delete do %>
+  <header class="menu_link">
+    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+    &nbsp;&nbsp;Sign out
+  </header>
+<% end %>

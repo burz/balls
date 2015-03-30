@@ -2,18 +2,13 @@ class LeaguesController < ApplicationController
   include Constants
 
   before_action :authenticate_user!
-  before_action :set_leagues
-
-  def set_leagues
-    @leagues = current_user.leagues
-  end
+  before_action :load_leagues_and_seasons, except: [:create, :create_admin]
 
   def index
   end
 
   def show
     @league = @leagues.find params[:id]
-    @seasons = @league.seasons.order created_at: :desc
   end
 
   def new
@@ -30,7 +25,6 @@ class LeaguesController < ApplicationController
 
   def admin
     @league = @leagues.find params[:league_id]
-    @seasons = @league.seasons
     @users = @league.users
   end
 

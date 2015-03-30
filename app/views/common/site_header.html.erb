@@ -1,23 +1,18 @@
-<div id="site_header">
-  <br>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="col-md-4">
-        <h1>
-          <%= link_to 'BallsApp', root_path %>
-        </h1>
-      </div>
-      <div class="col-md-2">
-        <%= image_tag 'balls-default-icon.jpg', alt: 'Balls', class: 'img-thumbnail', style: 'display: inline;' %>
-      </div>
-    </div>
-    <div class="col-md-6 text-right">
-      <br>
-      <% if user_signed_in? %>
-        Welcome back
-        <%= link_to current_user.name, user_path(current_user) %>
-        | <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-      <% end %>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <a id="menu_button" href="#">
+            <h4>☰</h4>
+          </a>
+        </li>
+       <li>
+         <%= link_to root_path do %>
+           <h4>BallsApp</h4>
+         <% end %>
+        </li>
+      </ul>
     </div>
   </div>
-</div>
+</nav>

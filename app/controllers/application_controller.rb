@@ -5,7 +5,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-   protected
+  def load_leagues_and_seasons
+    if user_signed_in?
+      @leagues = current_user.leagues
+      @seasons = current_user.seasons
+    else
+      @leagues = []
+    end
+  end
+
+  protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|

@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_leagues
-
-  def set_leagues
-    @leagues = current_user.leagues
-  end
+  before_action :load_leagues_and_seasons
 
   def show
     @user = User.find params[:id]

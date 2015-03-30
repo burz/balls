@@ -3,13 +3,15 @@
 //= require turbolinks
 //= require bootstrap
 //= require slideout
+//= require spin
 //= require_tree .
+
 function application_ready () {
   $('.user_row').click(function (event_object) {
     var target_path = event_object.target.parentElement.getAttribute('user_path');
     Turbolinks.visit(target_path);
   });
-  $(".global_alert").each(function (i, alert_element) {
+  $('.global_alert').each(function (i, alert_element) {
     if(alert_element.innerText === '') {
       alert_element.hidden = true;
     }

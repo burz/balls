@@ -4,8 +4,8 @@
  *= require bootstrap.min
  */
 
-body {
-  background-color: rgba(9, 232, 250, 0.09) !important;
+body, html {
+   height: 100%;
 }
 
 table {
@@ -14,4 +14,12 @@ table {
 
 .user_row {
   cursor: pointer;
+}
+
+.panel-body {
+  background-color: #FFFFFF !important;
+}
+
+#panel {
+  padding-top: 70px;
 }
