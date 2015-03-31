@@ -4,8 +4,8 @@
 //= require bootstrap
 //= require slideout
 //= require spin
-//= require chartkick
 //= require jsapi
+//= require chartkick
 //= require_tree .
 
 function application_ready () {
