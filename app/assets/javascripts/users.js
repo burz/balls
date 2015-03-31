@@ -40,6 +40,7 @@ function users_ready () {
   $('#sign_up_name_alert').hide();
   $('#new_user').submit(function () {
     if($('#sign_up_name').val() != '') {
+      goog_report_conversion(window.location.href);
       return true;
     } else {
       $('#sign_up_name_alert').show();
