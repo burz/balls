@@ -1,29 +1,38 @@
 <div id="league_index">
   <center>
-    <h1>Leagues</h1>
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <td>Name</td>
-          <td>Rating</td>
-          <td>Games</td>
-          <td>+/-</td>
-<!--          <td>Ratio</td>-->
-        </tr>
-      </thead>
-      <tbody>
-        <% for league in @leagues %>
-          <tr class="league_row" league_path="<%= league_path league %>">
-            <td><%= league.name %></td>
-            <% rating = league.user_rating current_user %>
-            <td><%= rating.rating %></td>
-            <td><%= rating.games_played %></td>
-            <td><%= rating.wins %>/<%= rating.losses %></td>
-<!--            <td><%= format_ratio(rating.wins - rating.losses) %></td>-->
-          </tr>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1>Leagues</h1>
+      </div>
+      <div class="panel-body">
+        <% if @leagues.size > 0 %>
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <td>Name</td>
+                <td>Rating</td>
+                <td>Games</td>
+                <td>+/-</td>
+<!--                <td>Ratio</td>-->
+              </tr>
+            </thead>
+            <tbody>
+              <% for league in @leagues %>
+                <tr class="league_row" league_path="<%= league_path league %>">
+                  <td><%= league.name %></td>
+                  <% rating = league.user_rating current_user %>
+                  <td><%= rating.rating %></td>
+                  <td><%= rating.games_played %></td>
+                  <td><%= rating.wins %>/<%= rating.losses %></td>
+<!--                  <td><%= format_ratio(rating.wins - rating.losses) %></td>-->
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <%= render template: 'leagues/add_button' %>
         <% end %>
-      </tbody>
-    </table>
-    <%= render template: 'leagues/add_button' %>
+      </div>
+    </div>
   </center>
 </div>

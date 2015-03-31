@@ -1,13 +1,19 @@
 <div id="invite_page">
   <center>
-    <h2>Invite to <%= @league.name %></h2>
-    <div id="email_alert" class="invite_alert alert alert-danger" role="alert">
-      An email address must be entered
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2>Invite to <%= @league.name %></h2>
+      </div>
+      <div class="panel-body">
+        <div id="email_alert" class="invite_alert alert alert-danger" role="alert">
+          An email address must be entered
+        </div>
+        <div class="form-group">
+          <label for="email_address">Email</label>
+          <input type="email" id="email_address" class="form-control" autofocus>
+        </div>
+        <%= render template: 'leagues/invite_button' %>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="email_address">Email</label>
-      <input type="email" id="email_address" class="form-control" autofocus>
-    </div>
-    <%= render template: 'leagues/invite_button' %>
   </center>
 </div>

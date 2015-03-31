@@ -1,23 +1,21 @@
 <div id="user_page">
   <center>
+    <div class="well">
+      <h1><%= @user.name %> (<%= @user.email %>)</h1>
+    </div>
     <div class="row">
       <div class="col-md-6">
-        <br>
-        <br>
-        <br>
         <%= render template: 'avatars/image' %>
       </div>
       <div class="col-md-6">
-        <h1><%= @user.name %> (<%= @user.email %>)</h1>
-        <br>
         <div class="panel panel-success">
           <div class="panel-heading">
             <div class="btn-group btn-group-lg">
             <button id="last_rating_button" type="button" class="btn btn-default" aria-label="Last league" disabled>
               <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"\>
             </button>
-            <button type="button" class="btn btn-default" aria-label="League">
-              League Ranking
+            <button type="button" class="btn btn-default" aria-label="League" disabled>
+              Rankings
             </button>
             <button id="next_rating_button" type="button" class="btn btn-default" aria-label="Next league">
               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"\>

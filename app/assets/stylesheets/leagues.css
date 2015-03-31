@@ -1,3 +1,7 @@
 .league_row {
   cursor: pointer;
 }
+
+#admin_page h1 a:hover {
+  text-decoration: none;
+}

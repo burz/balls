@@ -1,13 +1,19 @@
 <div id="new_league">
   <center>
-    <h1>Add League</h1>
-    <div id="league_name_alert" class="alert alert-danger" role="alert"> 
-      The league must have a name. 
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1>Add League</h1>
+      </div>
+      <div class="panel-body">
+        <div id="league_name_alert" class="alert alert-danger" role="alert">
+          The league must have a name.
+        </div>
+        <div class="form-group">
+          <label for="league_name">Name</label>
+          <input type="text" id="league_name" class="form-control" autofocus>
+        </div>
+        <%= render template: 'leagues/new_button' %>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="league_name">Name</label>
-      <input type="text" id="league_name" class="form-control" autofocus>
-    </div>
-    <%= render template: 'leagues/new_button' %>
   </center>
 </div>

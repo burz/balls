@@ -1,50 +1,56 @@
 <div id="games_listing">
-  <h3>Games</h3>
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <td>Date</td>
-        <% if show_ratings %>
-          <td>League Change</td>
-          <td>Season Change</td>
-        <% end %>
-        <td>Participants</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% for game in @games %>
-        <% season = game.season %>
-        <% league = season.league %>
-        <% path = league_season_game_path league, season, game %>
-        <% players = game.players %>
-        <tr class="game_row" game_path="<%= path %>">
-          <td><%= game.created_at %></td>
-          <% if show_ratings %>
-            <% player = players.where(user_id: params[:id]).first %>
-            <td><%= format_ratio player.change_in_league_rating %></td>
-            <td><%= format_ratio player.change_in_season_rating %></td>
-            <td>
-              <% for player in players[0..(players.size - 2)] %>
-                <%= user_acronym player.user.name %>,
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3>Games</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>Date</td>
+            <% if show_ratings %>
+              <td>League Change</td>
+              <td>Season Change</td>
+            <% end %>
+            <td>Participants</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% for game in @games %>
+            <% season = game.season %>
+            <% league = season.league %>
+            <% path = league_season_game_path league, season, game %>
+            <% players = game.players %>
+            <tr class="game_row" game_path="<%= path %>">
+              <td><%= game.created_at %></td>
+              <% if show_ratings %>
+                <% player = players.where(user_id: params[:id]).first %>
+                <td><%= format_ratio player.change_in_league_rating %></td>
+                <td><%= format_ratio player.change_in_season_rating %></td>
+                <td>
+                  <% for player in players[0..(players.size - 2)] %>
+                    <%= user_acronym player.user.name %>,
+                  <% end %>
+                  <% if players.size > 1 %>
+                    and
+                  <% end %>
+                  <%= user_acronym players[-1].user.name %>
+                </td>
+              <% else %>
+                <td>
+                  <% for player in players[0..(players.size - 2)] %>
+                    <%= player.user.name %>,
+                  <% end %>
+                  <% if players.size > 1 %>
+                    and
+                  <% end %>
+                  <%= players[-1].user.name %>
+                </td>
               <% end %>
-              <% if players.size > 1 %>
-                and
-              <% end %>
-              <%= user_acronym players[-1].user.name %>
-            </td>
-          <% else %>
-            <td>
-              <% for player in players[0..(players.size - 2)] %>
-                <%= player.user.name %>,
-              <% end %>
-              <% if players.size > 1 %>
-                and
-              <% end %>
-              <%= players[-1].user.name %>
-            </td>
+            </tr>
           <% end %>
-        </tr>
-      <% end %>
-    <tbody>
-  </table>
+        <tbody>
+      </table>
+    </div>
+  </div>
 </div>
