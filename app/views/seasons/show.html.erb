@@ -3,18 +3,35 @@
     <div class="well">
       <h1><%= @season.name %></h1>
     </div>
-    <div class="panel panel-success">
+    <div class="panel panel-warning">
       <div id="rules_button" class="panel-heading">+ Rules</div>
       <div id="rules_panel" class="panel-body">
-        <h3>
-          End date: <%= format_date @season.end_date %>
-          <br>
-          Number of players per team: <%= @season.players_per_team %>
-          <br>
-          Number of cups per team: <%= @season.cups_per_team %>
-          <br>
-          Additional rules: <%= @season.additional_rules %>
-        </h3>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>End Date</td>
+              <td>Players Per Team</td>
+              <td>Cups Per Team</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= format_date @season.end_date %></td>
+              <td><%= @season.players_per_team %></td>
+              <td><%= @season.cups_per_team %></td>
+            </tr>
+          </tbody>
+        </table>
+        <% if @season.additional_rules != '' %>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3>Additional Rules</h3>
+            </div>
+            <div class="panel-body">
+              <%= @season.additional_rules %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="row">
