@@ -13,6 +13,10 @@ table, .panel-body {
   background-color: #FFFFFF !important;
 }
 
+table tr {
+  font-size: 80%;
+}
+
 .user_row {
   cursor: pointer;
 }
