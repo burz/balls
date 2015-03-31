@@ -74,19 +74,23 @@
                     <tbody>
                       <% i = 1 %>
                       <% for rating in season.ratings %>
-                        <% if current_user.id == rating.user_id %>
-                          <tr class="user_row current_user_row" user_path="<%= user_path rating.user_id %>">
-                        <% else %>
-                          <tr class="user_row" user_path="<%= user_path rating.user_id %>">
+                        <% if rating.games_played > 0 %>
+                          <% if current_user.id == rating.user_id %>
+                            <tr class="user_row current_user_row"
+                                user_path="<%= user_path rating.user_id %>">
+                          <% else %>
+                            <tr class="user_row"
+                                user_path="<%= user_path rating.user_id %>">
+                          <% end %>
+                            <td><%= i %></td>
+                            <% i = i + 1 %>
+                            <td><%= rating.name %></td>
+                            <td><%= rating.rating %></td>
+                            <td><%= rating.games_played %></td>
+                            <td><%= rating.wins %>/<%= rating.losses %></td>
+<!--                            <td><%= format_ratio(rating.wins - rating.losses) %></td>-->
+                          </tr>
                         <% end %>
-                          <td><%= i %></td>
-                          <% i = i + 1 %>
-                          <td><%= rating.name %></td>
-                          <td><%= rating.rating %></td>
-                          <td><%= rating.games_played %></td>
-                          <td><%= rating.wins %>/<%= rating.losses %></td>
-<!--                          <td><%= format_ratio(rating.wins - rating.losses) %></td>-->
-                        </tr>
                       <% end %>
                     </tbody>
                   </table>
