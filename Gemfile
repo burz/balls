@@ -11,8 +11,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'pg'
 gem 'devise'
 gem 'chartkick'
-gem 'carrierwave'
-gem 'dotenv-rails'
+gem 'mini_magick'
+gem 'carrierwave-aws'
 
 group :development, :test do
   gem 'byebug'
@@ -20,6 +20,7 @@ group :development, :test do
   gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'dotenv-rails'
 end
 
 group :production do

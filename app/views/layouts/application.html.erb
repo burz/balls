@@ -33,6 +33,7 @@
           </div>
         </div>
       </main>
+      <%= content_for :footer %>
       <%= render template: 'common/spinner' %>
       <% if Rails.env.production? %>
         <%= render template: 'common/google_analytics' %>
