@@ -4,9 +4,13 @@
  *= require bootstrap.min
  */
 
-body, html, #top_container {
+body, html {
   height: 100%;
   width: 100%;
+}
+
+body, main {
+  background-color: rgba(216, 252, 255, 1) !important;
 }
 
 table, .panel-body {
