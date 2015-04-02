@@ -62,6 +62,7 @@ function users_ready () {
   setTimeout(function () {
     $('#league_ratings_graph').hide();
   }, 450);
+  $('#error_explanation').addClass('alert alert-danger');
 }
 $(document).ready(users_ready);
 $(document).on('page:load', users_ready);
