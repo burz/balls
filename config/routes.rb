@@ -14,7 +14,8 @@ Rails.application.routes.draw do
 
   get 'games/new', to: 'games#new', as: 'new_game'
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
   resources :users, only: [:show] do
     resources :avatar, only: [:show]
     post 'avatar', to: 'avatars#create', as: 'avatar_create'
