@@ -12,13 +12,16 @@
       $('#season_players_alert').show();
     } else if($('#cups_per_team').val() === "" || $('#cups_per_team').val() <= 0) {
       $('#season_cups_alert').show();
+    } else if($('#number_of_balls').val() === "" || $('#number_of_balls').val() <= 0) {
+      $('#season_balls_alert').show();
     } else {
-      var data = { 'season':
-        { 'name': $('#season_name').val(),
-          'end_date': $('#end_date').val(),
-          'players_per_team': $('#players_per_team').val(),
-          'cups_per_team': $('#cups_per_team').val(),
-          'additional_rules': $('#extra_rules_content').val()
+      var data = { season:
+        { name: $('#season_name').val(),
+          end_date: $('#end_date').val(),
+          players_per_team: $('#players_per_team').val(),
+          cups_per_team: $('#cups_per_team').val(),
+          number_of_balls: $('#number_of_balls').val(),
+          additional_rules: $('#extra_rules_content').val()
         }
       };
       $.post('<%= league_seasons_path(@league) %>', data, function () {
