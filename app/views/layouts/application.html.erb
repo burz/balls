@@ -17,9 +17,15 @@
         <%= csrf_meta_tags %>
     </head>
     <body>
-      <nav id="menu" class="menu">
-        <%= render template: 'common/menu' %>
-      </nav>
+      <% if user_signed_in? %>
+        <nav id="menu" class="menu">
+          <%= render template: 'common/menu' %>
+        </nav>
+        <script>
+          $(document).ready(slider_ready);
+          $(document).on('page:load', slider_ready);
+        </script>
+      <% end %>
       <main id="panel" class="panel">
         <div class="container">
           <%= render template: 'common/nav_bar' %>

@@ -42,5 +42,3 @@ function slider_ready () {
     }
   });
 }
-$(document).ready(slider_ready);
-$(document).on('page:load', slider_ready);
