@@ -21,6 +21,16 @@
       <% end %>
     </div>
   <% end %>
+  <% if @leagues.size > 0 %>
+    <div id="invite_player_button" class="menu_link">
+      <%= link_to invite_path do %>
+        <header>
+          <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+          <span class="menu_label">Invite Players</span>
+        </header>
+      <% end %>
+    </div>
+  <% end %>
   <section class="menu-section">
     <div class="menu-section-title">
       <%= link_to leagues_path do %>

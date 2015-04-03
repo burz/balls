@@ -8,6 +8,9 @@ class InvitesController < ApplicationController
     @league = @leagues.find params[:league_id]
   end
 
+  def general_new
+  end
+
   def create
     email = params[:invite][:email]
     league = @leagues.find params[:league_id]

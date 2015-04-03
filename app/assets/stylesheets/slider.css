@@ -103,7 +103,7 @@ body {
   padding: 10px 20px;
 }
 
-#log_game_button {
+#log_game_button, #invite_player_button {
   border-bottom: 1px solid #2a2d2f;
 }
 

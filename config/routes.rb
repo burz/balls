@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'invite', to: 'invites#general_new', as: 'invite'
+
   get 'games/new', to: 'games#new', as: 'new_game'
 
   devise_for :users
