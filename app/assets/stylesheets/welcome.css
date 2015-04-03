@@ -1,9 +1,14 @@
+.container {
+  width: 100% !important;
+}
+
 .cd-fixed-bg {
   min-height: 100%;
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center center;
+  width: 100%;
 }
 
 .cd-fixed-bg.cd-bg-1 {
