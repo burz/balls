@@ -21,14 +21,6 @@
       <% end %>
     </div>
   <% end %>
-  <div id="sign_out_button" class="menu_link">
-    <%= link_to destroy_user_session_path, method: :delete do %>
-      <header>
-        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-        <span class="menu_label">Sign out</span>
-      </header>
-    <% end %>
-  </div>
   <section class="menu-section">
     <div class="menu-section-title">
       <%= link_to leagues_path do %>
@@ -61,6 +53,14 @@
       <% end %>
     </ul>
   </section>
+  <div id="sign_out_button" class="menu_link">
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <header>
+        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+        <span class="menu_label">Sign out</span>
+      </header>
+    <% end %>
+  </div>
 <% else %>
   <section class="menu-section">
     <h3 class="menu-section-title">
