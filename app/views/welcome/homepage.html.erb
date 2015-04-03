@@ -1,18 +1,24 @@
 <div id="home_page">
-  <div class="cd-scrolling-bg cd-color-2 box-shadow">
-    <div class="cd-container">
-      <div class="row">
-        <div id="info_pane" class="col-md-6">
-          <%= render template: 'welcome/intro' %>
-        </div>
-        <br>
-        <div class="col-md-6">
-          <%= render template: 'common/user_entrance' %>
+  <% if mobile_device? %>
+    <div class="row">
+      <%= render template: 'common/user_entrance' %>
+    </div>
+  <% else %>
+    <div class="cd-scrolling-bg cd-color-2 box-shadow">
+      <div class="cd-container">
+        <div class="row">
+          <div id="info_pane" class="col-md-6">
+            <%= render template: 'welcome/intro' %>
+          </div>
+          <br>
+          <div class="col-md-6">
+            <%= render template: 'common/user_entrance' %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="cd-fixed-bg cd-bg-1"
-       style="background-image: url('<%= image_path 'ballsapp_example.png' %>');">
-  </div>
+    <div class="cd-fixed-bg cd-bg-1"
+         style="background-image: url('<%= image_path 'ballsapp_example.png' %>');">
+    </div>
+  <% end %>
 </div>
