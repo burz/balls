@@ -1,14 +1,21 @@
 <button id="send_invite_button" type="button" class="btn btn-success btn-lg">
-  Send Invite
+  Send Invites
 </button>
 <script>
   $('#send_invite_button').click(function () {
     $('.invite_alert').hide();
     if($('#email_address').val() != '') {
-      var data = { invite: { email: $('#email_address').val() } };
-      $.post('<%= league_invites_path @league %>', data, function () {
-        Turbolinks.visit('<%= league_admin_path @league %>');
-      });
+      var emails = $('#email_address').val().split(',');
+      var count = emails.length;
+      start_spinner();
+      for(var i = 0; i < emails.length; ++i) {
+        var data = { invite: { email: emails[i].trim() } };
+        $.post('<%= league_invites_path @league %>', data, function () {
+          if(--count === 0) {
+            Turbolinks.visit('<%= league_admin_path @league %>');
+          }
+        });
+      }
     } else {
       $('#email_alert').show();
     }
