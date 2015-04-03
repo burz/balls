@@ -10,6 +10,15 @@ class LeaguesController < ApplicationController
   def show
     @league = @leagues.find params[:id]
     @seasons = @league.seasons.order created_at: :desc
+    @league_players = []
+    @league_benchwarmers = []
+    @league.ratings.each do |rating|
+      if rating.games_played == 0
+        @league_benchwarmers.push rating
+      else
+        @league_players.push rating
+      end
+    end
   end
 
   def new
