@@ -13,6 +13,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def load_league_players
+    @league_players = []
+    @league_benchwarmers = []
+    @league.ratings.each do |rating|
+      if rating.games_played == 0
+        @league_benchwarmers.push rating
+      else
+        @league_players.push rating
+      end
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
