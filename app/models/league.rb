@@ -4,6 +4,7 @@ class League < ActiveRecord::Base
   has_many :users, through: :league_memberships
   has_many :invites
   has_many :seasons
+  has_many :games, through: :seasons
   has_many :league_ratings
 
   def ratings

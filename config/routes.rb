@@ -22,4 +22,6 @@ Rails.application.routes.draw do
     resources :avatar, only: [:show]
     post 'avatar', to: 'avatars#create', as: 'avatar_create'
   end
+
+  get 'god', to: 'gods#index', as: 'god'
 end
