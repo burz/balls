@@ -28,20 +28,28 @@
                 <td><%= format_ratio player.change_in_league_rating %></td>
                 <td><%= format_ratio player.change_in_season_rating %></td>
                 <td>
-                  <% for player in players[0..(players.size - 2)] %>
-                    <%= user_acronym player.user.name %>,
-                  <% end %>
                   <% if players.size > 1 %>
+                    <% if players.size > 2 %>
+                      <% for player in players[0..(players.size - 2)] %>
+                        <%= user_acronym player.user.name %>,
+                      <% end %>
+                    <% else %>
+                      <%= user_acronym players[0].user.name %>
+                    <% end %>
                     and
                   <% end %>
                   <%= user_acronym players[-1].user.name %>
                 </td>
               <% else %>
                 <td>
-                  <% for player in players[0..(players.size - 2)] %>
-                    <%= player.user.name %>,
-                  <% end %>
                   <% if players.size > 1 %>
+                    <% if players.size > 2 %>
+                      <% for player in players[0..(players.size - 2)] %>
+                        <%= player.user.name %>,
+                      <% end %>
+                    <% else %>
+                      <%= players[0].user.name %>
+                    <% end %>
                     and
                   <% end %>
                   <%= players[-1].user.name %>
