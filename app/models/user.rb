@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_one :god
   has_one :avatar
   has_many :league_memberships
   has_many :leagues, through: :league_memberships
