@@ -30,12 +30,12 @@ class League < ActiveRecord::Base
   end
 
   def user_ranking user
-    ratings.each_with_index do |rating, i|
+    ratings.where('league_ratings.games_played > 0').each_with_index do |rating, i|
       if rating.user_id == user.id
         return i + 1
       end
     end
-    -1
+    'Benchwarmer'
   end
 
   def user_games user
