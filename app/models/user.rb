@@ -14,6 +14,12 @@ class User < ActiveRecord::Base
   has_many :players
   has_many :games, through: :players
 
+  after_create :send_welcome_email
+
+  def send_welcome_email
+    WelcomeMailer.welcome_email(self).deliver_now
+  end
+
   def last_updated_league
     leagues.joins(:league_ratings).order('league_ratings.created_at DESC').first
   end

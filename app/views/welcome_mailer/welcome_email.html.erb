@@ -1,0 +1,13 @@
+<h3>Hello <%= @user.name %>, welcome to BallsApp!</h3>
+<p>
+  If this is your first time playing you can create a league
+  <%= link_to 'here', new_league_url %>.
+</p>
+<p>
+  Once you have a league you can invite your friends
+  <%= link_to 'here', invite_url %>.
+</p>
+<p>
+  And finally, you can log games
+  <%= link_to 'here', new_game_url %>.
+</p>
