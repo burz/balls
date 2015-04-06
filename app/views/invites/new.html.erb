@@ -2,18 +2,59 @@
   <center>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2>Invite to <%= @league.name %></h2>
+        <h2>Invite Players To <%= @league.name %></h2>
       </div>
       <div class="panel-body">
         <div id="email_alert" class="invite_alert alert alert-danger" role="alert">
           An email address must be entered
         </div>
         <div class="form-group">
-          <label for="email_address">Emails <i>(separated by commas)</label>
+          <label for="email_address">Emails <i>(separated by commas)</i></label>
           <input type="email" id="email_address" class="form-control" autofocus>
         </div>
-        <%= render template: 'leagues/invite_button' %>
+        <% if params[:new_league] %>
+          <p>
+            Note: You can add more players later by clicking the
+            "<span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+            &nbsp;Invite Players" button in the menu opened by clicking
+            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+            in the top right.
+          </p>
+        <% end %>
+        <div class="btn-group">
+          <% if params[:new_league] %>
+            <button id="skip_invites_button" type="button" class="btn btn-default btn-lg">
+              Skip
+            </button>
+          <% end %>
+          <button id="send_invite_button" type="button" class="btn btn-success btn-lg">
+            Send Invites
+          </button>
+        </div>
       </div>
     </div>
   </center>
+  <script>
+    $('#skip_invites_button').click(function () {
+      Turbolinks.visit('<%= league_path @league %>');
+    });
+    $('#send_invite_button').click(function () {
+      $('.invite_alert').hide();
+      if($('#email_address').val() != '') {
+        var emails = $('#email_address').val().split(',');
+        var count = emails.length;
+        start_spinner();
+        for(var i = 0; i < emails.length; ++i) {
+          var data = { invite: { email: emails[i].trim() } };
+          $.post('<%= league_invites_path @league %>', data, function () {
+            if(--count === 0) {
+              Turbolinks.visit('<%= league_admin_path @league %>');
+            }
+          });
+        }
+      } else {
+        $('#email_alert').show();
+      }
+    });
+  </script>
 </div>

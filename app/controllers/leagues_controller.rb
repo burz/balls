@@ -22,7 +22,7 @@ class LeaguesController < ApplicationController
     LeagueRating.create user: current_user, league: league,
                         rating: LEAGUE_START,
                         games_played: 0, wins: 0, losses: 0
-    render json: { path: league_path(league) }
+    render json: { path: new_league_invite_path(league, new_league: true) }
   end
 
   def admin
