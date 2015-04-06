@@ -45,6 +45,7 @@
                   <td>Name</td>
                   <td>Created At</td>
                   <td>Members</td>
+                  <td>Invites</td>
                   <td>Seasons</td>
                   <td>Games</td>
                 </tr>
@@ -55,6 +56,7 @@
                     <td><%= league.name %></td>
                     <td><%= format_date league.created_at %></td>
                     <td><%= league.users.count %></td>
+                    <td><%= league.invites.count %></td>
                     <td><%= league.seasons.count %></td>
                     <td><%= league.games.count %></td>
                   </tr>
