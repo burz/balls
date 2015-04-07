@@ -16,6 +16,7 @@
                   <td>Name</td>
                   <td>Email</td>
                   <td>Joined</td>
+                  <td>Last On</td>
                   <td>Leagues</td>
                   <td>Games</td>
                 </tr>
@@ -26,6 +27,7 @@
                     <td><%= user.name %></td>
                     <td><%= user.email %></td>
                     <td><%= format_date user.created_at %></td>
+                    <td><%= format_date user.last_sign_in_at %></td>
                     <td><%= user.leagues.count %></td>
                     <td><%= user.games.count %></td>
                   </tr>
