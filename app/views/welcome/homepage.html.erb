@@ -4,8 +4,6 @@
       <%= render template: 'common/user_entrance' %>
     </div>
   <% else %>
-    <div class="cd-scrolling-bg cd-color-2 box-shadow">
-      <div class="cd-container">
         <div class="row">
           <div id="info_pane" class="col-md-6">
             <%= render template: 'welcome/intro' %>
@@ -15,10 +13,10 @@
             <%= render template: 'common/user_entrance' %>
           </div>
         </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render template: 'welcome/example' %>
       </div>
-    </div>
-    <div class="cd-fixed-bg cd-bg-1"
-         style="background-image: url('<%= image_path 'ballsapp_example.png' %>');">
     </div>
   <% end %>
 </div>
