@@ -14,15 +14,17 @@
               <thead>
                 <tr>
                   <td>Name</td>
+                  <td>Email</td>
                   <td>Joined</td>
                   <td>Leagues</td>
-                  <td>Games Played</td>
+                  <td>Games</td>
                 </tr>
               </thead>
               <tbody>
                 <% for user in @god_users %>
                   <tr>
                     <td><%= user.name %></td>
+                    <td><%= user.email %></td>
                     <td><%= format_date user.created_at %></td>
                     <td><%= user.leagues.count %></td>
                     <td><%= user.games.count %></td>
@@ -43,7 +45,7 @@
               <thead>
                 <tr>
                   <td>Name</td>
-                  <td>Created At</td>
+                  <td>Created</td>
                   <td>Members</td>
                   <td>Invites</td>
                   <td>Seasons</td>
@@ -78,8 +80,8 @@
               <thead>
                 <tr>
                   <td>Name</td>
-                  <td>Created At</td>
-                  <td>End Date</td>
+                  <td>Created</td>
+                  <td>Ending</td>
                   <td>Games</td>
                 </tr>
               </thead>
@@ -106,8 +108,8 @@
             <table class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <td>Logged At</td>
-                  <td>Number Of Players</td>
+                  <td>Logged</td>
+                  <td>Players</td>
                   <td>Season</td>
                 </tr>
               </thead>
