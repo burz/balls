@@ -1,11 +1,11 @@
-#menu_button {
+#menu_button, #god_button {
   z-index: 30;
 }
 
 .navbar-brand {
     position: absolute;
-    width: 100%;
-    left: 0;
+    left: 40%;
+    right: 40%;
     top: 0;
     text-align: center;
     margin: auto;

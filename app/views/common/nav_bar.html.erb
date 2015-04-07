@@ -1,14 +1,23 @@
 <nav id="site_nav" class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
-    <ul class="nav navbar-nav navbar-left">
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
+      <ul class="nav navbar-nav navbar-left">
         <li>
           <a id="menu_button">
             <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
           </a>
         </li>
+      </ul>
+      <% if current_user.god %>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a id="god_button" href="<%= god_path %>">
+              <span class="glyphicon glyphicon-king" aria-hidden="true"></span>
+            </a>
+          </li>
+        </ul>
       <% end %>
-    </ul>
+    <% end %>
     <%= link_to 'BallsApp', root_path, class: 'navbar-brand' %>
   </div>
 </nav>
