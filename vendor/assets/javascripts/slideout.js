@@ -67,16 +67,52 @@ function Slideout(options) {
   this._initTouchEvents();
 
   // Init the change callbacks
-  this._callbacks = [];
+  this._beforeChangeCallbacks = [];
+  this._inChangeCallbacks = [];
+  this._changeCallbacks = [];
 }
 
 /**
- * Runs the change callbacks associated with the slideout
+ * Runs the beforechange callbacks associated with the slideout
  */
-Slideout.prototype._runCallbacks = function () {
-  for(var i = 0; i < this._callbacks.length; ++i) {
-    this._callbacks[i]();
+Slideout.prototype._runBeforeChangeCallbacks = function () {
+  for(var i = 0; i < this._beforeChangeCallbacks.length; ++i) {
+    this._beforeChangeCallbacks[i]();
   }
+};
+
+/**
+ * Runs the inchange callbacks associated with the slideout
+ */
+Slideout.prototype._runInChangeCallbacks = function () {
+  for(var i = 0; i < this._inChangeCallbacks.length; ++i) {
+    this._inChangeCallbacks[i]();
+  }
+};
+
+/**
+ * Runs the beforechange callbacks associated with the slideout
+ */
+Slideout.prototype._runChangeCallbacks = function () {
+  for(var i = 0; i < this._changeCallbacks.length; ++i) {
+    this._changeCallbacks[i]();
+  }
+};
+
+/**
+ * Stores callback functions that are called before the slideout
+ * changes state
+ */
+Slideout.prototype.beforechange = function (callback) {
+  this._beforeChangeCallbacks[this._beforeChangeCallbacks.length] = callback;
+};
+
+/**
+ * Stores callback functions that are called after the slideout
+ * begins changing state
+ */
+Slideout.prototype.inchange = function (callback) {
+  this._inChangeCallbacks[this._inChangeCallbacks.length] = callback;
 };
 
 /**
@@ -84,7 +120,7 @@ Slideout.prototype._runCallbacks = function () {
  * finishes changing state
  */
 Slideout.prototype.change = function (callback) {
-  this._callbacks[this._callbacks.length] = callback;
+  this._changeCallbacks[this._changeCallbacks.length] = callback;
 };
 
 /**
@@ -92,13 +128,14 @@ Slideout.prototype.change = function (callback) {
  */
 Slideout.prototype.open = function() {
   var self = this;
+  self._runInChangeCallbacks();
   if (html.className.search('slideout-open') === -1) { html.className += ' slideout-open'; }
   this._setTransition();
   this._translateXTo(this._padding);
   this._opened = true;
   setTimeout(function() {
     self.panel.style.transition = self.panel.style['-webkit-transition'] = '';
-    self._runCallbacks();
+    self._runChangeCallbacks();
   }, this._duration + 50);
   return this;
 };
@@ -108,6 +145,7 @@ Slideout.prototype.open = function() {
  */
 Slideout.prototype.close = function() {
   var self = this;
+  self._runInChangeCallbacks();
   if (!this.isOpen() && !this._opening) { return this; }
   this._setTransition();
   this._translateXTo(0);
@@ -115,7 +153,7 @@ Slideout.prototype.close = function() {
   setTimeout(function() {
     html.className = html.className.replace(/ slideout-open/, '');
     self.panel.style.transition = self.panel.style['-webkit-transition'] = '';
-    self._runCallbacks();
+    self._runChangeCallbacks();
   }, this._duration + 50);
   return this;
 };
@@ -181,6 +219,7 @@ Slideout.prototype._initTouchEvents = function() {
    * Resets values on touchstart
    */
   this.panel.addEventListener(touch.start, function(eve) {
+    self._runBeforeChangeCallbacks();
     self._moved = false;
     self._opening = false;
     self._startOffsetX = eve.touches[0].pageX;
@@ -209,7 +248,6 @@ Slideout.prototype._initTouchEvents = function() {
    * Translates panel on touchmove
    */
   this.panel.addEventListener(touch.move, function(eve) {
-
     if (scrolling || self._preventOpen) { return; }
 
     var dif_x = eve.touches[0].clientX - self._startOffsetX;
