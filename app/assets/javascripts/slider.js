@@ -6,6 +6,12 @@ function setup_admin_buttons () {
       left: icon_left - 20
     });
   });
+  $('.edit_user_button').each(function () {
+    $(this).offset({
+      top: $(this).offset().top,
+      left: icon_left
+    });
+  })
 }
 function slider_ready () {
   var slideout = new Slideout({

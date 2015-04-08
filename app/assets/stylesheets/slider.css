@@ -116,7 +116,7 @@ body {
   left: 225px;
 }
 
-.admin_menu_button {
+.admin_menu_button, .edit_user_button {
   left: 200px;
 }
 
