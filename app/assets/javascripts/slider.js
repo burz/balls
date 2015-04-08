@@ -48,9 +48,9 @@ function slider_ready () {
   var original_offset = $('#site_contents').offset();
   slideout.change(function () {
     if(!slideout.isOpen()) {
-     $('#panel').attr('style', '');
+      $('#panel').attr('style', '');
       $('#site_contents').offset(original_offset);
-     $(window).scrollTop(scroll_location);
+      $(window).scrollTop(scroll_location);
     }
   });
 }

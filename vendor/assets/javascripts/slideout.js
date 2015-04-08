@@ -162,6 +162,7 @@ Slideout.prototype.close = function() {
  * Toggles (open/close) slideout menu.
  */
 Slideout.prototype.toggle = function() {
+  this._runBeforeChangeCallbacks();
   return this.isOpen() ? this.close() : this.open();
 };
 
