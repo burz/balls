@@ -1,0 +1,22 @@
+<div id="edit_user_page">
+  <center>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1>Edit Your Information</h1>
+      </div>
+      <div class="panel-body">
+        <div id="edit_user_name_alert" class="alert alert-danger" role="alert" hidden>
+          Your name cannot be empty
+        </div>
+        <div class="form-group">
+          <%= form_for current_user, html: { id: 'edit_user_form' } do |f| %>
+            <%= f.label :name %>
+            <%= f.text_field :name, id: 'edit_user_name', class: 'form-control' %>
+            <br>
+            <%= f.submit 'Update', class: 'btn btn-success' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </center>
+</div>

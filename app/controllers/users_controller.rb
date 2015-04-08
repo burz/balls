@@ -19,4 +19,13 @@ class UsersController < ApplicationController
       { name: league.name, data: data }
     end
   end
+
+  def edit
+  end
+
+  def update
+    current_user.name = params[:user][:name]
+    current_user.save
+    redirect_to user_path(current_user)
+  end
 end

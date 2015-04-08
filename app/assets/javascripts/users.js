@@ -37,7 +37,6 @@ function users_ready () {
     }
     handle_buttons(children);
   });
-  $('#sign_up_name_alert').hide();
   $('#new_user').submit(function () {
     if($('#sign_up_name').val() != '') {
       goog_report_conversion(window.location.href);
@@ -63,6 +62,17 @@ function users_ready () {
     $('#league_ratings_graph').hide();
   }, 450);
   $('#error_explanation').addClass('alert alert-danger');
+  $('#edit_user_form').submit(function () {
+    $('#edit_user_name_alert').hide();
+    var name = $('#edit_user_name');
+    if(name.val() != '') {
+      name.val(name.val().trim());
+      return true;
+    } else {
+      $('#edit_user_name_alert').show();
+      return false;
+    }
+  });
 }
 $(document).ready(users_ready);
 $(document).on('page:load', users_ready);
