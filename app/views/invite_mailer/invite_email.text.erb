@@ -1,5 +1,3 @@
-Congratulations! <%= @subject %>
+<%= @user.name %> has invited you to join the <%= @league.name %> beer pong league. Click here to accept his invitation (<%= league_join_path @league, @token, email: @email %>). After you accept, log a game and get off the bench.
 
-Follow this link to join:
-
-<%= league_join_url @league, @token, email: @email %>
+BallsApp

@@ -1,6 +1,5 @@
-<h3>Congratulations! <%= @subject %></h3>
-<p>
-  Click
-  <%= link_to 'here', league_join_url(@league, @token, email: @email) %>
-  to join.
-</p>
+<%= @user.name %> has invited you to join the <%= @league.name %> beer pong league.
+Click <%= link_to 'here', league_join_url(@league, @token, email: @email) %> to accept
+his invitation. After you accept, log a game and get off the bench.
+
+<b>BallsApp</b>
