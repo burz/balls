@@ -6,6 +6,6 @@ class RatingsController < ApplicationController
   end
 
   def seasons
-    @seasons = current_user.seasons
+    @all_seasons = current_user.seasons
   end
 end

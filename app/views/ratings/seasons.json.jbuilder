@@ -1,4 +1,4 @@
-json.array! @seasons do |season|
+json.array! @all_seasons do |season|
   json.extract! season, :name, :created_at
   season_ratings = season.user_ratings current_user
   json.set! :data do

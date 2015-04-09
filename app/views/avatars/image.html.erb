@@ -22,7 +22,7 @@
               </h2>
             </div>
             <div class="modal-body">
-              <div id="avatar_file_alert" class="alert alert-danger" role="alert">
+              <div id="avatar_file_alert" class="alert alert-danger" role="alert" hidden>
                 No image file chosen.
               </div>
               <div class="row">
@@ -56,36 +56,5 @@
         </div>
       </center>
     </div>
-    <script>
-      $('#avatar_file_alert').hide();
-      $('#user_avatar_display').click(function () {
-        $('#user_avatar_upload_modal').modal('show');
-      });
-      function avatar_input (input) {
-        if(input.files && input.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (event_object) {
-            $('#new_avatar').attr('src', event_object.target.result);
-          };
-          reader.readAsDataURL(input.files[0]);
-        }
-      }
-      $('#new_user_avatar').change(function () {
-        $('#avatar_file_alert').hide();
-        avatar_input(this);
-      });
-      function send_avatar (input) {
-        if(input.files && input.files[0]) {
-          $('#user_avatar_form').submit();
-        } else {
-          $('#avatar_file_alert').show();
-        }
-      }
-      $('#save_avatar_button').click(function () {
-        $('#avatar_file_alert').hide();
-        start_spinner();
-        send_avatar($('#new_user_avatar')[0]);
-      });
-    </script>
   <% end %>
 <% end %>
