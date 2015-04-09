@@ -8,5 +8,3 @@ function graph_ready () {
   season_ratings_graph.loadGraph(season_ratings_data);
   $('#league_ratings_graph').hide();
 }
-$(document).ready(graph_ready);
-$(document).on('page:load', graph_ready);
