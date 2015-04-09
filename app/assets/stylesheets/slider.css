@@ -92,17 +92,6 @@ body {
   width: 100%;
 }
 
-.menu-section-list {
-  padding: 0;
-  margin: 10px 0;
-  list-style: none;
-}
-
-.menu-section-list a {
-  display: block;
-  padding: 10px 20px;
-}
-
 #log_game_button, #invite_player_button {
   border-bottom: 1px solid #2a2d2f;
 }
@@ -116,8 +105,8 @@ body {
   left: 225px;
 }
 
-.admin_menu_button, .edit_user_button {
-  left: 200px;
+.admin_menu_button, .edit_button {
+  left: 100px;
 }
 
 .menu-section-list a:hover {

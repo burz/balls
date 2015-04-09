@@ -9,7 +9,7 @@
       <span class="menu-header-title">
         <%= current_user.name %>
       </span>
-      <a class="edit_user_button" href="<%= edit_user_path current_user %>">
+      <a class="edit_button" href="<%= edit_user_path current_user %>">
         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
       </a>
     </header>
@@ -55,16 +55,19 @@
     <% end %>
   </section>
   <section class="menu-section">
-    <h3 class="menu-section-title">
+    <div class="menu-section-title">
       Seasons
-    </h3>
-    <ul class="menu-section-list">
-      <% for season in @all_seasons %>
-        <li>
-          <%= link_to season.name, league_season_path(season.league, season) %>
-        </li>
-      <% end %>
-    </ul>
+    </div>
+    <% for season in @all_seasons %>
+      <div class="league_menu_item">
+        <%= link_to season.name, league_season_path(season.league, season) %>
+        <% if current_user.admin? season.league %>
+          <a class="admin_menu_button">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+          </a>
+        <% end %>
+      </div>
+    <% end %>
   </section>
   <div id="sign_out_button" class="menu_link">
     <%= link_to destroy_user_session_path, method: :delete do %>
