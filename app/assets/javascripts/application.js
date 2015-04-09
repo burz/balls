@@ -4,8 +4,6 @@
 //= require bootstrap
 //= require slideout
 //= require spin
-//= require jsapi
-//= require chartkick
 //= require jquery.tipsy
 //= require d3
 //= require_tree .
