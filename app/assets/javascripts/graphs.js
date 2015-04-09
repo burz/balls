@@ -1,7 +1,7 @@
 function graph_ready () {
-  var margin = { top: 10, bottom: 40, left: 65, right: 20 };
+  var margin = { top: 10, bottom: 80, left: 65, right: 20 };
   var width = $('#graphs_container').width();
-  var height = 400;
+  var height = 450;
   var league_ratings_graph = new TimeGraph(margin, width, height, '#league_graph_canvas');
   league_ratings_graph.loadGraph(league_ratings_data);
   var season_ratings_graph = new TimeGraph(margin, width, height, '#season_graph_canvas');
