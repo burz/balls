@@ -48,7 +48,7 @@
         <%= link_to league.name, league_path(league) %>
         <% if current_user.admin? league %>
           <%= link_to league_admin_path(league), class: 'admin_menu_button' do %>
-            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
           <% end %>
         <% end %>
       </div>
