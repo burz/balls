@@ -1,3 +1,7 @@
+// The margin is an object with fields top, bottom, left, and right
+// The width is the overall width of the svg that will be appended
+// The height is the overall height of the svg that will be appended
+// The selector is the jQuery style tag to select the element to append the svg to
 function TimeGraph(margin, width, height, selector) {
   this.margin = margin;
   this.width = width - margin.left - margin.right;
@@ -9,17 +13,18 @@ function TimeGraph(margin, width, height, selector) {
   this.xAxis = d3.svg.axis().scale(this.x).orient('bottom');
   this.yAxis = d3.svg.axis().scale(this.y).orient('left');
   this.line = d3.svg.line().interpolate('basis')
-    .x(function (d) { return x(d.time); })
-    .y(function (d) { return y(d.value); });
+    .x(function (d) { return this.x(d.time); })
+    .y(function (d) { return this.y(d.value); });
   this.svg = d3.select(selector).append('svg')
     .attr('width', width).attr('height', height).append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 }
 TimeGraph.prototype.setDomain = function (data) {
+  var self = this;
   var times = [];
   data.forEach(function (d) {
     d.data.forEach(function (d) {
-      d.time = parseDate(d.created_at);
+      d.time = self.parseDate(d.created_at);
       times.push(d.time);
     });
   });
@@ -34,42 +39,41 @@ TimeGraph.prototype.setDomain = function (data) {
   ]);
 };
 TimeGraph.prototype.loadGraph = function (data) {
+  var self = this;
   var names = data.map(function (d) {
     return d.name;
   }).push("average");
-  this.color.domain(d3.keys(names));
-  setDomain(data);
-  this.svg.append("g").attr("class", "x axis")
-    .attr("transform", "translate(0," + (this.height + 10) + ")")
-    .call(this.xAxis);
-  this.svg.append("g").attr("class", "y axis")
+  self.color.domain(d3.keys(names));
+  self.setDomain(data);
+  self.svg.append("g").attr("class", "x axis")
+    .attr("transform", "translate(0," + (self.height + 10) + ")")
+    .call(self.xAxis);
+  self.svg.append("g").attr("class", "y axis")
     .attr("transform", "translate(-10, 0)")
-    .call(this.yAxis);
+    .call(self.yAxis);
   var nodes = [];
   data.forEach(function (v, i) {
-    if(i != 0 || average === undefined) {
-      var c = this.color(v.name);
-      svg.append("path")
-        .attr("d", this.line(v.data))
-        .attr("stroke", c)
-        .attr("stroke-width", 1)
-        .attr("fill", "none");
-      v.data.forEach(function (d) {
-        nodes.push({
-          name: v.name,
-          color: c,
-          data: d
-        });
+    var c = self.color(v.name);
+    self.svg.append("path")
+      .attr("d", self.line(v.data))
+      .attr("stroke", c)
+      .attr("stroke-width", 1)
+      .attr("fill", "none");
+    v.data.forEach(function (d) {
+      nodes.push({
+        name: v.name,
+        color: c,
+        data: d
       });
-    }
+    });
   });
-  var node = svg.selectAll(".node")
+  var node = self.svg.selectAll(".node")
     .data(nodes)
     .enter()
     .append("a")
     .attr("class", "node")
     .attr("transform", function (d) {
-      return "translate(" + this.x(d.data.time) + "," + this.y(d.data.value) + ")";
+      return "translate(" + self.x(d.data.time) + "," + self.y(d.data.value) + ")";
     });
   var circle = node.append("circle")
     .attr("stroke", "black")
@@ -85,18 +89,12 @@ TimeGraph.prototype.loadGraph = function (data) {
         return '<span style="font-size: 150%; color: ' +
                 d.color + ';">' + c + "</span>";
       };
-      var string = "<h4>" + dataColor(d.name) + "</h4>" +
-                   "Date: " + dataColor(date.toDateString()) +
-                   "<br>Time: " + dataColor(date.toTimeString()) +
-                   "<br>Value: " + dataColor(d.data.value);
-      if(d.data.notes === null) {
-        return string;
-      } else {
-        return string + '<br>Notes:<span style="font-size: 150%; color: ' +
-               d.color + ';"> ' + d.data.notes + "</span>";
-      }
+      return "<h4>" + dataColor(d.name) + "</h4>" +
+             "Date: " + dataColor(date.toDateString()) +
+             "<br>Time: " + dataColor(date.toTimeString()) +
+             "<br>Value: " + dataColor(d.data.value);
     }
-  })
+  });
 };
 TimeGraph.prototype.reloadGraph = function (data) {
   $(this.selector + ' svg g').empty();

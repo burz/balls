@@ -58,9 +58,7 @@ function users_ready () {
     $('#league_ratings_graph').show();
     $('#league_ratings_button').addClass('active');
   });
-  setTimeout(function () {
-    $('#league_ratings_graph').hide();
-  }, 450);
+  $('#league_ratings_graph').hide();
   $('#error_explanation').addClass('alert alert-danger');
   $('#edit_user_form').submit(function () {
     $('#edit_user_name_alert').hide();
