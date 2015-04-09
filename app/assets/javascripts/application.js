@@ -6,6 +6,8 @@
 //= require spin
 //= require jsapi
 //= require chartkick
+//= require jquery.tipsy
+//= require d3
 //= require_tree .
 
 function application_ready () {

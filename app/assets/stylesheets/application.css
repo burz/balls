@@ -2,6 +2,7 @@
  *= require_tree .
  *= require_self
  *= require bootstrap.min
+ *= require tipsy
  */
 
 body, html {
