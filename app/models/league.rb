@@ -21,12 +21,16 @@ class League < ActiveRecord::Base
     other_user == user
   end
 
-  def user_rating user
+  def user_ratings user
     user.leagues.joins(:league_ratings)
         .select('league_ratings.*')
         .where('league_ratings.user_id': user.id)
         .where('league_ratings.league_id': id)
-        .order('league_ratings.created_at DESC').first
+        .order('league_ratings.created_at DESC')
+  end
+
+  def user_rating user
+    user_ratings(user).first
   end
 
   def user_ranking user

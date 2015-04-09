@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   end
 
   get 'god', to: 'gods#index', as: 'god'
+
+  get 'ratings/leagues', to: 'ratings#leagues', as: 'league_ratings'
+  get 'ratings/seasons', to: 'ratings#seasons', as: 'season_ratings'
 end

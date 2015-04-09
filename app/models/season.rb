@@ -13,13 +13,17 @@ class Season < ActiveRecord::Base
          .select('users.name AS name, season_ratings.*')
   end
 
-  def user_rating user
+  def user_ratings user
     result = user.leagues.joins(seasons: :season_ratings)
                  .where('seasons.id': id)
                  .select('season_ratings.*')
                  .where('season_ratings.user_id': user.id)
                  .where('season_ratings.season_id': id)
-                 .order('season_ratings.created_at DESC').first
+                 .order('season_ratings.created_at DESC')
+  end
+
+  def user_rating user
+    user_ratings(user).first
   end
 
   def user_games user
