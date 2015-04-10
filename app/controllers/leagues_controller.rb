@@ -14,6 +14,7 @@ class LeaguesController < ApplicationController
   end
 
   def new
+    @league = League.new
   end
 
   def create
@@ -22,11 +23,21 @@ class LeaguesController < ApplicationController
     LeagueRating.create user: current_user, league: league,
                         rating: LEAGUE_START,
                         games_played: 0, wins: 0, losses: 0
-    render json: { path: new_league_invite_path(league, new_league: true) }
+    redirect_to new_league_invite_path(league, new_league: true)
+  end
+
+  def edit
+    @league = current_user.leagues.find params[:id]
+  end
+
+  def update
+    league = current_user.leagues.find params[:id]
+    league.update_attributes league_params
+    redirect_to league_path(league)
   end
 
   def admin
-    @league = League.find params[:league_id]
+    @league = current_user.leagues.find params[:league_id]
     @seasons = @league.seasons.order created_at: :desc
     @users = @league.users.order name: :asc
   end
@@ -49,6 +60,8 @@ class LeaguesController < ApplicationController
     @league = @leagues.find params[:league_id]
     @users = @league.users.order name: :asc
   end
+
+  protected
 
   def league_params
     params.require(:league).permit :name, :user_id

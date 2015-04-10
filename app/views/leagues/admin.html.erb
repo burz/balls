@@ -5,6 +5,15 @@
         <%= link_to @league.name, league_path(@league) %>
         Admin Page
       </h1>
+      <div id="admin_edit_button">
+        <a href="<%= edit_league_path @league %>">
+          <button class="btn btn-primary">
+            <h4>
+              <span class="glyphicon glyphicon-cog"></span>
+            </h4>
+          </button>
+        </a>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-6">

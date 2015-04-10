@@ -1,8 +1,10 @@
-<div id="new_league">
+<div id="edit_league">
   <center>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h1>Add League</h1>
+        <h1>
+          Edit League <%= link_to @league.name, league_path(@league) %>'s Information
+        </h1>
       </div>
       <div class="panel-body">
         <%= render 'leagues/form' %>

@@ -1,0 +1,9 @@
+<div id="league_name_alert" class="alert alert-danger" role="alert">
+  The league must have a name.
+</div>
+<%= form_for @league, html: { id: 'league_form', class: 'form-group' } do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+  <br>
+  <%= f.submit class: 'btn btn-success btn-lg' %>
+<% end %>

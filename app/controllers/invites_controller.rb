@@ -5,7 +5,7 @@ class InvitesController < ApplicationController
   before_action :load_leagues_and_seasons, except: [:join]
 
   def new
-    @league = @leagues.find params[:league_id]
+    @league = current_user.leagues.find params[:league_id]
   end
 
   def general_new
