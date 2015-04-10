@@ -3,6 +3,26 @@
     <div class="well">
       <h1>God Mode Enabled</h1>
     </div>
+    <div class="alert alert-warning" role="alert">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td>Users</td>
+            <td>Leagues</td>
+            <td>Seasons</td>
+            <td>Games</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= User.count %></td>
+            <td><%= League.count %></td>
+            <td><%= Season.count %></td>
+            <td><%= Game.count %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="row">
       <div class="col-md-6">
         <div class="panel panel-default">
