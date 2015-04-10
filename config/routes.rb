@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
+  get 'example', to: 'welcome#example', as: 'example'
+
   resources :leagues, only: [:show, :index, :new, :create, :edit, :update] do
     get 'admin'
     get 'admin/:user_id/toggle', to: 'leagues#create_admin', as: 'admin_toggle'
