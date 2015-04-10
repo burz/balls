@@ -8,7 +8,7 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @league = @leagues.find params[:id]
+    @league = League.find params[:id]
     @seasons = @league.seasons.order created_at: :desc
     load_league_players
   end
