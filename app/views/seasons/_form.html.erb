@@ -1,0 +1,35 @@
+<div id="season_name_alert" class="alert alert-danger new_season_alert" role="alert">
+  The season must have a name.
+</div>
+<div id="season_date_alert" class="alert alert-danger new_season_alert" role="alert">
+  The season must have an end date.
+</div>
+<div id="season_players_alert" class="alert alert-danger new_season_alert" role="alert">
+  The number of players per team must be greater than zero.
+</div>
+<div id="season_cups_alert" class="alert alert-danger new_season_alert" role="alert">
+  The number of cups per team must be greater than zero.
+</div>
+<div id="season_balls_alert" class="alert alert-danger new_season_alert" role="alert">
+  The number of balls must be greater than zero.
+</div>
+<%= form_for [@league, @season], html: { id: 'season_form', class: 'form-group' } do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.label :end_date %>
+  <%= f.date_field :end_date, class: 'form-control' %>
+  <%= f.label :players_per_team %>
+  <%= f.number_field :players_per_team, class: 'form-control' %>
+  <%= f.label :cups_per_team %>
+  <%= f.number_field :cups_per_team, class: 'form-control' %>
+  <%= f.label :number_of_balls %>
+  <%= f.number_field :number_of_balls, class: 'form-control' %>
+  <br>
+  <div id="extra_rules_panel" class="panel panel-warning">
+    <div id="extra_rules_heading" class="panel-heading">+ Additional Rules</div>
+    <div id="extra_rules_body" class="panel-body">
+      <%= f.text_area :additional_rules, class: 'form-control' %>
+    </div>
+  </div>
+  <%= f.submit class: 'btn btn-success btn-lg' %>
+<% end %>

@@ -1,8 +1,12 @@
-<div id="new_season">
+<div id="season_edit_page">
   <center>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h1>Add Season</h1>
+        <h1>
+          Edit Season
+          <%= link_to @season.name, league_season_path(@league, @season) %>'s
+          Information
+        </h1>
       </div>
       <div class="panel-body">
         <%= render 'seasons/form' %>

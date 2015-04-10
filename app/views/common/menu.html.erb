@@ -62,7 +62,8 @@
       <div class="league_menu_item">
         <%= link_to season.name, league_season_path(season.league, season) %>
         <% if current_user.admin? season.league %>
-          <a class="admin_menu_button">
+          <a class="admin_menu_button"
+             href="<%= edit_league_season_path season.league, season %>">
             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
           </a>
         <% end %>

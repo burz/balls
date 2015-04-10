@@ -2,7 +2,7 @@ class SeasonsController < ApplicationController
   include Constants
 
   before_action :authenticate_user!
-  before_action :load_leagues_and_seasons, except: [:create]
+  before_action :load_leagues_and_seasons
 
   def index
     @league = current_user.leagues.find params[:league_id]
@@ -17,6 +17,7 @@ class SeasonsController < ApplicationController
 
   def new
     @league = current_user.leagues.find params[:league_id]
+    @season = Season.new
   end
 
   def create
@@ -25,8 +26,21 @@ class SeasonsController < ApplicationController
       SeasonRating.create user: user, season: season, rating: SEASON_START,
                           games_played: 0, wins: 0, losses: 0
     end
-    render nothing: true
+    redirect_to league_season_path(season.league, season)
   end
+
+  def edit
+    @league = current_user.leagues.find params[:league_id]
+    @season = current_user.seasons.find params[:id]
+  end
+
+  def update
+    season = current_user.seasons.find params[:id]
+    season.update_attributes season_params
+    redirect_to league_season_path(season.league, season)
+  end
+
+  protected
 
   def season_params
     new_params = params.require(:season).permit :name, :end_date, :players_per_team,
