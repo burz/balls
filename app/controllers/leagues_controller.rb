@@ -57,7 +57,7 @@ class LeaguesController < ApplicationController
   end
 
   def players
-    @league = @leagues.find params[:league_id]
+    @league = current_user.leagues.find params[:league_id]
     @users = @league.users.order name: :asc
   end
 
