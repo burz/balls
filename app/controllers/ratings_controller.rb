@@ -2,10 +2,12 @@ class RatingsController < ApplicationController
   before_action :authenticate_user!
 
   def leagues
-    @user_leagues = current_user.leagues
+    @user = current_user
+    @user_leagues = @user.leagues
   end
 
   def seasons
-    @user_seasons = current_user.seasons
+    @user = current_user
+    @user_seasons = @user.seasons
   end
 end
