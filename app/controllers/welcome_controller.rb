@@ -1,5 +1,4 @@
 class WelcomeController < ApplicationController
-  before_action :authenticate_user!, only: [:example]
   before_action :load_leagues_and_seasons
 
   def index
