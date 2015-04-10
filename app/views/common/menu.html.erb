@@ -1,87 +1,87 @@
-<% if user_signed_in? %>
-  <%= link_to user_path(current_user) do %>
-    <header class="menu-header"
-      <% if current_user.avatar.nil? %>
-        style="background: url('<%= image_path 'ballsapp_logo_icon.jpg' %>') no-repeat 15px 15px;">
-      <% else %>
-        style="background: url('<%= current_user.avatar.image.icon.url %>') no-repeat 15px 15px;">
-      <% end %>
-      <span class="menu-header-title">
-        <%= current_user.name %>
-      </span>
-      <a class="edit_button" href="<%= edit_user_path current_user %>">
-        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-      </a>
-    </header>
-  <% end %>
-  <% if @all_seasons.size > 0 %>
-    <div id="log_game_button" class="menu_link">
-      <%= link_to new_game_path do %>
-        <header>
-          <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-          <span class="menu_label">Log game</span>
-        </header>
-      <% end %>
-    </div>
-  <% end %>
-  <% if @leagues.size > 0 %>
-    <div id="invite_player_button" class="menu_link">
-      <%= link_to invite_path do %>
-        <header>
-          <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-          <span class="menu_label">Invite Players</span>
-        </header>
-      <% end %>
-    </div>
-  <% end %>
-  <section class="menu-section">
-    <div class="menu-section-title">
-      <%= link_to leagues_path do %>
-        Leagues
-      <% end %>
-      <%= link_to new_league_path, id: 'new_league_button' do %>
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-      <% end %>
-    </div>
-    <% for league in @leagues %>
-      <div class="league_menu_item">
-        <%= link_to league.name, league_path(league) %>
-        <% if current_user.admin? league %>
-          <%= link_to league_admin_path(league), class: 'admin_menu_button' do %>
-            <span class="glyphicon glyphicon-king" aria-hidden="true"></span>
-          <% end %>
-        <% end %>
-      </div>
+<%= link_to user_path(current_user) do %>
+  <header class="menu-header"
+    <% if current_user.avatar.nil? %>
+      style="background: url('<%= image_path 'ballsapp_logo_icon.jpg' %>') no-repeat 15px 15px;">
+    <% else %>
+      style="background: url('<%= current_user.avatar.image.icon.url %>') no-repeat 15px 15px;">
     <% end %>
-  </section>
-  <section class="menu-section">
-    <div class="menu-section-title">
-      Seasons
-    </div>
-    <% for season in @all_seasons %>
-      <div class="league_menu_item">
-        <%= link_to season.name, league_season_path(season.league, season) %>
-        <% if current_user.admin? season.league %>
-          <a class="admin_menu_button"
-             href="<%= edit_league_season_path season.league, season %>">
-            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-          </a>
-        <% end %>
-      </div>
-    <% end %>
-  </section>
-  <div id="sign_out_button" class="menu_link">
-    <%= link_to destroy_user_session_path, method: :delete do %>
+    <span class="menu-header-title">
+      <%= current_user.name %>
+    </span>
+    <a class="edit_button" href="<%= edit_user_path current_user %>">
+      <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+    </a>
+  </header>
+<% end %>
+<% if @all_seasons.size > 0 %>
+  <div id="log_game_button" class="menu_link">
+    <%= link_to new_game_path do %>
       <header>
-        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-        <span class="menu_label">Sign out</span>
+        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+        <span class="menu_label">Log game</span>
       </header>
     <% end %>
   </div>
-<% else %>
-  <section class="menu-section">
-    <h3 class="menu-section-title">
-      Please sign in first...
-    </h3>
-  </section>
 <% end %>
+<% if @leagues.size > 0 %>
+  <div id="invite_player_button" class="menu_link">
+    <%= link_to invite_path do %>
+      <header>
+        <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+        <span class="menu_label">Invite Players</span>
+      </header>
+    <% end %>
+  </div>
+<% end %>
+<section class="menu-section">
+  <div class="menu-section-title">
+    <%= link_to leagues_path do %>
+      Leagues
+    <% end %>
+    <%= link_to new_league_path, id: 'new_league_button' do %>
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    <% end %>
+  </div>
+  <% for league in @leagues %>
+    <div class="league_menu_item">
+      <%= link_to league.name, league_path(league) %>
+      <% if current_user.admin? league %>
+        <%= link_to league_admin_path(league), class: 'admin_menu_button' do %>
+          <span class="glyphicon glyphicon-king" aria-hidden="true"></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</section>
+<section id="sections_list" class="menu-section">
+  <div class="menu-section-title">
+    Seasons
+  </div>
+  <% for season in @all_seasons %>
+    <div class="league_menu_item">
+      <%= link_to season.name, league_season_path(season.league, season) %>
+      <% if current_user.admin? season.league %>
+        <a class="admin_menu_button"
+           href="<%= edit_league_season_path season.league, season %>">
+          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+        </a>
+      <% end %>
+    </div>
+  <% end %>
+</section>
+<section id="instructions_button" class="menu_link">
+  <a>
+    <header>
+      <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+      <span class="menu_label">Instructions</span>
+    </header>
+  </a>
+</section>
+<section id="sign_out_button" class="menu_link">
+  <%= link_to destroy_user_session_path, method: :delete do %>
+    <header>
+      <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+      <span class="menu_label">Sign out</span>
+    </header>
+  <% end %>
+</section>

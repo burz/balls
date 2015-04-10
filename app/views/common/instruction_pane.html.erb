@@ -1,0 +1,30 @@
+<div class="modal fade" id="instructions_modal" tabindex="-1" role="dialog"
+     aria-labelledby="instructions_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <center>
+          <h4 class="modal-title" id="instructions_label">Instructions</h4>
+        </center>
+      </div>
+      <div class="modal-body">
+        <% if params[:new_user] %>
+          <div class="alert alert-danger" role="alert">
+            <b></b> You can open this again later by pressing the
+            "<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+            &nbsp;Instructions" button in the side bar opended by clicking
+            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+            in the top left.
+          </div>
+        <% end %>
+        <%= render 'common/instructions' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

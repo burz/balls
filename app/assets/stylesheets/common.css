@@ -10,3 +10,7 @@
     text-align: center;
     margin: auto;
 }
+
+.underlined {
+  text-decoration: underline;
+}

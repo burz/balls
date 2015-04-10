@@ -92,7 +92,7 @@ body {
   width: 100%;
 }
 
-#log_game_button, #invite_player_button {
+#log_game_button, #invite_player_button, #instructions_button {
   border-bottom: 1px solid #2a2d2f;
 }
 
@@ -107,6 +107,10 @@ body {
 
 .admin_menu_button, .edit_button {
   left: 100px;
+}
+
+#sections_list {
+  margin-bottom: 0px;
 }
 
 .menu-section-list a:hover {

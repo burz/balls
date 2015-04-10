@@ -53,4 +53,9 @@ function slider_ready () {
       $(window).scrollTop(scroll_location);
     }
   });
+  $('#instructions_button').click(function () {
+    setTimeout(function () {
+      $('#instructions_modal').modal();
+    }, 400);
+  });
 }
