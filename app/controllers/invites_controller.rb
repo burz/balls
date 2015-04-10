@@ -39,20 +39,24 @@ class InvitesController < ApplicationController
       else
         if league.users.where(id: current_user).first != nil
           flash[:notice] = 'You are already a member of "' + league.name + '"'
-          Invite.destroy invite
+          invite.destroy
           redirect_to controller: :leagues, action: :show, id: league
         else
           LeagueMembership.create user: current_user, league: league, admin: false
           LeagueRating.create user: current_user, league: league,
                               rating: LEAGUE_START,
                               games_played: 0, wins: 0, losses: 0
-          Invite.destroy invite
+          invite.destroy
           league.seasons.each do |season|
             SeasonRating.create user: current_user, season: season,
                                 rating: SEASON_START,
                                 games_played: 0, wins: 0, losses: 0
           end
-          redirect_to controller: :leagues, action: :show, id: league
+          if params[:new_user]
+            redirect_to controller: :leagues, action: :show, id: league, new_user: true
+          else
+            redirect_to controller: :leagues, action: :show, id: league
+          end
         end
       end
     end
