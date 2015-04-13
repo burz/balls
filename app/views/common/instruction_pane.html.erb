@@ -12,15 +12,12 @@
       </div>
       <div class="modal-body">
         <% if params[:new_user] %>
-          <div class="alert alert-danger" role="alert">
-            <b></b> You can open this again later by pressing the
-            "<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
-            &nbsp;Instructions" button in the side bar opended by clicking
-            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-            in the top left.
-          </div>
+          <%= render 'common/new_user_blurb' %>
         <% end %>
         <%= render 'common/instructions' %>
+        <% if params[:new_user] %>
+          <%= render 'common/new_user_blurb' %>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

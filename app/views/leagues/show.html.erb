@@ -83,7 +83,10 @@
           </div>
           <div class="panel-body">
             <% if @seasons.size == 0 and current_user.admin? @league %>
-              <%= render template: 'seasons/add_button' %>
+              <button id="add_season_button" type="button" class="btn btn-success btn-lg"
+                      season_path="<%= new_league_season_path @league %>">
+                Create A Season
+              </button>
             <% end %>
             <% for season in @seasons %>
               <div class="panel panel-success">
