@@ -22,7 +22,7 @@
       <% end %>
       <div class="btn-group">
         <% if params[:new_league] %>
-          <%= link_to url_for(league_path @league) do %>
+          <%= link_to league_path(@league) do %>
             <button id="skip_invites_button" type="button" class="btn btn-default btn-lg">
               Skip
             </button>
