@@ -3,7 +3,7 @@ module RoutingFilter
 
     def around_recognize(path, env, &block)
       client = nil
-      path.sub! %r(^/([a-zA-Z]{3})(?=/|$)) do client = $1; '/' end
+      path.sub! %r(^/([a-zA-Z]{3})(?=/|$)) do client = $1; '' end
       yield.tap do |params|
         params[:client] = client || 'web'
       end
