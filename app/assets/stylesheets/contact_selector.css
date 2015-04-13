@@ -4,8 +4,9 @@
   overflow-x: hidden !important;
 }
 
-#contacts_pane, .custom-combobox {
+.custom-combobox {
   max-width: 100%;
+  text-align: left;
 }
 
 .custom-combobox {
@@ -30,14 +31,11 @@
   left: -15px;
   margin: 0 !important;
   padding: 5px 10px !important;
+  background-color: white !important;
 }
 
 .contact .glyphicon-remove {
   float: right;
   cursor: pointer;
   color: red;
-}
-
-#contacts_pane {
-  text-align: left;
 }

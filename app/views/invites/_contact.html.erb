@@ -1,31 +1,25 @@
-<div id="invite_contacts"
-     league_path="<%= url_for league_path(@league) %>"
-     league_generate_invite_path="<%= url_for league_generate_invite_path(@league) %>">
-  <center>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h1>
-          Invite Contacts To <%= link_to @league.name, league_path(@league) %>
-        </h1>
-      </div>
-      <div class="panel-body">
-        <div id="selected_contacts" class="alert alert-success" role="alert">
-          <h3>Selected Contacts</h3>
-          <ul id="selected_contact_list" class="list-group"></ul>
-        </div>
-        <div class="row">
-          <button id="send_contact_invites" class="btn btn-lg btn-success" type="button">
-            Send Invites
-          </button>
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="contact_list">Add Contact From Phone</label>&nbsp;
-          <select id="contact_list" class="form-control">
-            <option value="">Select a contact...</option>
-          </select>
-        </div>
+<center>
+  <div id="invite_contacts" class="well"
+       league_path="<%= url_for league_path(@league) %>"
+       league_generate_invite_path="<%= url_for league_generate_invite_path(@league) %>">
+    <div class="row">
+      <div class="col-md-12">
+    <div class="form-group">
+      <label for="contact_list">Add Contact From Phone</label>&nbsp;
+      <div id="contact_pane">
+        <select id="contact_list" class="form-control">
+          <option value="">Select a contact...</option>
+        </select>
       </div>
     </div>
-  </center>
-</div>
+    <div id="selected_contacts" class="alert alert-success" role="alert">
+      <h3>Selected Contacts</h3>
+      <ul id="selected_contact_list" class="list-group"></ul>
+    </div>
+    <button id="send_contact_invites" class="btn btn-lg btn-success" type="button">
+      Send Invites
+    </button>
+    </div>
+    </div>
+  </div>
+</center>
