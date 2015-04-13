@@ -5,12 +5,17 @@ Rails.application.routes.draw do
 
   get 'example', to: 'welcome#example', as: 'example'
 
-  resources :leagues, only: [:show, :index, :new, :create, :edit, :update] do
+  resources :leagues do
     get 'admin'
     get 'admin/:user_id/toggle', to: 'leagues#create_admin', as: 'admin_toggle'
+
     get 'players'
+
     resources :invites, only: [:new, :create]
+    get 'invite/generate', to: 'invites#generate', as: 'generate_invite'
+    get 'invite/contacts', to: 'invites#contacts', as: 'invite_contacts'
     get 'join/:token', to: 'invites#join', as: 'join'
+
     resources :seasons, only: [:show, :index, :new, :create, :edit, :update] do
       resources :games, only: [:show, :create]
     end

@@ -39,6 +39,11 @@ function send_invite () {
     $('#email_alert').show();
   }
 }
+function add_contact (name, number) {
+  $('#contact_list').append(
+    '<li phone_number="' + number + '" class="contact list-group-item">' + name + '</li>'
+  );
+}
 function invites_ready () {
   $('.invite_alert').hide();
   $('#create_new_player_invite').click(create_new_player_invite);

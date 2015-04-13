@@ -1,7 +1,7 @@
 class Season < ActiveRecord::Base
   belongs_to :league
-  has_many :games
-  has_many :season_ratings
+  has_many :games, dependent: :destroy
+  has_many :season_ratings, dependent: :destroy
 
   def ratings
     inner = 'SELECT MAX(season_ratings.created_at) FROM season_ratings '

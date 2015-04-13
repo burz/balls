@@ -7,6 +7,15 @@
         </h1>
       </div>
       <div class="panel-body">
+        <% if @league.games.count == 0 %>
+          <%= link_to league_path(@league), method: :delete do %>
+            <button class="btn btn-lg btn-danger">
+              Delete League
+            </button>
+          <% end %>
+          <br>
+          <br>
+        <% end %>
         <%= render 'leagues/form' %>
       </div>
     </div>

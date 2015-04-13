@@ -1,11 +1,11 @@
 class League < ActiveRecord::Base
   belongs_to :user
-  has_many :league_memberships
+  has_many :league_memberships, dependent: :destroy
   has_many :users, through: :league_memberships
-  has_many :invites
-  has_many :seasons
+  has_many :invites, dependent: :destroy
+  has_many :seasons, dependent: :destroy
   has_many :games, through: :seasons
-  has_many :league_ratings
+  has_many :league_ratings, dependent: :destroy
 
   def ratings
     inner = 'SELECT MAX(league_ratings.created_at) FROM league_ratings '
