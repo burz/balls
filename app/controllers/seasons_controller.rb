@@ -26,7 +26,7 @@ class SeasonsController < ApplicationController
       SeasonRating.create user: user, season: season, rating: SEASON_START,
                           games_played: 0, wins: 0, losses: 0
     end
-    redirect_to league_season_path(season.league, season)
+    redirect_to url_for(league_season_path season.league, season), turbolinks: true
   end
 
   def edit
@@ -37,7 +37,7 @@ class SeasonsController < ApplicationController
   def update
     season = current_user.seasons.find params[:id]
     season.update_attributes season_params
-    redirect_to league_season_path(season.league, season)
+    redirect_to url_for(league_season_path season.league, season), turbolinks: true
   end
 
   protected

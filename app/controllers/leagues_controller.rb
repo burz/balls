@@ -23,7 +23,7 @@ class LeaguesController < ApplicationController
     LeagueRating.create user: current_user, league: league,
                         rating: LEAGUE_START,
                         games_played: 0, wins: 0, losses: 0
-    redirect_to new_league_invite_path(league, new_league: true)
+    redirect_to url_for(new_league_invite_path league, new_league: true), turbolinks: true
   end
 
   def edit
@@ -33,7 +33,7 @@ class LeaguesController < ApplicationController
   def update
     league = current_user.leagues.find params[:id]
     league.update_attributes league_params
-    redirect_to league_path(league)
+    redirect_to url_for(league_path league), turbolinks: true
   end
 
   def admin

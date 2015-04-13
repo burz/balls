@@ -7,7 +7,7 @@ class AvatarsController < ApplicationController
       avatar.destroy
     end
     Avatar.create avatar_params
-    redirect_to user_path(current_user)
+    redirect_to url_for(user_path current_user), turbolinks: true
   end
 
   def avatar_params

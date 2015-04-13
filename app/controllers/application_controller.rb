@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
+
   protect_from_forgery with: :exception
 
   before_action :set_web_client

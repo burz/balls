@@ -22,7 +22,7 @@ class InvitesController < ApplicationController
   def forward_user?
     if not user_signed_in?
       session['user_return_to'] = request.fullpath
-      redirect_to new_user_session_path(email: params[:email]), turbolinks: true
+      redirect_to url_for(new_user_session_path email: params[:email]), turbolinks: true
       true
     else
       false
@@ -35,12 +35,12 @@ class InvitesController < ApplicationController
       league = invite.league
       if invite.nil?
         flash[:notice] = 'The token has expired'
-        redirect_to controller: :welcome, action: :index
+        redirect_to url_for(root_path), turbolinks: true
       else
         if league.users.where(id: current_user).first != nil
           flash[:notice] = 'You are already a member of "' + league.name + '"'
           invite.destroy
-          redirect_to controller: :leagues, action: :show, id: league
+          redirect_to url_for(league_path league), turbolinks: true
         else
           LeagueMembership.create user: current_user, league: league, admin: false
           LeagueRating.create user: current_user, league: league,
@@ -53,9 +53,9 @@ class InvitesController < ApplicationController
                                 games_played: 0, wins: 0, losses: 0
           end
           if params[:new_user]
-            redirect_to controller: :leagues, action: :show, id: league, new_user: true
+            redirect_to url_for(league_path league, new_user: true), turbolinks: true
           else
-            redirect_to controller: :leagues, action: :show, id: league
+            redirect_to url_for(league_path league), turbolinks: true
           end
         end
       end

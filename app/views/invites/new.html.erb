@@ -23,9 +23,11 @@
         <% end %>
         <div class="btn-group">
           <% if params[:new_league] %>
-            <button id="skip_invites_button" type="button" class="btn btn-default btn-lg">
-              Skip
-            </button>
+            <%= link_to url_for(league_path @league) do %>
+              <button id="skip_invites_button" type="button" class="btn btn-default btn-lg">
+                Skip
+              </button>
+            <% end %>
           <% end %>
           <button id="send_invite_button" type="button" class="btn btn-success btn-lg">
             Send Invites
@@ -35,9 +37,6 @@
     </div>
   </center>
   <script>
-    $('#skip_invites_button').click(function () {
-      Turbolinks.visit('<%= league_path @league %>');
-    });
     $('#send_invite_button').click(function () {
       $('.invite_alert').hide();
       if($('#email_address').val() != '') {
@@ -46,9 +45,9 @@
         start_spinner();
         for(var i = 0; i < emails.length; ++i) {
           var data = { invite: { email: emails[i].trim() } };
-          $.post('<%= league_invites_path @league %>', data, function () {
+          $.post('<%= url_for league_invites_path(@league) %>', data, function () {
             if(--count === 0) {
-              Turbolinks.visit('<%= league_admin_path @league %>');
+              Turbolinks.visit('<%= url_for league_admin_path(@league) %>');
             }
           });
         }

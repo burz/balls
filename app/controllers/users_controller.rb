@@ -16,6 +16,6 @@ class UsersController < ApplicationController
   def update
     current_user.name = params[:user][:name]
     current_user.save
-    redirect_to user_path(current_user)
+    redirect_to url_for(user_path current_user), turbolinks: true
   end
 end
