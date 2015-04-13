@@ -17,6 +17,10 @@
               <option value="<%= league.id %>"><%= league.name %></option>
             <% end %>
           </select>
+          <label for="contact_list">Add Contact From Phone</label>&nbsp;
+          <select id="contact_list" class="form-control">
+            <option value="">Select a contact...</option>
+          </select>
           <br>
           <div id="selected_contacts" class="alert alert-success" role="alert">
             <h3>Selected Contacts</h3>
@@ -28,11 +32,6 @@
               Send Invites
             </button>
           </div>
-          <br>
-          <label for="contact_list">Add Contact From Phone</label>&nbsp;
-          <select id="contact_list" class="form-control">
-            <option value="">Select a contact...</option>
-          </select>
         </div>
       </div>
     </div>
