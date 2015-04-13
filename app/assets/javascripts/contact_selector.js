@@ -10,7 +10,7 @@
       var selected = this.element.children(':selected');
       var value = selected.val() ? selected.text() : '';
       this.input = $('<input>').appendTo(this.wrapper).val(value).attr('title', '')
-        .addClass('custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left')
+        .addClass('custom-combobox-input ui-widget ui-widget-content ui-corner-left')
         .autocomplete({
           delay: 0,
           minLength: 0,
@@ -24,6 +24,13 @@
           this._trigger('select', event, {
             item: ui.item.option
           });
+          var selected_contact = ui.item.option;
+          if(selected_contact.value != '') {
+            add_selected_contact(selected_contact.text, selected_contact.value);
+          }
+          setTimeout(function () {
+            $('.custom-combobox input').val('');
+          }, 500);
         },
         autocompletechange: '_removeIfInvalid'
       });
@@ -34,7 +41,7 @@
       $('<a>').attr('tabIndex', -1).attr('title', 'Show All Items').tooltip()
         .appendTo(this.wrapper).button({
           icons: {
-            primary: 'glyphicon glyphicon-plus'
+            primary: 'ui-icon-triangle-1-s'
           },
           text: false
         }).removeClass('ui-corner-all').addClass('custom-combobox-toggle ui-corner-right')
@@ -93,9 +100,12 @@ function add_contact (name, number) {
   $('#contact_list').append('<option value="' + number + '">' + name + '</li>');
 }
 function add_selected_contact (name, number) {
-  $('#selected_contact_list').append(
-    '<li phone_number="' + number + '" class="contact list-group-item">' + name + '</li>'
-  );
+  var remove_button = $('<span class="glyphicon glyphicon-remove" aria-hidden="true">');
+  $('<li phone_number="' + number + '" class="contact list-group-item">' + name + '</li>')
+    .append(remove_button).appendTo($('#selected_contact_list'));
+  remove_button.click(function () {
+    this.parentElement.remove();
+  });
 }
 function contact_selector_ready () {
   $('#contact_list').combobox();

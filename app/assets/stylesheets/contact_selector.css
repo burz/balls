@@ -1,4 +1,11 @@
+.ui-autocomplete {
+  max-height: 100px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
 .custom-combobox {
+  width: 90%;
   position: relative !important;
   display: inline-block !important;
 }
@@ -12,6 +19,13 @@
 }
 
 .custom-combobox-input {
+  width: 100%;
   margin: 0 !important;
   padding: 5px 10px !important;
+}
+
+.contact .glyphicon-remove {
+  float: right;
+  cursor: pointer;
+  color: red;
 }
