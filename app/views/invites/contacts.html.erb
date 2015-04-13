@@ -9,11 +9,22 @@
         </h1>
       </div>
       <div class="panel-body">
-        <button id="send_contact_invites" class="btn btn-lg btn-success" type="button">
-          Send Invites
-        </button>
-        <ul id="invited_contact_list" class="list-group"></ul>
-        <ul id="contact_list" class="list-group"></ul>
+        <div id="selected_contacts" class="alert alert-success" role="alert">
+          <h3>Selected Contacts</h3>
+          <ul id="selected_contact_list" class="list-group"></ul>
+        </div>
+        <div class="row">
+          <button id="send_contact_invites" class="btn btn-lg btn-success" type="button">
+            Send Invites
+          </button>
+        </div>
+        <br>
+        <div class="form-group">
+        <label for="contact_list">Add Contact</label>
+        <select id="contact_list" class="form-control">
+          <option value="">Select a contact...</option>
+        </select>
+        </div>
       </div>
     </div>
   </center>

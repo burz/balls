@@ -6,6 +6,7 @@
 //= require spin
 //= require jquery.tipsy
 //= require d3
+//= require jquery-ui
 //= require_tree .
 
 function application_ready () {

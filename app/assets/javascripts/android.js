@@ -10,7 +10,7 @@ function send_contact_invites_android () {
       }
     });
   };
-  $('#invited_contact_list').children().each(function (i, contact) {
+  $('#selected_contact_list').children().each(function (i, contact) {
     send_invite_android(contact.getAttribute('phone_number'));
   });
 }
@@ -19,5 +19,6 @@ function load_contacts_android () {
 }
 function android_ready () {
   load_contacts_android();
+  contact_selector_ready();
   $('#send_contact_invites').click(send_contact_invites_android);
 }
