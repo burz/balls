@@ -6,13 +6,13 @@
         Admin Page
       </h1>
       <div id="admin_edit_button">
-        <a href="<%= edit_league_path @league %>">
+        <%= link_to edit_league_path(@league) do %>
           <button class="btn btn-primary">
             <h4>
               <span class="glyphicon glyphicon-cog"></span>
             </h4>
           </button>
-        </a>
+        <% end %>
       </div>
     </div>
     <div class="row">

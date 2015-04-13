@@ -8,9 +8,9 @@
     <span class="menu-header-title">
       <%= current_user.name %>
     </span>
-    <a class="edit_button" href="<%= edit_user_path current_user %>">
+    <%= link_to edit_user_path(current_user), class: 'edit_button' do %>
       <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-    </a>
+    <% end %>
   </header>
 <% end %>
 <% if @all_seasons.size > 0 %>
@@ -61,10 +61,10 @@
     <div class="league_menu_item">
       <%= link_to season.name, league_season_path(season.league, season) %>
       <% if current_user.admin? season.league %>
-        <a class="admin_menu_button"
-           href="<%= edit_league_season_path season.league, season %>">
+        <%= link_to edit_league_season_path(season.league, season),
+                    class: 'admin_menu_button' do %>
           <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-        </a>
+        <% end %>
       <% end %>
     </div>
   <% end %>

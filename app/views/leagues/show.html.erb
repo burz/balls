@@ -25,9 +25,11 @@
                   <% i = 1 %>
                   <% for rating in @league_players %>
                     <% if current_user.id == rating.user_id %>
-                      <tr class="user_row current_user_row" user_path="<%= user_path rating.user_id %>">
+                      <tr class="user_row current_user_row"
+                          user_path="<%= url_for user_path(rating.user_id) %>">
                     <% else %>
-                      <tr class="user_row" user_path="<%= user_path rating.user_id %>">
+                      <tr class="user_row"
+                          user_path="<%= url_for user_path(rating.user_id) %>">
                     <% end %>
                       <td><%= i %></td>
                       <% i = i + 1 %>
@@ -60,9 +62,11 @@
                 <tbody>
                   <% for rating in @league_benchwarmers %>
                     <% if current_user.id == rating.user_id %>
-                      <tr class="user_row current_user_row" user_path="<%= user_path rating.user_id %>">
+                      <tr class="user_row current_user_row"
+                          user_path="<%= url_for user_path(rating.user_id) %>">
                     <% else %>
-                      <tr class="user_row" user_path="<%= user_path rating.user_id %>">
+                      <tr class="user_row"
+                          user_path="<%= url_for user_path(rating.user_id) %>">
                     <% end %>
                       <td><%= rating.name %></td>
                       <td><%= rating.rating %></td>
@@ -114,10 +118,10 @@
                         <% if rating.games_played > 0 %>
                           <% if current_user.id == rating.user_id %>
                             <tr class="user_row current_user_row"
-                                user_path="<%= user_path rating.user_id %>">
+                                user_path="<%= url_for user_path(rating.user_id) %>">
                           <% else %>
                             <tr class="user_row"
-                                user_path="<%= user_path rating.user_id %>">
+                                user_path="<%= url_for user_path(rating.user_id) %>">
                           <% end %>
                             <td><%= i %></td>
                             <% i = i + 1 %>

@@ -11,7 +11,7 @@ function create_new_player_invite () {
       var data = { invite: { email: emails[i].trim() } };
       $.post('leagues/' + league_id + '/invites', data, function () {
         if(--count === 0) {
-          Turbolinks.visit('/leagues/' + league_id);
+          Turbolinks.visit($('#invite_page').attr('leagues_path') + '/' + league_id);
         }
       });
     }

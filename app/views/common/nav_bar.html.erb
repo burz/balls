@@ -11,9 +11,9 @@
       <% if current_user.god %>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a id="god_button" href="<%= god_path %>">
+            <%= link_to god_path, id: 'god_button' do %>
               <span class="glyphicon glyphicon-king" aria-hidden="true"></span>
-            </a>
+            <% end %>
           </li>
         </ul>
       <% end %>

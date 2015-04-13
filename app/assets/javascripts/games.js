@@ -53,7 +53,8 @@ function save_game () {
         losers: losers
       }
     };
-    var season_path = '/leagues/' + $('#game_league_name').val() +
+    var season_path = $('#new_game').attr('leagues_path') +
+                      $('#game_league_name').val() +
                       '/seasons/' + $('#game_season_name').val();
     $.post(
       season_path + '/games/',

@@ -21,7 +21,7 @@
             <% league = season.league %>
             <% path = league_season_game_path league, season, game %>
             <% players = game.players %>
-            <tr class="game_row" game_path="<%= path %>">
+            <tr class="game_row" game_path="<%= url_for path %>">
               <td><%= game.created_at %></td>
               <% if show_ratings %>
                 <% player = players.where(user_id: params[:id]).first %>

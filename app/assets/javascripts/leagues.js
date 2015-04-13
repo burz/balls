@@ -12,9 +12,6 @@ function leagues_ready () {
     Turbolinks.visit(target_path);
   });
   $('#league_name_alert').hide();
-  $('#add_league_button').click(function () {
-    Turbolinks.visit('/leagues/new');
-  });
   $('#league_form').submit(submit_league);
 }
 $(document).ready(leagues_ready);

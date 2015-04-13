@@ -17,7 +17,8 @@
             </thead>
             <tbody>
               <% for league in @leagues %>
-                <tr class="league_row" league_path="<%= league_path league %>">
+                <tr class="league_row"
+                    league_path="<%= url_for league_path(league) %>">
                   <td><%= league.name %></td>
                   <% rating = league.user_rating current_user %>
                   <td><%= rating.rating %></td>
@@ -28,9 +29,11 @@
             </tbody>
           </table>
         <% else %>
-          <button id="add_league_button" type="button" class="btn btn-success btn-lg">
-            Create A League
-          </button>
+          <%= link_to new_league_path do %>
+            <button id="add_league_button" type="button" class="btn btn-success btn-lg">
+              Create A League
+            </button>
+          <% end %>
         <% end %>
       </div>
     </div>
