@@ -1,29 +1,16 @@
-<div id="invite_page">
-  <center>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h2>Invite Players</h2>
-      </div>
-      <div class="panel-body">
-        <div id="league_alert" class="invite_alert alert alert-danger" role="alert">
-          A league must be selected
-        </div>
-        <div id="email_alert" class="invite_alert alert alert-danger" role="alert">
-          At least one email address must be entered
-        </div>
-        <div class="form-group">
-          <label for"league_selector">League</label>
-          <select id="league_selector" class="form-control">
-            <option value="">Select a league</option>
-            <% for league in @leagues %>
-              <option value="<%= league.id %>"><%= league.name %></option>
-            <% end %>
-          </select>
-          <label for="email_address">Emails <i>(separated by commas)</i></label>
-          <input type="text" id="email_address" class="form-control" autofocus>
-        </div>
-        <div id="create_new_player_invite" class="btn btn-success">Send Invites</div>
-      </div>
+<div id="invite_page" leagues_path="<%= url_for leagues_path %>">
+  <% if params[:client] == 'and' %>
+    <%= render 'invites/nav_bar' %>
+    <div id="contact_invites_pane">
+      <%= render 'invites/general_contact' %>
     </div>
-  </center>
+    <div id="email_invites_pane" hidden>
+      <%= render 'invites/general_new' %>
+    </div>
+    <script>
+      $(document).ready(android_ready);
+    </script>
+  <% else %>
+    <%= render 'invites/general_new' %>
+  <% end %>
 </div>

@@ -5,7 +5,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h1>
-          Invite contacts to <%= link_to @league.name, league_path(@league) %>
+          Invite Contacts To <%= link_to @league.name, league_path(@league) %>
         </h1>
       </div>
       <div class="panel-body">
@@ -28,9 +28,4 @@
       </div>
     </div>
   </center>
-  <% if params[:client] == 'and' %>
-    <script>
-      $(document).ready(android_ready);
-    </script>
-  <% end %>
 </div>

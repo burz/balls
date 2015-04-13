@@ -18,10 +18,6 @@ class InvitesController < ApplicationController
     render json: { invite_path: invite_path, league_name: league.name }
   end
 
-  def contacts
-    @league = current_user.leagues.find params[:league_id]
-  end
-
   def create
     email = params[:invite][:email]
     league = current_user.leagues.find params[:league_id]
