@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  filter :client
+
   root 'welcome#index'
 
   get 'example', to: 'welcome#example', as: 'example'

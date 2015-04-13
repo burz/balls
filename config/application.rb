@@ -11,5 +11,6 @@ module Balls
     config.active_record.raise_in_transactional_callbacks = true
 
     config.eager_load_paths += %W(#{config.root}/app/mixins)
+    config.eager_load_paths += %W(#{config.root}/lib)
   end
 end

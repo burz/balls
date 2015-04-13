@@ -1,7 +1,22 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_action :set_web_client
   before_filter :configure_permitted_parameters, if: :devise_controller?
+
+  def mobile_browser?
+    if session[:mobile_param]
+      session[:mobile_param] == '1'
+    else
+      request.user_agent =~ /Mobile|webOS/
+    end
+  end
+
+  def set_web_client
+    if params[:client] == 'web' and mobile_browser?
+      params[:client] = 'mob'
+    end
+  end
 
   def games_sort x, y
     x_last = x.games.last

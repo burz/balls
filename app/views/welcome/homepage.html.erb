@@ -1,8 +1,12 @@
 <div id="home_page">
-  <% if mobile_device? %>
+  <% if params[:client] != 'web' %>
     <div class="row">
       <%= render template: 'common/user_entrance' %>
     </div>
+    <% if params[:client] == 'mob' %>
+      <br>
+      <%= render 'welcome/app_buttons' %>
+    <% end %>
   <% else %>
         <div class="row">
           <div class="col-md-6">

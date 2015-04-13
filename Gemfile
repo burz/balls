@@ -13,6 +13,7 @@ gem 'pg'
 gem 'devise'
 gem 'mini_magick'
 gem 'carrierwave-aws'
+gem 'routing-filter'
 
 group :development, :test do
   gem 'byebug'
