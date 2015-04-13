@@ -15,7 +15,7 @@ module RoutingFilter
       yield.tap do |result|
         if client != 'web'
           result.sub!(%r(^(http.?://[^/]*)?(.*))){ "#{$1}/#{client}#{$2}" }
-        end 
+        end
       end
     end
   end

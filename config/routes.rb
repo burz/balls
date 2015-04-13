@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     post 'avatar', to: 'avatars#create', as: 'avatar_create'
   end
 
-  get 'god', to: 'gods#index', as: 'god'
+  get 'gods', to: 'gods#index', as: 'god'
 
   get 'ratings/leagues', to: 'ratings#leagues', as: 'league_ratings'
   get 'ratings/seasons', to: 'ratings#seasons', as: 'season_ratings'
