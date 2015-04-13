@@ -3,8 +3,14 @@
   <center>
     <h1>Invite contacts to <%= link_to @league.name, league_path(@league) %></h1>
     <ul id="contact_list" class="list-group"></ul>
-    <button id="send_contact_invites" class="btn btn-lg btn-success">
+    <button id="send_contact_invites" class="btn btn-lg btn-success" type="button">
       Send Invites
     </button>
   </center>
 </div>
+<% if params[:client] == 'and' %>
+  <script>
+    $(document).ready(android_ready);
+    $(document).on('page:load', android_ready);
+  </script>
+<% end %>
