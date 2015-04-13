@@ -10,7 +10,7 @@ function send_contact_invites_android () {
       }
     });
   };
-  $('#contact_list').children().each(function (i, contact) {
+  $('#invited_contact_list').children().each(function (i, contact) {
     send_invite_android(contact.getAttribute('phone_number'));
   });
 }

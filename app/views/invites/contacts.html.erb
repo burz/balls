@@ -2,15 +2,24 @@
      league_path="<%= url_for league_path(@league) %>"
      league_generate_invite_path="<%= url_for league_generate_invite_path(@league) %>">
   <center>
-    <h1>Invite contacts to <%= link_to @league.name, league_path(@league) %></h1>
-    <ul id="contact_list" class="list-group"></ul>
-    <button id="send_contact_invites" class="btn btn-lg btn-success" type="button">
-      Send Invites
-    </button>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1>
+          Invite contacts to <%= link_to @league.name, league_path(@league) %>
+        </h1>
+      </div>
+      <div class="panel-body">
+        <button id="send_contact_invites" class="btn btn-lg btn-success" type="button">
+          Send Invites
+        </button>
+        <ul id="invited_contact_list" class="list-group"></ul>
+        <ul id="contact_list" class="list-group"></ul>
+      </div>
+    </div>
   </center>
+  <% if params[:client] == 'and' %>
+    <script>
+      $(document).ready(android_ready);
+    </script>
+  <% end %>
 </div>
-<% if params[:client] == 'and' %>
-  <script>
-    $(document).ready(android_ready);
-  </script>
-<% end %>
