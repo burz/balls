@@ -9,28 +9,35 @@
              role="alert" hidden>
           A league must be selected
         </div>
-        <div class="form-group">
-          <label for"contact_league_selector">League</label>
-          <select id="contact_league_selector" class="form-control">
-            <option value="">Select a league</option>
-            <% for league in @leagues %>
-              <option value="<%= league.id %>"><%= league.name %></option>
-            <% end %>
-          </select>
-          <label for="contact_list">Add Contact From Phone</label>&nbsp;
-          <select id="contact_list" class="form-control">
-            <option value="">Select a contact...</option>
-          </select>
-          <br>
-          <div id="selected_contacts" class="alert alert-success" role="alert">
-            <h3>Selected Contacts</h3>
-            <ul id="selected_contact_list" class="list-group"></ul>
-          </div>
-          <div class="row">
-            <button id="send_general_contact_invites" class="btn btn-lg btn-success"
-                    type="button">
-              Send Invites
-            </button>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for"contact_league_selector">League</label>
+              <select id="contact_league_selector" class="form-control">
+                <option value="">Select a league</option>
+                <% for league in @leagues %>
+                  <option value="<%= league.id %>"><%= league.name %></option>
+                <% end %>
+              </select>
+              <br>
+              <label for="contact_list">Add Contact From Phone</label>&nbsp;
+              <div id="contacts_pane">
+                <select id="contact_list" class="form-control">
+                  <option value="">Select a contact...</option>
+                </select>
+                </div>
+              <br>
+              <div id="selected_contacts" class="alert alert-success" role="alert">
+                <h3>Selected Contacts</h3>
+                <ul id="selected_contact_list" class="list-group"></ul>
+              </div>
+              <div class="row">
+                <button id="send_general_contact_invites" class="btn btn-lg btn-success"
+                        type="button">
+                  Send Invites
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

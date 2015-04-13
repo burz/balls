@@ -5,21 +5,25 @@
 }
 
 .custom-combobox {
-  width: 90%;
+  width: 100%;
+  left: 0;
   position: relative !important;
   display: inline-block !important;
+  margin-left: 0;
 }
 
 .custom-combobox-toggle {
   position: absolute !important;
   top: 0 !important;
   bottom: 0 !important;
+  min-width: 5%;
   margin-left: -1px !important;
   padding: 0 !important;
 }
 
 .custom-combobox-input {
-  width: 100%;
+  min-width: 95%;
+  left: -15px;
   margin: 0 !important;
   padding: 5px 10px !important;
 }
@@ -28,4 +32,8 @@
   float: right;
   cursor: pointer;
   color: red;
+}
+
+#contacts_pane {
+  text-align: left;
 }
