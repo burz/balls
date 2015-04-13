@@ -1,4 +1,4 @@
-<div id="invite_page" leagues_path="<%= url_for leagues_path %>">
+<div id="invite_page" league_path="<%= url_for league_path(@league) %>">
   <center>
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -36,24 +36,4 @@
       </div>
     </div>
   </center>
-  <script>
-    $('#send_invite_button').click(function () {
-      $('.invite_alert').hide();
-      if($('#email_address').val() != '') {
-        var emails = $('#email_address').val().split(',');
-        var count = emails.length;
-        start_spinner();
-        for(var i = 0; i < emails.length; ++i) {
-          var data = { invite: { email: emails[i].trim() } };
-          $.post('<%= url_for league_invites_path(@league) %>', data, function () {
-            if(--count === 0) {
-              Turbolinks.visit('<%= url_for league_admin_path(@league) %>');
-            }
-          });
-        }
-      } else {
-        $('#email_alert').show();
-      }
-    });
-  </script>
 </div>

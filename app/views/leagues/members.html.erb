@@ -1,4 +1,4 @@
-<div id="league_members">
+<div id="league_members" league_admin_path="<%= url_for league_admin_path(@league) %>">
   <center>
     <%= link_to new_league_invite_path(@league) do %>
       <button id="add_member" type="button" class="btn btn-danger btn-lg">
@@ -35,11 +35,4 @@
       </tbody>
     </table>
   </center>
-  <script>
-    $('.admin_checkbox').click(function (event_object) {
-      var user_id = event_object.target.getAttribute('user_id');
-      var path = '<%= league_path @league %>/admin/' + user_id + '/toggle';
-      $.get(path);
-    });
-  </script>
 </div>

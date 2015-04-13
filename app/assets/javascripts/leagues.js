@@ -13,6 +13,11 @@ function leagues_ready () {
   });
   $('#league_name_alert').hide();
   $('#league_form').submit(submit_league);
+  $('.admin_checkbox').click(function (event_object) {
+    var user_id = event_object.target.getAttribute('user_id');
+    var path = $('#league_members').attr('league_admin_path') + '/' + user_id + '/toggle';
+    $.get(path);
+  });
 }
 $(document).ready(leagues_ready);
 $(document).on('page:load', leagues_ready);
