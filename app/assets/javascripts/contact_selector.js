@@ -34,7 +34,7 @@
       $('<a>').attr('tabIndex', -1).attr('title', 'Show All Items').tooltip()
         .appendTo(this.wrapper).button({
           icons: {
-            primary: 'ui-icon-triangle-1-s'
+            primary: 'glyphicon glyphicon-plus'
           },
           text: false
         }).removeClass('ui-corner-all').addClass('custom-combobox-toggle ui-corner-right')

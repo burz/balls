@@ -3,6 +3,7 @@
  *= require_self
  *= require bootstrap.min
  *= require tipsy
+ *= require jquery-ui
  */
 
 body, html {
