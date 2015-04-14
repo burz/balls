@@ -21,14 +21,13 @@
   position: absolute !important;
   top: 0 !important;
   bottom: 0 !important;
+  right: 0 !important;
   min-width: 5%;
-  margin-left: -1px !important;
   padding: 0 !important;
 }
 
 .custom-combobox-input {
   min-width: 95%;
-  left: -15px;
   margin: 0 !important;
   padding: 5px 10px !important;
   background-color: white !important;
