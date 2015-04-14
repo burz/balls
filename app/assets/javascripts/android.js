@@ -10,18 +10,18 @@ function send_contact_invites_android () {
       }
     });
   };
-  $('#selected_contact_list').children().each(function (i, contact) {
+  contacts.each(function (i, contact) {
     send_invite_android(contact.getAttribute('phone_number'));
   });
 }
 function send_general_contact_invites_android () {
   start_spinner();
-  var contacts = $('#contact_list').children();
+  var contacts = $('#selected_contact_list').children();
   var count = contacts.length;
   var leagues_path = $('#invite_contacts').attr('leagues_path');
   var league_id = $('#contact_league_selector').val();
   var league_path = leagues_path + '/' + league_id;
-  var league_generate_invite_path = leagues_path + '/' + league_id + '/invite/generate';
+  var league_generate_invite_path = league_path + '/invite/generate';
   var send_invite_android = function (number) {
     $.get(league_generate_invite_path, function (data) {
       BallsAppAndroid.sendInvite(number, data.league_name, data.invite_path);
@@ -30,7 +30,7 @@ function send_general_contact_invites_android () {
       }
     });
   };
-  $('#selected_contact_list').children().each(function (i, contact) {
+  contacts.each(function (i, contact) {
     send_invite_android(contact.getAttribute('phone_number'));
   });
 }

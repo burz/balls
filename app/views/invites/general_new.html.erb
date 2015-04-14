@@ -11,6 +11,19 @@
       $(document).ready(android_ready);
     </script>
   <% else %>
-    <%= render 'invites/general_new' %>
+    <% if params[:client] == 'ios' %>
+      <%= render 'invites/nav_bar' %>
+      <div id="contact_invites_pane">
+        <%= render 'invites/general_contact' %>
+      </div>
+      <div id="email_invites_pane" hidden>
+        <%= render 'invites/general_new' %>
+      </div>
+      <script>
+        $(document).ready(ios_ready);
+      </script>
+    <% else %>
+      <%= render 'invites/general_new' %>
+    <% end %>
   <% end %>
 </div>
