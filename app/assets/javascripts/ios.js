@@ -4,7 +4,7 @@ function send_request_ios (action_type, action_parameters) {
   }
   var json_string = JSON.stringify(action_parameters);
   var escaped_json_string = escape(json_string);
-  var url = 'BallsApp://' + action_type + '#' + escaped_json_string;
+  var url = 'ballsapp://' + action_type + '#' + escaped_json_string;
   document.location.href = url;
 }
 function load_contacts_ios () {
