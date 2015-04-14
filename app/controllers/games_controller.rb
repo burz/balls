@@ -10,8 +10,8 @@ class GamesController < ApplicationController
   end
 
   def create
+    season = current_user.seasons.find params[:season_id]
     game = Game.create game_params
-    season = Season.find params[:season_id]
     league = season.league
     winner_league_ratings = []
     winner_season_ratings = []

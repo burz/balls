@@ -2,59 +2,67 @@
   <% if @user.avatar.nil? %>
     <%= image_tag 'ballsapp_logo.jpg', alt: 'Balls', class: 'img-thumbnail' %>
   <% else %>
-    <img src="<%= @user.avatar.image.url %>" alt="Balls" class="img-thumbnail">
+    <%= image_tag @user.avatar.image.url, alt: 'Balls', class: 'img-thumbnail' %>
   <% end %>
 </div>
-<% content_for :footer do %>
-  <% if current_user == @user %>
-    <div id="user_avatar_upload_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="user_image_upload_modal" aria-hidden="true">
-      <center>
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">
-                  &times;
-                </span>
-              </button>
-              <h2 class="modal-title">
-                Save Avatar
-              </h2>
-            </div>
-            <div class="modal-body">
-              <div id="avatar_file_alert" class="alert alert-danger" role="alert" hidden>
-                No image file chosen.
+<% if not app_client? %>
+  <% content_for :footer do %>
+    <% if current_user == @user %>
+      <div id="user_avatar_upload_modal" class="modal fade" tabindex="-1"
+           role="dialog" aria-labelledby="user_image_upload_modal" aria-hidden="true">
+        <center>
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">
+                    &times;
+                  </span>
+                </button>
+                <h2 class="modal-title">
+                  Save Avatar
+                </h2>
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <%= form_for @avatar, url: user_avatar_create_path(@user),
-                         html: { multipart: true, id: 'user_avatar_form' } do |f| %>
-                      <%= f.label :image, 'Image' %>
-                      <%= f.file_field :image, id: 'new_user_avatar', class: 'form-control' %>
-                    <% end %>
+              <div class="modal-body">
+                <div id="avatar_file_alert" class="alert alert-danger" role="alert" hidden>
+                  No image file chosen.
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <%= form_for @avatar, url: user_avatar_create_path(@user),
+                           html: { multipart: true, id: 'user_avatar_form' } do |f| %>
+                        <%= f.label :image, 'Image' %>
+                        <%= f.file_field :image, id: 'new_user_avatar',
+                                         class: 'form-control' %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <form id="user_avatar_form">
+                      <% if @user.avatar.nil? %>
+                        <%= image_tag 'ballsapp_logo.jpg', alt: 'Balls',
+                                      id: 'new_avatar', class: 'img-thumbnail' %>
+                      <% else %>
+                        <img src="<%= @user.avatar.image.url %>" id="new_avatar"
+                             alt="Avatar" class="img-thumbnail">
+                      <% end %>
+                    </form>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <form id="user_avatar_form">
-                    <% if @user.avatar.nil? %>
-                      <%= image_tag 'ballsapp_logo.jpg', alt: 'Balls',
-                                    id: 'new_avatar', class: 'img-thumbnail' %>
-                    <% else %>
-                      <img src="<%= @user.avatar.image.url %>" id="new_avatar"
-                           alt="Avatar" class="img-thumbnail">
-                    <% end %>
-                  </form>
-                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                  Close
+                </button>
+                <button id="save_avatar_button" type="button" class="btn btn-primary">
+                  Save
+                </button>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button id="save_avatar_button" type="button" class="btn btn-primary">Save</button>
-            </div>
           </div>
-        </div>
-      </center>
-    </div>
+        </center>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
