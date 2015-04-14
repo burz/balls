@@ -3,12 +3,13 @@
 }
 
 .navbar-brand {
-    position: absolute;
-    left: 40%;
-    right: 40%;
-    top: 0;
-    text-align: center;
-    margin: auto;
+    position: fixed;
+    margin-left: 0 !important;
+    top: 0.5%;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
 }
 
 .underlined {
