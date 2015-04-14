@@ -40,8 +40,9 @@ function send_general_contact_invites_ios () {
   var contacts = $('#selected_contact_list').children();
   var count = contacts.length;
   var leagues_path = $('#invite_contacts').attr('leagues_path');
-  var token_path = leagues_path + '/' + league_id + '/invite/generate';
   var league_id = $('#contact_league_selector').val();
+  var league_path = leagues_path + '/' + league_id;
+  var token_path = league_path + '/invite/generate';
   contacts.each(function (i, contact) {
     var phone_number = contact.getAttribute('phone_number');
     send_invite_ios(phone_number, token_path, function () {
