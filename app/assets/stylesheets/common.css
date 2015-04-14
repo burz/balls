@@ -1,21 +1,19 @@
 #god_button {
-  position: fixed;
+  position: absolute;
   margin-right: 0 !important;
   top: 0.8%;
   right: 0.5%;
-  -webkit-backface-visibility: hidden;
 }
 
 #menu_button {
-  position: fixed;
+  position: absolute;
   margin-left: 0 !important;
   top: 0.8%;
   left: 0.5%;
-  -webkit-backface-visibility: hidden;
 }
 
 .navbar-brand {
-  position: fixed;
+  position: absolute;
   margin-top: 0 !important;
   margin-left: 0 !important;
   display: inline !important;
@@ -24,7 +22,6 @@
   -webkit-transform: translate(-50%, 0);
       -ms-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
-  -webkit-backface-visibility: hidden;
 }
 
 .underlined {
