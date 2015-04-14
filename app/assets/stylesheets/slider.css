@@ -92,7 +92,8 @@ body {
   width: 100%;
 }
 
-#log_game_button, #invite_player_button, #instructions_button {
+#log_game_button, #invite_player_button,
+#instructions_button, #god_button {
   border-bottom: 1px solid #2a2d2f;
 }
 
