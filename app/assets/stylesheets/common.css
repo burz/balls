@@ -1,13 +1,25 @@
-#menu_button, #god_button {
-  z-index: 30;
+#god_button {
+  position: fixed;
+  margin-right: 0 !important;
+  top: 0.8%;
+  right: 0.5%;
+}
+
+#menu_button {
+  position: fixed;
+  margin-left: 0 !important;
+  top: 0.8%;
+  left: 0.5%;
 }
 
 .navbar-brand {
-    position: fixed;
-    margin-left: 0 !important;
-    top: 0.5%;
-    left: 50%;
-    -webkit-transform: translate(-50%, 0);
+  position: fixed;
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+  display: inline !important;
+  top: 0.25% !important;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
       -ms-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
 }
