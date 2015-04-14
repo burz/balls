@@ -66,6 +66,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def after_sign_in_path_for(resource_or_scope)
+    url_for super
+  end
+
+  def after_sign_out_path_for(resource_or_scope)
+    url_for root_path
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:name, :email, :password, :password_confirmation)
