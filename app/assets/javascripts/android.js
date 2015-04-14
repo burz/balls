@@ -1,6 +1,6 @@
 function send_contact_invites_android () {
   start_spinner();
-  var contacts = $('#contact_list').children();
+  var contacts = $('#selected_contact_list').children();
   var count = contacts.length;
   var send_invite_android = function (number) {
     $.get($('#invite_contacts').attr('league_generate_invite_path'), function (data) {

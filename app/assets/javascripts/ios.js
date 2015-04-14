@@ -22,7 +22,7 @@ function send_invite_ios (number, token_path, callback) {
 }
 function send_contact_invites_ios () {
   start_spinner();
-  var contacts = $('#contact_list').children();
+  var contacts = $('#selected_contact_list').children();
   var count = contacts.length;
   var token_path = $('#invite_contacts').attr('league_generate_invite_path');
   var league_path = $('#invite_contacts').attr('league_path');
