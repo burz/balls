@@ -37,7 +37,7 @@ function send_contact_invites_ios () {
 }
 function send_general_contact_invites_ios () {
   start_spinner();
-  var contacts = $('#contact_list').children();
+  var contacts = $('#selected_contact_list').children();
   var count = contacts.length;
   var leagues_path = $('#invite_contacts').attr('leagues_path');
   var token_path = leagues_path + '/' + league_id + '/invite/generate';
