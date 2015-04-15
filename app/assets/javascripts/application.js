@@ -10,7 +10,7 @@
 //= require_tree .
 
 function application_ready () {
-  $('.user_row').click(function (event_object) {
+  $('.rating_row').click(function (event_object) {
     var target_path = event_object.target.parentElement.getAttribute('user_path');
     Turbolinks.visit(target_path);
   });

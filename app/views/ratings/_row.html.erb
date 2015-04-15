@@ -1,7 +1,7 @@
 <% if current_user.id == rating.user_id %>
-  <tr class="user_row current_user_row"
+  <tr class="rating_row current_user_row"
 <% else %>
-  <tr class="user_row"
+  <tr class="rating_row"
 <% end %>
       user_path="<%= user_path rating.user_id %>">
   <td><%= ranking %></td>
