@@ -8,23 +8,13 @@
       <input type="email" id="email_address" class="form-control" autofocus>
     </div>
     <% if params[:new_league] %>
-      <p>
-        Note: You can add more players later by clicking the
-        "<span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-        &nbsp;Invite Players" button in the side bar opened by clicking
-        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-        in the top right.
-      </p>
+      <%= render 'invites/new_blurb' %>
     <% end %>
-    <div class="btn-group">
+    <div class="btn-group btn-group-lg">
       <% if params[:new_league] %>
-        <%= link_to league_path(@league) do %>
-          <button id="skip_invites_button" type="button" class="btn btn-default btn-lg">
-            Skip
-          </button>
-        <% end %>
+        <%= link_to 'Skip', league_path(@league), class: 'btn btn-default' %>
       <% end %>
-      <button id="send_invite_button" type="button" class="btn btn-success btn-lg">
+      <button id="send_invite_button" type="button" class="btn btn-success">
         Send Invites
       </button>
     </div>
