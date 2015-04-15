@@ -9,8 +9,9 @@ function create_new_player_invite () {
     var leagues_path = $('#invite_page').attr('leagues_path');
     for(var i = 0; i < emails.length; ++i) {
       var league_id = $('#league_selector').val();
+      var league_path = leagues_path + '/' + league_id;
       var data = { invite: { email: emails[i].trim() } };
-      $.post(leagues_path + '/' + league_id + '/invites', data, function () {
+      $.post(league_path + '/invites', data, function () {
         if(--count === 0) {
           Turbolinks.visit(league_path);
         }

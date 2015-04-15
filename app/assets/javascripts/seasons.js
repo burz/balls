@@ -36,9 +36,6 @@ function seasons_ready () {
     $('#rules_panel').toggle();
   });
   $('#season_form').submit(submit_season);
-  $('#add_season_button').click(function () {
-    Turbolinks.visit($('#add_season_button').attr('season_path'));
-  });
 }
 $(document).ready(seasons_ready);
 $(document).on('page:load', seasons_ready);
