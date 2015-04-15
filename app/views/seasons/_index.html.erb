@@ -1,34 +1,26 @@
 <div id="seasons_index">
-  <center>
-    <button id="add_season_button" type="button" class="btn btn-success btn-lg"
-            season_path="<%= url_for new_league_season_path(@league) %>">
-      Create A Season
-    </button>
-    <br>
-    <br>
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <td>Name</td>
-          <td>End Date</td>
-          <td>Rating</td>
-          <td>Games</td>
-          <td>+/-</td>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>End Date</td>
+        <td>Rating</td>
+        <td>Games</td>
+        <td>+/-</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% for season in @seasons %>
+        <tr class="season_row"
+            season_path="<%= url_for league_season_path(@league, season)%>">
+          <td><%= season.name %></td>
+          <td><%= format_date season.end_date %></td>
+          <% rating = season.user_rating current_user %>
+          <td><%= rating.rating %></td>
+          <td><%= rating.games_played %></td>
+          <td><%= rating.wins %>/<%= rating.losses %></td>
         </tr>
-      </thead>
-      <tbody>
-        <% for season in @seasons %>
-          <tr class="season_row"
-              season_path="<%= url_for league_season_path(@league, season)%>">
-            <td><%= season.name %></td>
-            <td><%= format_date season.end_date %></td>
-            <% rating = season.user_rating current_user %>
-            <td><%= rating.rating %></td>
-            <td><%= rating.games_played %></td>
-            <td><%= rating.wins %>/<%= rating.losses %></td>
-          </tr>
-        <% end %>
-      <tbody>
-    </table>
-  </center>
+      <% end %>
+    <tbody>
+  </table>
 </div>
