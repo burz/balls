@@ -152,6 +152,11 @@ function games_ready () {
   players = [];
   $('#game_league_name').change(league_change);
   $('#game_season_name').change(season_change);
+  $('.game_date').each(function (i, date_string) {
+    date_string.textContent = moment(date_string.textContent).fromNow();
+  });
+  var played_date = $('#played_date');
+  played_date.text(moment(played_date.text()).format('h:mm:ssa On MMMM Do YYYY'));
 }
 $(document).ready(games_ready);
 $(document).on('page:load', games_ready);

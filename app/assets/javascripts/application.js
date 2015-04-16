@@ -7,6 +7,7 @@
 //= require jquery.tipsy
 //= require d3
 //= require jquery-ui
+//= require moment
 //= require_tree .
 
 function application_ready () {
