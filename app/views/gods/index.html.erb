@@ -46,8 +46,8 @@
                   <tr>
                     <td><%= user.name %></td>
                     <td><%= user.email %></td>
-                    <td><%= format_date user.created_at %></td>
-                    <td><%= format_date user.last_sign_in_at %></td>
+                    <td class="game_date"><%= user.created_at %></td>
+                    <td class="game_date"><%= user.last_sign_in_at %></td>
                     <td><%= user.leagues.count %></td>
                     <td><%= user.games.count %></td>
                   </tr>
@@ -78,7 +78,7 @@
                 <% for league in @god_leagues %>
                   <tr>
                     <td><%= league.name %></td>
-                    <td><%= format_date league.created_at %></td>
+                    <td class="game_date"><%= league.created_at %></td>
                     <td><%= league.users.count %></td>
                     <td><%= league.invites.count %></td>
                     <td><%= league.seasons.count %></td>
@@ -111,8 +111,8 @@
                 <% for season in @god_seasons %>
                   <tr>
                     <td><%= season.name %></td>
-                    <td><%= format_date season.created_at %></td>
-                    <td><%= format_date season.end_date %></td>
+                    <td class="game_date"><%= season.created_at %></td>
+                    <td class="game_date"><%= season.end_date %></td>
                     <td><%= season.games.count %></td>
                   </tr>
                 <% end %>
@@ -138,7 +138,7 @@
               <tbody>
                 <% for game in @god_games %>
                   <tr>
-                    <td><%= format_date game.created_at %></td>
+                    <td class="game_date"><%= game.created_at %></td>
                     <td><%= game.players.count %></td>
                     <td><%= game.season.name %></td>
                   </tr>
