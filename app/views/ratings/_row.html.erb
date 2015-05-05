@@ -3,7 +3,7 @@
 <% else %>
   <tr class="rating_row"
 <% end %>
-      user_path="<%= user_path rating.user_id %>">
+      user_path="<%= url_for(user_path rating.user_id) %>">
   <td><%= ranking %></td>
   <td><%= rating.name %></td>
   <td><%= rating.rating %></td>
