@@ -40,6 +40,24 @@ class SeasonsController < ApplicationController
     redirect_to url_for(league_season_path season.league, season), turbolinks: true
   end
 
+  def destroy
+    season = current_user.seasons.find params[:id]
+    league = season.league
+    if current_user.admin? league
+      if season.games.count == 0
+        season.destroy
+        flash[:notice] = 'Season ' + season.name + ' successfully deleted.'
+        redirect_to url_for(root_path), turbolinks: true
+      else
+        flash[:alert] = 'You cannot delete a season that has games.'
+        redirect_to url_for(league_season_path league, season), turbolinks: true
+      end
+    else
+      flash[:alert] = 'You do not have admin privledges for the league ' + league.name
+      redirect_to url_for(league_season_path league, season), turbolinks: true
+    end
+  end
+
   protected
 
   def season_params

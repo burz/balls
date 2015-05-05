@@ -9,6 +9,15 @@
         </h1>
       </div>
       <div class="panel-body">
+        <% if @season.games.count == 0 %>
+          <%= link_to league_season_path(@league, @season), method: :delete do %>
+            <button class="btn btn-lg btn-danger">
+              Delete Season
+            </button>
+            <br>
+            <br>
+          <% end %>
+        <% end %>
         <%= render 'seasons/form' %>
       </div>
     </div>

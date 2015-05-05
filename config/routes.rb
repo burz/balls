@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get 'invite/generate', to: 'invites#generate', as: 'generate_invite'
     get 'join/:token', to: 'invites#join', as: 'join'
 
-    resources :seasons, only: [:show, :index, :new, :create, :edit, :update] do
+    resources :seasons do
       resources :games, only: [:show, :create]
     end
   end
