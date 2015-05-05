@@ -66,15 +66,19 @@ module RetroactiveRatings
                                        season.cups_per_team
     winners.each_with_index do |winner, i|
       league_rating = league_result[:winner_ratings][i]
-      LeagueRating.create user: winner, league: league, rating: league_rating,
-                          games_played: winner_league_ratings[i].games_played + 1,
-                          wins: winner_league_ratings[i].wins + 1,
-                          losses: winner_league_ratings[i].losses
+      rating = LeagueRating.create user: winner, league: league, rating: league_rating,
+                                   games_played: winner_league_ratings[i].games_played + 1,
+                                   wins: winner_league_ratings[i].wins + 1,
+                                   losses: winner_league_ratings[i].losses
+      rating.created_at = game.created_at
+      rating.save
       season_rating = season_result[:winner_ratings][i]
-      SeasonRating.create user: winner, season: season, rating: season_rating,
-                          games_played: winner_season_ratings[i].games_played + 1,
-                          wins: winner_season_ratings[i].wins + 1,
-                          losses: winner_season_ratings[i].losses
+      rating = SeasonRating.create user: winner, season: season, rating: season_rating,
+                                   games_played: winner_season_ratings[i].games_played + 1,
+                                   wins: winner_season_ratings[i].wins + 1,
+                                   losses: winner_season_ratings[i].losses
+      rating.created_at = game.created_at
+      rating.save
       change_in_league_rating = league_rating - winner_league_ratings[i].rating
       change_in_season_rating = season_rating - winner_season_ratings[i].rating
       Player.create game: game, user: winner, team: 0,
@@ -83,15 +87,19 @@ module RetroactiveRatings
     end
     losers.each_with_index do |loser, i|
       league_rating = league_result[:loser_ratings][i]
-      LeagueRating.create user: loser, league: league, rating: league_rating,
-                          games_played: loser_league_ratings[i].games_played + 1,
-                          wins: loser_league_ratings[i].wins,
-                          losses: loser_league_ratings[i].losses + 1
+      rating = LeagueRating.create user: loser, league: league, rating: league_rating,
+                                   games_played: loser_league_ratings[i].games_played + 1,
+                                   wins: loser_league_ratings[i].wins,
+                                   losses: loser_league_ratings[i].losses + 1
+      rating.created_at = game.created_at
+      rating.save
       season_rating = season_result[:loser_ratings][i]
-      SeasonRating.create user: loser, season: season, rating: season_rating,
-                          games_played: loser_season_ratings[i].games_played + 1,
-                          wins: loser_season_ratings[i].wins,
-                          losses: loser_season_ratings[i].losses + 1
+      rating = SeasonRating.create user: loser, season: season, rating: season_rating,
+                                   games_played: loser_season_ratings[i].games_played + 1,
+                                   wins: loser_season_ratings[i].wins,
+                                   losses: loser_season_ratings[i].losses + 1
+      rating.created_at = game.created_at
+      rating.save
       change_in_league_rating = league_rating - loser_league_ratings[i].rating
       change_in_season_rating = season_rating - loser_season_ratings[i].rating
       Player.create game: game, user: loser, team: 1,
