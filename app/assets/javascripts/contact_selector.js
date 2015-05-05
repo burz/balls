@@ -38,7 +38,7 @@
     _createShowAllButton: function () {
       var input = this.input;
       var wasOpen = false;
-      $('<a>').attr('tabIndex', -1).attr('title', 'Show All Items').tooltip()
+      $('<a>').attr('tabIndex', -1)
         .appendTo(this.wrapper).button({
           icons: {
             primary: 'ui-icon-triangle-1-s'
