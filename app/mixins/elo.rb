@@ -1,8 +1,8 @@
-module Elo 
+module Elo
   K = 48.0
   I_W = 5.0
   def calculate_rankings winners, losers, cups_left, cups_per_team
-    cup_factor = cups_per_team / 2.0
+    cup_factor = 10.0
     k_c_l = K * Math.exp((cups_left - cup_factor) / 2.5)
     winner_average_rating = team_average winners
     loser_average_rating = team_average losers
@@ -21,7 +21,7 @@ module Elo
     { winner_ratings: winner_ratings, loser_ratings: loser_ratings }
   end
   def team_average team
-    team.inject(0) { |sum, player| sum + player.rating } / team.size
+    team.inject(0.0) { |sum, player| sum + player.rating } / team.size
   end
   def calculate_term pdiff, tdiff
     (I_W + 1.0) / (I_W + 10.0 ** (pdiff / 400.0)) -
