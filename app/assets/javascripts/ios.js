@@ -26,10 +26,17 @@ function send_contact_invites_ios () {
   var count = contacts.length;
   var token_path = $('#invite_contacts').attr('league_generate_invite_path');
   var league_path = $('#invite_contacts').attr('league_path');
+  var invite_data = [];
   contacts.each(function (i, contact) {
     var phone_number = contact.getAttribute('phone_number');
-    send_invite_ios(phone_number, token_path, function () {
+    $.get(token_path, function (data) {
+      invite_data[invite_data.length] = {
+        number: phone_number,
+        league_name: data.league_name,
+        invite_path: data.invite_path
+      };
       if(--count === 0) {
+        send_request_ios('SendInvites', invite_data);
         Turbolinks.visit(league_path);
       }
     });
@@ -43,10 +50,17 @@ function send_general_contact_invites_ios () {
   var league_id = $('#contact_league_selector').val();
   var league_path = leagues_path + '/' + league_id;
   var token_path = league_path + '/invite/generate';
+  var invite_data = [];
   contacts.each(function (i, contact) {
     var phone_number = contact.getAttribute('phone_number');
-    send_invite_ios(phone_number, token_path, function () {
+    $.get(token_path, function (data) {
+      invite_data[invite_data.length] = {
+        number: phone_number,
+        league_name: data.league_name,
+        invite_path: data.invite_path
+      };
       if(--count === 0) {
+        send_request_ios('SendInvites', invite_data);
         Turbolinks.visit(league_path);
       }
     });
