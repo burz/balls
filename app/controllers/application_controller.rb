@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def load_games user
+  def load_user_games user
     user_games_key = user.id.to_s + 'games'
     @user_games = REDIS.get user_games_key
     if not @user_games
