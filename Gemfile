@@ -14,6 +14,7 @@ gem 'devise'
 gem 'mini_magick'
 gem 'carrierwave-aws'
 gem 'routing-filter'
+gem 'puma'
 
 group :development, :test do
   gem 'byebug'
