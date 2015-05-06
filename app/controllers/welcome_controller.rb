@@ -1,8 +1,7 @@
 class WelcomeController < ApplicationController
-  before_action :load_menu
-
   def index
     if user_signed_in?
+      load_menu
       load_leagues
       if @leagues.size > 0
         @league = current_user.last_updated_league
