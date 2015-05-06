@@ -12,7 +12,6 @@ body {
   z-index: 0;
   width: 256px;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
   display: none;
 }
 
