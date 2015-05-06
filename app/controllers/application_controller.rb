@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   before_action :set_web_client
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  protected
+
   def mobile_browser?
     if session[:mobile_param]
       session[:mobile_param] == '1'
@@ -63,6 +65,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def load_games user
+    user_games_key = user.id.to_s + 'games'
+    @user_games = REDIS.get user_games_key
+    if not @user_games
+      @games = @user.games.order created_at: :desc
+      @user_games = render_to_string partial: 'games/index',
+                                     locals: { show_ratings: true }
+      REDIS.set user_games_key, @user_games
+      REDIS.expire user_games_key, REDIS_USER_GAMES_TTL
+    else
+      puts "\033[32mREDIS CACHE: LOADED USER GAMES\033[0m"
+    end
+  end
+
   def load_league_players
     @league_players = []
     @league_benchwarmers = []
@@ -74,8 +90,6 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-
-  protected
 
   def after_sign_in_path_for(resource_or_scope)
     path = super

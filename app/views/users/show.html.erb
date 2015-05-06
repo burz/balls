@@ -50,6 +50,6 @@
     </div>
     <br>
     <%= render template: 'users/graph' %>
-    <%= render template: 'games/index', locals: { show_ratings: true } %>
+    <%= raw @user_games %>
   </center>
 </div>

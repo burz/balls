@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     else
       puts "\033[32mREDIS CACHE: LOADED GRAPH DATA\033[0m"
     end
-    @games = @user.games.order created_at: :desc
+    load_games @user
   end
 
   def edit

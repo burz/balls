@@ -25,6 +25,7 @@ class GamesController < ApplicationController
       season_rating = season.user_rating winner
       winner_season_ratings.push season_rating
       REDIS.del(winner.id.to_s + 'graph')
+      REDIS.del(winner.id.to_s + 'games')
       winner
     end
     loser_league_ratings = []
@@ -36,6 +37,7 @@ class GamesController < ApplicationController
       season_rating = season.user_rating loser
       loser_season_ratings.push season_rating
       REDIS.del(loser.id.to_s + 'graph')
+      REDIS.del(loser.id.to_s + 'games')
       loser
     end
     league_result = calculate_rankings winner_league_ratings,
