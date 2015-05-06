@@ -48,8 +48,8 @@ class ApplicationController < ActionController::Base
   end
 
   def load_menu
-    user_menu_string = current_user.id.to_s + 'menu'
-    @menu = REDIS.get user_menu_string
+    user_menu_key = params[:client] + current_user.id.to_s + 'menu'
+    @menu = REDIS.get user_menu_key
     if not @menu
       @leagues = current_user.leagues.sort do |x, y|
         games_sort x, y
@@ -58,15 +58,15 @@ class ApplicationController < ActionController::Base
         games_sort x, y
       end
       @menu = render_to_string partial: 'common/menu'
-      REDIS.set user_menu_string, @menu
-      REDIS.expire user_menu_string, REDIS_MENU_TTL
+      REDIS.set user_menu_key, @menu
+      REDIS.expire user_menu_key, REDIS_MENU_TTL
     else
       puts "\033[32mREDIS CACHE: LOADED MENU\033[0m"
     end
   end
 
   def load_user_games user
-    user_games_key = user.id.to_s + 'games'
+    user_games_key = params[:client] + user.id.to_s + 'games'
     @user_games = REDIS.get user_games_key
     if not @user_games
       @games = @user.games.order created_at: :desc
