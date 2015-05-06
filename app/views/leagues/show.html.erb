@@ -5,82 +5,11 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-        <% if @league_players %>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3>League Standings</h3>
-            </div>
-            <div class="panel-body">
-              <table class="table table-bordered table-hover">
-                <%= render 'ratings/heading' %>
-                <tbody>
-                  <% i = 1 %>
-                  <% for rating in @league_players %>
-                    <%= render partial: 'ratings/row',
-                               locals: { rating: rating, ranking: i } %>
-                    <% i = i + 1 %>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        <% end %>
-        <% if @league_benchwarmers.size > 0 %>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3>Benchwarmers</h3>
-            </div>
-            <div class="panel-body">
-              <table class="table table-bordered table-hover">
-                <%= render 'ratings/benchwarmer_heading' %>
-                <tbody>
-                  <% for rating in @league_benchwarmers %>
-                    <%= render partial: 'ratings/benchwarmer', locals: { rating: rating } %>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        <% end %>
+        <%= render 'ratings/league_players' %>
+        <%= render 'ratings/league_benchwarmers' %>
       </div>
       <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3>Season Standings</h3>
-          </div>
-          <div class="panel-body">
-            <% if @seasons.size == 0 and current_user.admin? @league %>
-              <%= link_to 'Create A Season', new_league_season_path(@league),
-                          class: 'btn btn-success btn-lg' %>
-            <% end %>
-            <% for season in @seasons %>
-              <div class="panel panel-success">
-                <div class="panel-heading">
-                  <%= link_to league_season_path @league, season do %>
-                    <h2><%= season.name %></h2>
-                  <% end %>
-                </div>
-                <div class="panel-body">
-                  Ends <span class="game_date"><%= season.end_date %></span>
-                  <br>
-                  <table class="table table-bordered table-hover">
-                    <%= render 'ratings/heading' %>
-                    <tbody>
-                      <% i = 1 %>
-                      <% for rating in season.ratings %>
-                        <% if rating.games_played > 0 %>
-                          <%= render partial: 'ratings/row',
-                                     locals: { rating: rating, ranking: i } %>
-                          <% i = i + 1 %>
-                        <% end %>
-                      <% end %>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
+        <%= render 'ratings/season_standings' %>
       </div>
     </div>
   </center>
