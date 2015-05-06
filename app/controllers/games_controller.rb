@@ -25,7 +25,7 @@ class GamesController < ApplicationController
       season_rating = season.user_rating winner
       winner_season_ratings.push season_rating
       REDIS.del(winner.id.to_s + 'graph')
-      REDIS.del(winner.id.to_s + 'games')
+      clear_game_caches winner
       winner
     end
     loser_league_ratings = []
@@ -37,7 +37,7 @@ class GamesController < ApplicationController
       season_rating = season.user_rating loser
       loser_season_ratings.push season_rating
       REDIS.del(loser.id.to_s + 'graph')
-      REDIS.del(loser.id.to_s + 'games')
+      clear_game_caches loser
       loser
     end
     league_result = calculate_rankings winner_league_ratings,
@@ -83,6 +83,15 @@ class GamesController < ApplicationController
                     change_in_season_rating: change_in_season_rating
     end
     render json: { game_id: game.id }
+  end
+
+  protected
+
+  def clear_game_caches user
+    key_back = user.id.to_s + 'games'
+    ['web', 'mob', 'and', 'ios'].each do |client|
+      REDIS.del(client + key_back)
+    end
   end
 
   def game_params
