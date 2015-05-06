@@ -24,7 +24,7 @@
             </div>
           </div>
           <div id="leagues_panel" class="panel-body">
-            <% @user_leagues.each_with_index do |league, i| %>
+            <% @leagues.each_with_index do |league, i| %>
               <div id="rating<%= i %>" class="league_rating panel panel-default">
                 <div class="panel-heading">
                   <h3><%= link_to league.name, league_path(league) %></h3>

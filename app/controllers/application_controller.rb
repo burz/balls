@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
       REDIS.set user_menu_string, @menu
       REDIS.expire user_menu_string, REDIS_MENU_TTL
     else
-      puts "\033[32mLOADED CACHED MENU\033[0m"
+      puts "\033[32mREDIS CACHE: LOADED MENU\033[0m"
     end
   end
 

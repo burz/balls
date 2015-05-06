@@ -1,0 +1,5 @@
+<script>
+  var league_ratings_data = <%= raw render(template: 'ratings/leagues.json') %>; 
+  var season_ratings_data = <%= raw render(template: 'ratings/seasons.json') %>; 
+  $(document).ready(graphs_ready);
+</script>

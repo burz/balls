@@ -1,7 +1,7 @@
 class LeaguesController < ApplicationController
   before_action :authenticate_user!
   before_action :load_menu, except: [:create, :create_admin]
-  before_action :load_leagues, only: [:index]
+  before_action :load_leagues, only: [:index, :players]
 
   def index
   end
@@ -73,7 +73,7 @@ class LeaguesController < ApplicationController
   end
 
   def players
-    @league = current_user.leagues.find params[:league_id]
+    @league = @leagues.find params[:league_id]
     @users = @league.users.order name: :asc
   end
 
