@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Constants
   include ApplicationHelper
 
   protect_from_forgery with: :exception
@@ -38,17 +39,27 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def load_leagues_and_seasons
-    if user_signed_in?
+  def load_leagues
+    if not @leagues
+      @leagues = current_user.leagues
+    end
+  end
+
+  def load_menu
+    user_menu_string = current_user.id.to_s + 'menu'
+    @menu = REDIS.get user_menu_string
+    if not @menu
       @leagues = current_user.leagues.sort do |x, y|
         games_sort x, y
       end
       @all_seasons = current_user.seasons.sort do |x, y|
         games_sort x, y
       end
+      @menu = render_to_string partial: 'common/menu'
+      REDIS.set user_menu_string, @menu
+      REDIS.expire user_menu_string, REDIS_MENU_TTL
     else
-      @leagues = []
-      @all_seasons = []
+      puts "\033[32mLOADED CACHED MENU\033[0m"
     end
   end
 

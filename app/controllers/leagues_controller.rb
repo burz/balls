@@ -1,8 +1,7 @@
 class LeaguesController < ApplicationController
-  include Constants
-
   before_action :authenticate_user!
-  before_action :load_leagues_and_seasons, except: [:create, :create_admin]
+  before_action :load_menu, except: [:create, :create_admin]
+  before_action :load_leagues, only: [:index]
 
   def index
   end

@@ -1,8 +1,6 @@
 class SeasonsController < ApplicationController
-  include Constants
-
   before_action :authenticate_user!
-  before_action :load_leagues_and_seasons
+  before_action :load_menu
 
   def index
     @league = current_user.leagues.find params[:league_id]

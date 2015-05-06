@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_leagues_and_seasons
+  before_action :load_menu
 
   def show
     @user = User.find params[:id]

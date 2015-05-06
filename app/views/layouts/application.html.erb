@@ -11,7 +11,7 @@
   <body>
     <% if user_signed_in? %>
       <nav id="menu" class="menu">
-        <%= render template: 'common/menu' %>
+        <%= raw @menu %>
       </nav>
       <script>
         $(document).ready(slider_ready);
