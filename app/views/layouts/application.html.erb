@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>BallsApp</title>
-        <meta name="description" content="Create a ranked beer pong league for your friend circle, frat or sports team today!"/>
-        <meta name="keywords" content="ballsapp,beer pong,pong,tracker,beer pong tracker,beer pong rankings,beer pong league,beer pong app"/>
-        <meta name="robots" content="index,follow"/>
-        <meta name="DC.title" content="BallsApp"/>
-        <meta http-equiv="cleartype" content="on">
-        <meta name="MobileOptimized" content="320">
-        <meta name="HandheldFriendly" content="True">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': true %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
-        <%= csrf_meta_tags %>
-    </head>
-    <body>
-      <% if user_signed_in? %>
-        <nav id="menu" class="menu">
-          <%= render template: 'common/menu' %>
-        </nav>
-        <script>
-          $(document).ready(slider_ready);
-        </script>
-      <% end %>
-      <main id="panel" class="panel">
-        <div class="container">
-          <%= render template: 'common/nav_bar' %>
-          <br>
-          <div id ="site_contents">
-            <center>
-              <div class="global_alert alert alert-warning"><%= notice %></div>
-              <div class="global_alert alert alert-danger"><%= alert %></div>
-            </center>
-            <%= yield %>
-          </div>
+  <head>
+    <meta charset="utf-8">
+    <title>BallsApp</title>
+    <meta name="description" content="Create a ranked beer pong league for your friend circle, frat or sports team today!"/>
+    <meta name="keywords" content="ballsapp,beer pong,pong,tracker,beer pong tracker,beer pong rankings,beer pong league,beer pong app"/>
+    <meta name="robots" content="index,follow"/>
+    <meta name="DC.title" content="BallsApp"/>
+    <meta http-equiv="cleartype" content="on">
+    <meta name="MobileOptimized" content="320">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="apple-touch-icon" href="<%= image_path 'touch-icon-iphone.png' %>">
+    <link rel="apple-touch-icon" sizes="76x76" href="<%= image_path 'touch-icon-ipad.png' %>">
+    <link rel="apple-touch-icon" sizes="120x120" href="<%= image_path 'touch-icon-iphone-retina.png' %>">
+    <link rel="apple-touch-icon" sizes="152x152" href="<%= image_path 'touch-icon-ipad-retina.png' %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <% if user_signed_in? %>
+      <nav id="menu" class="menu">
+        <%= render template: 'common/menu' %>
+      </nav>
+      <script>
+        $(document).ready(slider_ready);
+      </script>
+    <% end %>
+    <main id="panel" class="panel">
+      <div class="container">
+        <%= render template: 'common/nav_bar' %>
+        <br>
+        <div id ="site_contents">
+          <center>
+            <div class="global_alert alert alert-warning"><%= notice %></div>
+            <div class="global_alert alert alert-danger"><%= alert %></div>
+          </center>
+          <%= yield %>
         </div>
-      </main>
-      <%= content_for :footer %>
-      <%= render template: 'common/instruction_pane' %>
-      <%= render template: 'common/spinner' %>
-      <% if Rails.env.production? %>
-        <%= render template: 'common/google_analytics' %>
-      <% end %>
-    </body>
+      </div>
+    </main>
+    <%= content_for :footer %>
+    <%= render template: 'common/instruction_pane' %>
+    <%= render template: 'common/spinner' %>
+    <% if Rails.env.production? %>
+      <%= render template: 'common/google_analytics' %>
+    <% end %>
+  </body>
 </html>

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :seasons do
       resources :games, only: [:show, :create]
     end
+
+#    resources :tournaments, only: [:index]
   end
 
   get 'invite', to: 'invites#general_new', as: 'invite'
