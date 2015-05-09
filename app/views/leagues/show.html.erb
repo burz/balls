@@ -1,16 +1,3 @@
 <div id="ratings_container" users="<%= url_for root_path %>users" me="<%= current_user.id %>">
-  <center>
-    <div class="well">
-        <h1><%= @league.name %></h1>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <%= render 'ratings/league_players' %>
-        <%= render 'ratings/league_benchwarmers' %>
-      </div>
-      <div class="col-md-6">
-        <%= render 'ratings/season_standings' %>
-      </div>
-    </div>
-  </center>
+  <%= raw @league_page %>
 </div>

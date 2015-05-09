@@ -5,8 +5,7 @@ class WelcomeController < ApplicationController
       load_leagues
       if @leagues.size > 0
         @league = current_user.last_updated_league
-        @seasons = @league.seasons.order created_at: :desc
-        load_league_players
+        load_league_page @league
         render template: 'leagues/show'
       else
         render template: 'leagues/index'

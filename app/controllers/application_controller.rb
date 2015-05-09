@@ -91,6 +91,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def load_league_page league
+    league_key = 'league' + league.id.to_s
+    @league_page = REDIS.get league_key
+    if not @league_page
+      @seasons = @league.seasons.order created_at: :desc
+      load_league_players
+      @league_page = render_to_string partial: 'leagues/show'
+      REDIS.set league_key, @league_page
+    else
+      puts "\033[32mREDIS CACHE: LOADED LEAGUE\033[0m"
+    end
+  end
+
   def after_sign_in_path_for(resource_or_scope)
     path = super
     if path == '/' or path == '/?new_user=true'
