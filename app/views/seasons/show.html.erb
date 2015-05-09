@@ -36,7 +36,7 @@
         <% end %>
       </div>
     </div>
-    <div class="row">
+    <div class="row" id="ratings_container" users="<%= url_for root_path %>users" me="<%= current_user.id %>">
       <div class="col-md-6">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -57,12 +57,7 @@
                 <% i = 1 %>
                 <% for rating in @season.ratings %>
                   <% if rating.games_played > 0 %>
-                    <% if current_user.id == rating.user_id %>
-                      <tr class="rating_row current_user_row"
-                    <% else %>
-                      <tr class="rating_row"
-                    <% end %>
-                          user_path="<%= url_for(user_path rating.user_id) %>">
+                    <tr class="rating_row" user_id="<%= rating.user_id %>">
                       <td><%= i %></td>
                       <td><%= rating.name %></td>
                       <td><%= rating.rating %></td>

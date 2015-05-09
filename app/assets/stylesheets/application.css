@@ -23,14 +23,6 @@ table tr {
   font-size: 80%;
 }
 
-.rating_row {
-  cursor: pointer;
-}
-
-.current_user_row {
-  background-color: rgba(123, 59, 59, 0.1);
-}
-
 #panel {
   padding-top: 50px;
   min-height: 100%;
