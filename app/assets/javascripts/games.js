@@ -63,6 +63,7 @@ function save_game () {
         Turbolinks.visit(season_path + '/games/' + data.game_id);
       }
     );
+    $('#save_game_button').attr('disabled', 'disabled');
   }
 }
 var seasons = [];

@@ -36,7 +36,7 @@
         <div class="form-group">
           <label for="game_league_name">League</label>
           <select id="game_league_name" class="form-control">
-              <option value="">Select a league</option>
+            <option value="">Select a league</option>
             <% for league in @leagues %>
               <option value="<%= league.id %>"><%= league.name %></option>
             <% end %>
