@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :load_menu
-  before_action :load_leagues, only: [:show]
 
   def show
     @user = User.find params[:id]
+    @user_leagues = @user.leagues
     @avatar = Avatar.new
     graph_data_key = @user.id.to_s + 'graph'
     @graph_data = REDIS.get graph_data_key
