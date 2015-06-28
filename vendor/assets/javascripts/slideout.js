@@ -64,7 +64,9 @@ function Slideout(options) {
   this._padding = parseInt(options.padding, 10) || 256;
 
   // Init touch events
-  this._initTouchEvents();
+  if(options.allow_touch) {
+    this._initTouchEvents();
+  }
 
   // Init the change callbacks
   this._beforeChangeCallbacks = [];

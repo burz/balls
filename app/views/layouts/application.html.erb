@@ -14,7 +14,15 @@
         <%= raw @menu %>
       </nav>
       <script>
-        $(document).ready(slider_ready);
+        <% if params[:client] == 'and' %>
+            $(document).ready(function () {
+                slider_ready(true);
+            });
+        <% else %>
+            $(document).ready(function () {
+                slider_ready(false);
+            });
+        <% end %>
       </script>
     <% end %>
     <main id="panel" class="panel">

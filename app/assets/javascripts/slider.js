@@ -13,12 +13,13 @@ function setup_admin_buttons () {
     });
   });
 }
-function slider_ready () {
+function slider_ready (allow_touch) {
   var slideout = new Slideout({
     panel: $('#panel')[0],
     menu: $('#menu')[0],
     padding: 256,
-    tolerance: 70
+    tolerance: 70,
+    allow_touch: allow_touch
   });
   $('#menu_button').click(function () {
     slideout.toggle();
