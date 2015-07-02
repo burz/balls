@@ -8,17 +8,18 @@
       <%= render 'welcome/app_buttons' %>
     <% end %>
   <% else %>
-        <div class="row">
-          <div class="col-md-6">
-            <%= render template: 'common/user_entrance' %>
-            <br>
-            <%= render 'welcome/app_buttons' %>
-          </div>
-          <br>
-          <div id="info_pane" class="col-md-6">
-            <%= render template: 'welcome/intro' %>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= render template: 'common/user_entrance' %>
+        <br>
+        <%= render 'welcome/app_buttons' %>
+      </div>
+      <br>
+      <div id="info_pane" class="col-md-6">
+        <%= render template: 'welcome/intro' %>
+      </div>
+    </div>
+    <br>
     <div class="row">
       <div class="col-md-12">
         <%= render template: 'welcome/example' %>
