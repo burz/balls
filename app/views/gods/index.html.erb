@@ -38,6 +38,7 @@
                   <td>Joined</td>
                   <td>Last Sign In</td>
                   <td>Leagues</td>
+                  <td>Seasons</td>
                   <td>Games</td>
                 </tr>
               </thead>
@@ -49,6 +50,7 @@
                     <td class="game_date"><%= user.created_at %></td>
                     <td class="game_date"><%= user.last_sign_in_at %></td>
                     <td><%= user.leagues.count %></td>
+                    <td><%= user.seasons.count %></td>
                     <td><%= user.games.count %></td>
                   </tr>
                 <% end %>
