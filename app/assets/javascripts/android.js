@@ -39,7 +39,6 @@ function load_contacts_android () {
 }
 function android_ready () {
   load_contacts_android();
-  contact_selector_ready();
   $('#send_contact_invites').click(send_contact_invites_android);
   $('#send_general_contact_invites').click(function () {
     $('#contact_league_alert').hide();

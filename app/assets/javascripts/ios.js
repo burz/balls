@@ -68,7 +68,6 @@ function send_general_contact_invites_ios () {
 }
 function ios_ready () {
   load_contacts_ios();
-  contact_selector_ready();
   $('#send_contact_invites').click(send_contact_invites_ios);
   $('#send_general_contact_invites').click(function () {
     $('#contact_league_alert').hide();
