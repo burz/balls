@@ -22,7 +22,7 @@ function send_invite_ios (number, token_path, callback) {
 }
 function send_contact_invites_ios () {
   start_spinner();
-  var contacts = $('#selected_contact_list').children();
+  var contacts = get_selected_contacts();
   var count = contacts.length;
   var token_path = $('#invite_contacts').attr('league_generate_invite_path');
   var league_path = $('#invite_contacts').attr('league_path');
@@ -72,7 +72,7 @@ function ios_ready () {
   $('#send_contact_invites').click(send_contact_invites_ios);
   $('#send_general_contact_invites').click(function () {
     $('#contact_league_alert').hide();
-    if($('#contact_league_selector').val() === '') {
+    if(no_selected_contacts()) {
       $('#contact_league_alert').show();
     } else {
       send_general_contact_invites_ios();

@@ -1,6 +1,6 @@
 function send_contact_invites_android () {
   start_spinner();
-  var contacts = $('#selected_contact_list').children();
+  var contacts = get_selected_contacts();
   var count = contacts.length;
   var send_invite_android = function (number) {
     $.get($('#invite_contacts').attr('league_generate_invite_path'), function (data) {
@@ -43,7 +43,7 @@ function android_ready () {
   $('#send_contact_invites').click(send_contact_invites_android);
   $('#send_general_contact_invites').click(function () {
     $('#contact_league_alert').hide();
-    if($('#contact_league_selector').val() === '') {
+    if(no_selected_contacts()) {
       $('#contact_league_alert').show();
     } else {
       send_general_contact_invites_android();
