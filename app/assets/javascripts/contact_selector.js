@@ -9,9 +9,10 @@ function contact_click (event_object) {
   }
 }
 function add_contact (name, number) {
-  $('#contacts_list').append(
-    '<li class="phone_contact list-group-item" phone_number="' + number + '">' + name + '</li>');
-  $('.phone_contact').click(contact_click);
+  var li = $('<li class="phone_contact list-group-item" phone_number="' +
+             number + '">' + name + '</li>')
+    .click(contact_click);
+  $('#contacts_list').append(li);
 }
 function no_selected_contacts () {
   var contacts = $('.phone_contact');
