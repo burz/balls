@@ -21,6 +21,7 @@ class LeaguesController < ApplicationController
     LeagueRating.create user: current_user, league: league,
                         rating: LEAGUE_START,
                         games_played: 0, wins: 0, losses: 0
+    invalidate_menu_cache
     redirect_to url_for(new_league_invite_path league, new_league: true), turbolinks: true
   end
 

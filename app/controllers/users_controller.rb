@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       REDIS.set graph_data_key, @graph_data
       REDIS.expire graph_data_key, REDIS_GRAPH_TTL
     else
-      puts "\033[32mREDIS CACHE: LOADED GRAPH DATA\033[0m"
+      puts "\033[32mREDIS CACHE: LOADED GRAPH DATA \"#{graph_data_key}\033[0m"
     end
     load_user_games @user
   end

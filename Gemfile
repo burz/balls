@@ -16,6 +16,7 @@ gem 'carrierwave-aws'
 gem 'routing-filter'
 gem 'puma'
 gem 'redis'
+gem 'therubyracer'
 
 group :development, :test do
   gem 'byebug'

@@ -24,6 +24,7 @@ class SeasonsController < ApplicationController
       SeasonRating.create user: user, season: season, rating: SEASON_START,
                           games_played: 0, wins: 0, losses: 0
     end
+    invalidate_menu_cache
     redirect_to url_for(league_season_path season.league, season), turbolinks: true
   end
 

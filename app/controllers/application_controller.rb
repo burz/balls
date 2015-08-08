@@ -61,8 +61,14 @@ class ApplicationController < ActionController::Base
       REDIS.set user_menu_key, @menu
       REDIS.expire user_menu_key, REDIS_MENU_TTL
     else
-      puts "\033[32mREDIS CACHE: LOADED MENU\033[0m"
+      puts "\033[32mREDIS CACHE: LOADED MENU \"#{user_menu_key}\"\033[0m"
     end
+  end
+
+  def invalidate_menu_cache
+    user_menu_key = params[:client] + current_user.id.to_s + 'menu'
+    REDIS.del user_menu_key
+    puts "\033[32mREDIS CACHE: INVALIDATED MENU \"#{user_menu_key}\"\033[0m"
   end
 
   def load_user_games user
@@ -75,7 +81,7 @@ class ApplicationController < ActionController::Base
       REDIS.set user_games_key, @user_games
       REDIS.expire user_games_key, REDIS_USER_GAMES_TTL
     else
-      puts "\033[32mREDIS CACHE: LOADED USER GAMES\033[0m"
+      puts "\033[32mREDIS CACHE: LOADED USER GAMES \"#{user_games_key}\"\033[0m"
     end
   end
 
@@ -100,7 +106,7 @@ class ApplicationController < ActionController::Base
       @league_page = render_to_string partial: 'leagues/show'
       REDIS.set league_key, @league_page
     else
-      puts "\033[32mREDIS CACHE: LOADED LEAGUE\033[0m"
+      puts "\033[32mREDIS CACHE: LOADED LEAGUE \"#{league_key}\"\033[0m"
     end
   end
 
