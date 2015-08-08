@@ -10,9 +10,8 @@ function send_contact_invites_android () {
       }
     });
   };
-  contacts.each(function (i, contact) {
-    send_invite_android(contact.getAttribute('phone_number'));
-  });
+  for(var i = 0; i < contacts.length; ++i)
+      send_invite_android(contacts[i].getAttribute('phone_number'));
 }
 function send_general_contact_invites_android () {
   start_spinner();
@@ -30,22 +29,23 @@ function send_general_contact_invites_android () {
       }
     });
   };
-  contacts.each(function (i, contact) {
-    send_invite_android(contact.getAttribute('phone_number'));
-  });
+  for(var i = 0; i < contacts.length; ++i)
+    send_invite_android(contacts[i].getAttribute('phone_number'));
 }
 function load_contacts_android () {
   BallsAppAndroid.loadContacts();
 }
 function android_ready () {
-  load_contacts_android();
+//  load_contacts_android();
   $('#send_contact_invites').click(send_contact_invites_android);
   $('#send_general_contact_invites').click(function () {
-    $('#contact_league_alert').hide();
-    if(no_selected_contacts()) {
-      $('#contact_league_alert').show();
-    } else {
+    $('.contact_league_alert').hide();
+    $('.contact_number_alert').hide();
+    if($('#contact_league_selector').val() === '')
+      $('.contact_league_alert').show();
+    else if(no_selected_contacts())
+      $('.contact_number_alert').show();
+    else
       send_general_contact_invites_android();
-    }
   });
 }

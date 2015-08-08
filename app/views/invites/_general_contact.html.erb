@@ -2,9 +2,13 @@
   <div id="invite_contacts" class="well" leagues_path="<%= url_for leagues_path %>">
     <div class="row">
       <div class="col-md-12">
-        <div id="contact_league_alert" class="invite_alert alert alert-danger"
+        <div class="contact_league_alert invite_alert alert alert-danger"
              role="alert" hidden>
           A league must be selected
+        </div>
+        <div class="contact_number_alert invite_alert alert alert-danger"
+             role="alert" hidden>
+          At least one contact must be selected
         </div>
         <div class="form-group">
           <label for"contact_league_selector">League</label>
@@ -19,6 +23,14 @@
           <ul id="contacts_list" class="list-group">
           </ul>
           <br>
+          <div class="contact_league_alert invite_alert alert alert-danger"
+               role="alert" hidden>
+            A league must be selected
+          </div>
+          <div class="contact_number_alert invite_alert alert alert-danger"
+               role="alert" hidden>
+            At least one contact must be selected
+          </div>
           <button id="send_general_contact_invites" class="btn btn-lg btn-success"
                   type="button">
             Send Invites
