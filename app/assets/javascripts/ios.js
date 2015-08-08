@@ -44,7 +44,7 @@ function send_contact_invites_ios () {
 }
 function send_general_contact_invites_ios () {
   start_spinner();
-  var contacts = $('#selected_contact_list').children();
+  var contacts = get_selected_contacts();
   var count = contacts.length;
   var leagues_path = $('#invite_contacts').attr('leagues_path');
   var league_id = $('#contact_league_selector').val();

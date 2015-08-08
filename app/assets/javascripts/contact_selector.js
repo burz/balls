@@ -1,5 +1,5 @@
 function add_contact (name, number) {
-  $('#contacts_list').append('<li class="phone_contact" phone_number="' +
+  $('#contacts_list').append('<li class="phone_contact list-group-item" phone_number="' +
                              number + '">' + name + '</li>');
 }
 function no_selected_contacts () {
