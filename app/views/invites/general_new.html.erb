@@ -1,29 +1,41 @@
 <div id="invite_page" leagues_path="<%= url_for leagues_path %>">
   <% if params[:client] == 'and' %>
-    <%= render 'invites/nav_bar' %>
+    <%= render partial: 'invites/nav_bar', locals: { show_contacts: true } %>
     <div id="contact_invites_pane">
       <%= render 'invites/general_contact' %>
     </div>
     <div id="email_invites_pane" hidden>
-      <%= render 'invites/general_new' %>
+      <%= render 'invites/general_email' %>
+    </div>
+    <div id="friend_invites_pane" hidden>
+      <%= render 'invites/general_friend' %>
     </div>
     <script>
       $(document).ready(android_ready);
     </script>
   <% else %>
     <% if params[:client] == 'ios' %>
-      <%= render 'invites/nav_bar' %>
+      <%= render partial: 'invites/nav_bar', locals: { show_contacts: true } %>
       <div id="contact_invites_pane">
         <%= render 'invites/general_contact' %>
       </div>
       <div id="email_invites_pane" hidden>
-        <%= render 'invites/general_new' %>
+        <%= render 'invites/general_email' %>
+      </div>
+      <div id="friend_invites_pane" hidden>
+        <%= render 'invites/general_friend' %>
       </div>
       <script>
         $(document).ready(ios_ready);
       </script>
     <% else %>
-      <%= render 'invites/general_new' %>
+      <%= render partial: 'invites/nav_bar', locals: { show_contacts: false } %>
+      <div id="email_invites_pane">
+        <%= render 'invites/general_email' %>
+      </div>
+      <div id="friend_invites_pane" hidden>
+        <%= render 'invites/general_friend' %>
+      </div>
     <% end %>
   <% end %>
 </div>

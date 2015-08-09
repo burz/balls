@@ -2,6 +2,7 @@ class InvitesController < ApplicationController
   before_action :authenticate_user!, except: [:join]
   before_action :load_menu, except: [:join]
   before_action :load_leagues, only: [:new, :general_new]
+  before_action :load_friends, only: [:new, :general_new]
 
   def new
     @league = @leagues.find params[:league_id]
@@ -22,6 +23,14 @@ class InvitesController < ApplicationController
     league = current_user.leagues.find params[:league_id]
     invite = Invite.create league: league
     InviteMailer.invite_email(current_user, email, league, invite.token).deliver_now
+    render nothing: true
+  end
+
+  def friend
+    user = User.find params[:invite][:id]
+    league = current_user.leagues.find params[:league_id]
+    invite = Invite.create league: league
+    InviteMailer.invite_email(current_user, user.email, league, invite.token).deliver_now
     render nothing: true
   end
 
@@ -63,6 +72,7 @@ class InvitesController < ApplicationController
           else
             redirect_to url_for(league_path league), turbolinks: true
           end
+          invalidate_league_page league
         end
       end
     end

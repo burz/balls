@@ -1,8 +1,17 @@
 <ul class="nav nav-tabs">
-  <li id="phone_contacts_button" role="presentation" class="active">
-    <a>Phone Contacts</a>
-  </li>
-  <li id="email_button" role="presentation">
-    <a>Email</a>
+  <% if show_contacts %>
+    <li id="phone_contacts_button" role="presentation" class="active">
+      <a>Phone Contacts</a>
+    </li>
+    <li id="email_button" role="presentation">
+      <a>Email</a>
+    </li>
+  <% else %>
+    <li id="email_button" role="presentation" class="active">
+      <a>Email</a>
+    </li>
+  <% end %>
+  <li id="friend_button" role="presentation">
+    <a>Friend</a>
   </li>
 </ul>

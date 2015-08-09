@@ -46,15 +46,27 @@ function invites_ready () {
   $('#send_invite_button').click(send_invite);
   $('#phone_contacts_button').click(function () {
     $('#email_invites_pane').hide();
+    $('#friend_invites_pane').hide();
     $('#email_button').removeClass('active');
+    $('#friend_button').removeClass('active');
     $('#phone_contacts_button').addClass('active');
     $('#contact_invites_pane').show();
   });
   $('#email_button').click(function () {
     $('#contact_invites_pane').hide();
+    $('#friend_invites_pane').hide();
     $('#phone_contacts_button').removeClass('active');
+    $('#friend_button').removeClass('active');
     $('#email_button').addClass('active');
     $('#email_invites_pane').show();
+  });
+  $('#friend_button').click(function () {
+    $('#contact_invites_pane').hide();
+    $('#email_invites_pane').hide();
+    $('#phone_contacts_button').removeClass('active');
+    $('#email_button').removeClass('active');
+    $('#friend_button').addClass('active');
+    $('#friend_invites_pane').show();
   });
 }
 $(document).ready(invites_ready);

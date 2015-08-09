@@ -24,7 +24,6 @@ function no_selected_contacts () {
 function get_selected_contacts () {
   var results = [];
   $('.phone_contact').each(function (i, contact) {
-    console.log(contact);
     if(contact.hasAttribute('clicked'))
         results[results.length] = contact;
   });

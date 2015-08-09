@@ -1,0 +1,28 @@
+<center>
+  <div class="well">
+    <div id="friend_league_alert" class="invite_alert alert alert-danger" role="alert">
+      A league must be selected
+    </div>
+    <div id="friend_alert" class="invite_alert alert alert-danger" role="alert">
+      At least one friend must be selected
+    </div>
+    <div class="form-group">
+      <label for"friend_league_selector">League</label>
+      <select id="friend_league_selector" class="form-control">
+        <option value="">Select a league</option>
+        <% for league in @leagues %>
+          <option value="<%= league.id %>"><%= league.name %></option>
+        <% end %>
+      </select>
+      <label for="friend_list">Choose Contacts From Your Other Leagues</label>&nbsp;
+      <ul id="friend_list" class="list-group">
+        <% for friend in @friends %>
+            <li class="friend list-group-item" friend_id="<%= friend.id %>">
+                <%= friend.name %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="create_general_friend_invite" class="btn btn-success">Send Invites</div>
+  </div>
+</center>

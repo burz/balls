@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ruby_string="2.2.0"
+ruby_string="2.2.1"
 gemset_name="balls"
 
 if rvm list strings | grep -q "${ruby_string}"

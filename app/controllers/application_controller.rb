@@ -110,6 +110,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def invalidate_league_page league
+    league_key = 'league' + league.id.to_s
+    REDIS.del league_key
+    puts "\033[32mREDIS CACHE: INVALIDATED LEAGUE \"#{league_key}\"\033[0m"
+  end
+
+  def load_friends
+    all_friends = @leagues.inject(Set.new) do |friends, league|
+        more_friends = league.users.to_a.delete_if { |f| f.id == current_user.id }
+        friends.merge more_friends.to_set.each { |f| f.name = f.name + ' (' + league.name + ')' }
+    end
+    @friends = all_friends.to_a.sort_by { |f| f.name.downcase }
+  end
+
   def after_sign_in_path_for(resource_or_scope)
     path = super
     if path == '/' or path == '/?new_user=true'

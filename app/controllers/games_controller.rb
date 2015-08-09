@@ -82,7 +82,7 @@ class GamesController < ApplicationController
                     change_in_league_rating: change_in_league_rating,
                     change_in_season_rating: change_in_season_rating
     end
-    REDIS.del('league' + league.id.to_s)
+    invalidate_league_page league
     render json: { game_id: game.id }
   end
 
