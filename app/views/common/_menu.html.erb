@@ -13,6 +13,14 @@
     <% end %>
   </header>
 <% end %>
+<div id="home_button" class="menu_link">
+  <%= link_to root_path do %>
+    <header>
+      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+      <span class="menu_label">Home</span>
+    </header>
+  <% end %>
+</div>
 <% if @all_seasons.size > 0 %>
   <div id="log_game_button" class="menu_link">
     <%= link_to new_game_path do %>
