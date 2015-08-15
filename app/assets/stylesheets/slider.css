@@ -13,6 +13,8 @@ body {
   width: 256px;
   overflow-y: auto;
   display: none;
+  border-right-width: 1px;
+  border-right-style: solid;
 }
 
 .slideout-panel {
