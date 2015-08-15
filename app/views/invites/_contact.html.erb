@@ -12,7 +12,9 @@
         <% end %>
         <div class="btn-group btn-group-lg">
           <% if params[:new_league] %>
-            <%= link_to 'Skip', league_path(@league), class: 'btn btn-default' %>
+            <%= link_to league_path(@league) do %>
+              <button class="btn btn-default">Skip</button>
+            <% end %>
           <% end %>
           <button id="send_contact_invites" class="btn btn-success" type="button">
             Send Invites

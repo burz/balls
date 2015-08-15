@@ -11,14 +11,6 @@ body, html {
   width: 100%;
 }
 
-body, main {
-  background-color: rgba(216, 252, 255, 1) !important;
-}
-
-table, .panel-body {
-  background-color: #FFFFFF !important;
-}
-
 table tr {
   font-size: 80%;
 }

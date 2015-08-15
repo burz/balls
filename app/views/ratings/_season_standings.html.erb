@@ -4,8 +4,9 @@
   </div>
   <div class="panel-body">
     <% if @seasons.size == 0 and current_user.admin? @league %>
-      <%= link_to 'Create A Season', new_league_season_path(@league),
-                  class: 'btn btn-success btn-lg' %>
+      <%= link_to new_league_season_path(@league) do %>
+        <button class="btn btn-success btn-lg">Create A Season</button>
+      <% end %>
     <% end %>
     <% for season in @seasons %>
       <div class="panel panel-success">

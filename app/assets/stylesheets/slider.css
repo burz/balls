@@ -30,17 +30,11 @@ body {
   display: block;
 }
 
-.menu {
-  background-color: #1D1F20;
-  background-image: linear-gradient(145deg, #1D1F20, #404348);
-}
-
 .panel {
   min-height: 100%;
 }
 
 .menu a {
-  color: #fff;
   cursor: pointer;
 }
 
@@ -71,7 +65,6 @@ body {
 
 .menu-section-title {
   text-transform: uppercase;
-  color: #85888d;
   font-weight: 200;
   font-size: 13px;
   letter-spacing: 1px;
@@ -80,7 +73,6 @@ body {
 }
 
 .league_menu_item {
-  color: #85888d;
   margin:0;
   margin: 10px 0;
   padding: 0;
@@ -92,7 +84,8 @@ body {
 }
 
 #log_game_button, #invite_player_button,
-#instructions_button, #god_button {
+#instructions_button, #god_button,
+#home_button {
   border-bottom: 1px solid #2a2d2f;
 }
 
@@ -111,10 +104,6 @@ body {
 
 #sections_list {
   margin-bottom: 0px;
-}
-
-.menu-section-list a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
 #menu {

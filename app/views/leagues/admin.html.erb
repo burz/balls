@@ -22,8 +22,11 @@
             <h2>Seasons</h2>
           </div>
           <div class="panel-body">
-            <%= link_to 'Create A Season', new_league_season_path(@league),
-                        class: 'btn btn-success btn-lg' %>
+            <%= link_to new_league_season_path(@league) do %>
+              <button class="btn btn-success btn-lg">
+                Create A Season
+              </button>
+            <% end %>
             <br>
             <br>
             <%= render 'seasons/index' %>
