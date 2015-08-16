@@ -5,7 +5,7 @@ Make sure to set SECRET_KEY_BASE in the ENV. The key should be obtained by runni
 
 Make sure to also set SENDGRID_USERNAME and SENDGRID_PASSWORD in production.
 
-Color palete: http://paletton.com/#uid=53i0f0kl7kFn3MF2RrE6n5v-neN
+Color palete: http://paletton.com/#uid=50u0d0klsvNiqYq0UKwamkxyYq8
 
 ## Copyright
 
