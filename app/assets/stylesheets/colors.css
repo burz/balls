@@ -15,7 +15,7 @@
 }
 
 body, main {
-  background-color: #FDA054 !important;
+  background-color: #FFAF6C !important;
 }
 
 #site_contents .panel,
@@ -27,7 +27,7 @@ body, main {
 }
 
 #site_contents .panel-body {
-  background-color: #FFAF6C !important;
+  background-color: #FDA054 !important;
 }
 
 #site_contents .panel-heading,
