@@ -45,7 +45,8 @@ thead td {
   color: #D07400 !important;
 }
 
-tbody td {
+tbody td,
+#site_contents .league_rating h3 {
   color: #00512E !important;
 }
 
@@ -57,3 +58,4 @@ tbody td {
 #extra_rules_heading {
   color: #D05E00 !important;
 }
+

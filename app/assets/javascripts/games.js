@@ -142,6 +142,10 @@ function season_change () {
     });
   }
 }
+var month_names = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
 function games_ready () {
   $('.game_row').click(function (event_object) {
     var target_path = event_object.target.parentElement.getAttribute('game_path');
@@ -154,7 +158,12 @@ function games_ready () {
   $('#game_league_name').change(league_change);
   $('#game_season_name').change(season_change);
   $('.game_date').each(function (i, date_string) {
-    date_string.textContent = moment(date_string.textContent).fromNow();
+    var from_now = moment(date_string.textContent).fromNow();
+    var date = new Date(date_string.textContent);
+    var formatted_date = month_names[date.getMonth()] + ' ' +
+                         date.getDay() + ', ' +
+                         date.getFullYear();
+    date_string.textContent = from_now + ' (' + formatted_date + ')';
   });
   var played_date = $('#played_date');
   played_date.text(moment(played_date.text()).format('h:mm:ssa On MMMM Do YYYY'));
