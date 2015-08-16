@@ -39,7 +39,7 @@ table, td,
 #info_pane .panel-body,
 .player_changes,
 .league_rating .panel-body {
-  background-color: #EFEFEF !important;
+  background-color: #EFEFEF;
   border-color: #00512E !important;
 }
 
