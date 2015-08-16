@@ -7,10 +7,12 @@
       <a>Log In</a>
     </li>
   </ul>
-  <div id="sign_up_pane">
-    <%= render 'devise/registrations/new' %>
-  </div>
-  <div id="log_in_pane" hidden=true>
-    <%= render 'devise/sessions/new' %>
+  <div class="well">
+    <div id="sign_up_pane">
+      <%= render 'devise/registrations/new' %>
+    </div>
+    <div id="log_in_pane" hidden=true>
+      <%= render 'devise/sessions/new' %>
+    </div>
   </div>
 </div>

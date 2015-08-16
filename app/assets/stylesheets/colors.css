@@ -2,12 +2,11 @@
   background-color: #FD8854 !important;
 }
 
-.menu header, .menu_header, .navbar a {
-  color: #151A1A !important;
-}
-
+.menu header,
+.menu_header,
+.navbar a,
 .league_menu_item a {
-  color: #A02E00 !important;
+  color: #151A1A !important;
 }
 
 .menu .glyphicon, .navbar .glyphicon {
@@ -37,7 +36,7 @@ body, main {
 }
 
 table, td {
-  background-color: #FDB254 !important;
+  background-color: #EFEFEF;
   border-color: #00512E !important;
 }
 

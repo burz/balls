@@ -13,6 +13,15 @@ function common_ready () {
     $('#log_in_pane').show();
     $('#log_in_email').focus();
   });
+  $('tbody tr').hover(function () {
+    $(this).children('td').each(function () {
+        $(this).css('background-color', '#FFFCF8');
+    });
+  }, function () {
+    $(this).children('td').each(function () {
+        $(this).css('background-color', '#EFEFEF');
+    });
+  });
 }
 $(document).ready(common_ready);
 $(document).on('page:load', common_ready);
