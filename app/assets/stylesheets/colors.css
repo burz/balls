@@ -22,11 +22,11 @@ body, main {
 #site_contents .well,
 #site_contents .nav,
 #user_avatar_display img {
-  border-color: #D05E00 !important;
+  border-color: #D05E00;
 }
 
 #site_contents .panel-body {
-  background-color: #FDA054 !important;
+  background-color: #FDA054;
 }
 
 #site_contents .panel-heading,
@@ -35,8 +35,11 @@ body, main {
   background-color: #FFFBF8 !important;
 }
 
-table, td {
-  background-color: #EFEFEF;
+table, td,
+#info_pane .panel-body,
+.player_changes,
+.league_rating .panel-body {
+  background-color: #EFEFEF !important;
   border-color: #00512E !important;
 }
 
@@ -53,6 +56,8 @@ tbody td,
 #site_contents h1,
 #site_contents h2,
 #site_contents h3,
+#site_contents h4,
+#site_contents h5,
 #site_contents a,
 #rules_button,
 #extra_rules_heading {
