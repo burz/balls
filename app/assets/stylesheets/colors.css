@@ -5,7 +5,18 @@
 .menu header,
 .menu_header,
 .navbar a,
-.league_menu_item a {
+.league_menu_item a,
+#site_contents h1,
+#site_contents h2,
+#site_contents h3,
+#site_contents h4,
+#site_contents h5,
+#site_contents a,
+#rules_button,
+#extra_rules_heading,
+thead td,
+tbody td,
+#site_contents .league_rating h3 {
   color: #151A1A !important;
 }
 
@@ -17,50 +28,30 @@ body, main {
   background-color: #FFAF6C !important;
 }
 
+#site_contents .panel-heading,
+#site_contents .well,
+#user_avatar_display img,
+#site_contents .panel-body {
+  background-color: #FFFBF8 !important;
+}
+
+.league_rating .panel-body,
 #site_contents .panel,
 #site_contents .panel-heading,
 #site_contents .well,
-#site_contents .nav,
-#user_avatar_display img {
-  border-color: #D05E00;
-}
-
-#site_contents .panel-body {
-  background-color: #FDA054;
-}
-
-#site_contents .panel-heading,
-#site_contents .well,
-#user_avatar_display img {
-  background-color: #FFFBF8 !important;
+#site_contents .nav {
+  border-color: #00512E !important;
 }
 
 table, td,
 #info_pane .panel-body,
 .player_changes,
-.league_rating .panel-body {
+#user_avatar_display img {
   background-color: #EFEFEF;
   border-color: #00512E !important;
 }
 
 thead td {
   background-color: #FFFCF8 !important;
-  color: #D07400 !important;
+  font-weight: bold;
 }
-
-tbody td,
-#site_contents .league_rating h3 {
-  color: #00512E !important;
-}
-
-#site_contents h1,
-#site_contents h2,
-#site_contents h3,
-#site_contents h4,
-#site_contents h5,
-#site_contents a,
-#rules_button,
-#extra_rules_heading {
-  color: #D05E00 !important;
-}
-

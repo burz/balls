@@ -31,5 +31,7 @@
       <%= f.text_area :additional_rules, class: 'form-control' %>
     </div>
   </div>
-  <%= f.submit class: 'btn btn-success btn-lg' %>
+  <%= f.submit 'Create', class: 'btn btn-success btn-lg' do %>
+    Create
+  <% end %>
 <% end %>
