@@ -161,7 +161,7 @@ function games_ready () {
     var from_now = moment(date_string.textContent).fromNow();
     var date = new Date(date_string.textContent);
     var formatted_date = month_names[date.getMonth()] + ' ' +
-                         date.getDay() + ', ' +
+                         date.getDate() + ', ' +
                          date.getFullYear();
     date_string.textContent = from_now + ' (' + formatted_date + ')';
   });
