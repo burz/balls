@@ -1,11 +1,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap
+//= require bootstrap.min
 //= require slideout
-//= require spin
+//= require spin.min
 //= require jquery.tipsy
-//= require d3
+//= require d3.min
 //= require jquery-ui
 //= require moment
 //= require_tree .
