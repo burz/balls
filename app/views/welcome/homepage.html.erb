@@ -2,11 +2,21 @@
   <% if params[:client] != 'web' %>
     <div class="row">
       <%= render template: 'common/user_entrance' %>
-    </div>
-    <% if params[:client] == 'mob' %>
+      <% if params[:client] == 'mob' %>
+        <br>
+        <%= render 'welcome/app_buttons' %>
+      <% end %>
       <br>
-      <%= render 'welcome/app_buttons' %>
-    <% end %>
+      <div id="info_pane" class="col-md-6">
+        <%= render template: 'welcome/intro' %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render template: 'welcome/mini_example' %>
+      </div>
+    </div>
   <% else %>
     <div class="row">
       <div class="col-md-6">
